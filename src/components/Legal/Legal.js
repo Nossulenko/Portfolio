@@ -44,13 +44,12 @@ class Component extends React.Component {
         <Link
           className={classes.link}
           href=''
-          target='uniswap'
           onMouseEnter={() => sounds.hover.play()}
           onLinkStart={onLinkStart}
           onLinkEnd={onLinkEnd}
         >
           <Text animation={{ animate, show, duration }} stableTime>
-            — © 2023 nossulenko. All rights reserved.  —
+            — © 2024 nossulenko. All rights reserved. —
           </Text>
         </Link>
       </p>

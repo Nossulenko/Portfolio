@@ -22,9 +22,7 @@ class Component extends React.PureComponent {
     onEnter: PropTypes.func,
     onExit: PropTypes.func,
     onLinkStart: PropTypes.func,
-    onLinkEnd: PropTypes.func,
-    open: PropTypes.func,
-    account: PropTypes.object
+    onLinkEnd: PropTypes.func
   };
 
   static defaultProps = {
@@ -35,21 +33,16 @@ class Component extends React.PureComponent {
     super(...arguments);
 
     this.state = {
-      showSecuence: false,
-      isConnected: false
+      showSecuence: false
     };
   }
 
   componentDidMount () {
-    const { account: { isConnected } } = this.props;
-
-    this.setState({ isConnected });
+    // No wallet connection setup needed
   }
 
   componentDidUpdate (prevProps) {
     const { energy } = this.props;
-    const { account: { isConnected } } = this.props;
-    const { account: { isConnected: prevIsConnected } } = prevProps;
 
     if (prevProps.energy.status !== energy.status) {
       if (energy.entering) {
@@ -57,11 +50,6 @@ class Component extends React.PureComponent {
       } else if (energy.exiting) {
         this.setState({ showSecuence: false }); // eslint-disable-line react/no-did-update-set-state
       }
-    }
-
-    if (prevIsConnected !== isConnected) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ isConnected });
     }
   }
 
@@ -178,10 +166,9 @@ class Component extends React.PureComponent {
       onExit,
       onLinkStart,
       onLinkEnd,
-      account,
       ...etc
     } = this.props;
-    const { showSecuence, isConnected } = this.state;
+    const { showSecuence } = this.state;
 
     const animateText = scheme === SCHEME_NORMAL;
     const linkProps = {
@@ -189,12 +176,6 @@ class Component extends React.PureComponent {
       onMouseEnter: () => sounds.hover.play(),
       onLinkStart,
       onLinkEnd
-    };
-
-    const connectWallet = () => {
-      const { open } = this.props;
-
-      open();
     };
 
     return (
@@ -207,15 +188,6 @@ class Component extends React.PureComponent {
           ref={(ref) => (this.element = ref)}
           {...etc}
         >
-          <Link href='/portfolio' {...linkProps}>
-            <Text
-              animation={{ animate: animateText }}
-              audio={{ silent: !animateText }}
-            >
-              Folio
-            </Text>
-          </Link>
-          <b className={cx(classes.item, classes.divisor)}>|</b>
           <Link href='/about' {...linkProps}>
             <Text
               animation={{ animate: animateText }}

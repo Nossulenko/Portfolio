@@ -1,1 +1,0 @@
-export * from './withConnectModal.js';

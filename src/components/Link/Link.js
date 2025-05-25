@@ -47,7 +47,7 @@ class Component extends React.PureComponent {
       ...etc
     } = this.props;
 
-    const linkMatchesURL = global.location && global.location.pathname.includes(href);
+    const linkMatchesURL = typeof window !== 'undefined' && window.location && window.location.pathname.includes(href);
 
     if (isButton) {
       return <button

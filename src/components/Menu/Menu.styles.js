@@ -46,11 +46,6 @@ const styles = () => ({
       textShadow: `0 0 5px ${theme.color.secondary.light}`
     }
   },
-  walletAddressContainer: {
-    width: '100%', // Ensure it spans the entire width
-    textAlign: 'center', // Center-align the content
-    marginTop: 50 // Adjust the margin as needed
-  },
 
   '@media (min-width: 768px)': {
     item: {
