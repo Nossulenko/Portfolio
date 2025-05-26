@@ -27,6 +27,22 @@ const ProgressBar = ({ value }) => {
     #3366FF ${(electricEffect + 15) % 110}%,    #3366FF 110%
   )`;
 
+  const badgeStyle = {
+    display: 'inline-block',
+    background: '#DAA520', // or your chosen yellow/orange
+    color: '#181A20',      // dark text for contrast
+    borderRadius: '16px',
+    padding: '4px 14px',
+    margin: '4px 6px 0 0',
+    fontSize: '0.98em',
+    fontWeight: 600,
+    letterSpacing: 0.2,
+    verticalAlign: 'middle',
+    boxShadow: '0 1px 4px #0002',
+    border: '1px solid #DAA520',
+    transition: 'background 0.2s'
+  };
+
   return (
     <div
       style={{
