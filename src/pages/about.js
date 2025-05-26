@@ -1,294 +1,112 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '../tools/withStyles';
 import { Main } from '../components/Main';
-import { Text } from '../components/Text';
-import { Fader } from '../components/Fader';
-import { Secuence } from '../components/Secuence';
-import { createRoot } from 'react-dom/client';
-import { Global } from '@emotion/react';
-import { createAppTheme } from '@arwes/theme';
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import SidebarCard from '../components/SidebarCard';
 
-const styles = theme => ({
-  root: {}
-});
+const sidebarStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '16px',
+  minWidth: '280px',
+  maxWidth: '340px'
+};
 
-const t = createAppTheme({
-  settings: {
-    hues: {
-      primary: 200,
-      secondary: 80
-    },
-    fontFamilies: {
-      title: 'Copperplate, Copper, "Comic Sans"',
-      body: 'Electrolize, Techno, Trebuchet'
-    }
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+  gap: '48px',
+  margin: '40px 0'
+};
+
+const mainStyle = {
+  flex: 1,
+  color: '#fff'
+};
+
+const highlight = {
+  color: '#DAA520',
+  fontWeight: 500,
+  transition: 'text-shadow 0.2s',
+  '&:hover': {
+    textShadow: '0 0 5px #DAA520'
   }
-});
+};
 
-class Portfolio extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object
-  };
-
-  render () {
-    const { classes } = this.props;
-
-    return (
-      <Main className={classes.root}>
-         <header>
-                 <h3><Text>About me</Text></h3>
-               </header>
-        <Fader>
-        <Fragment>
-      <Global styles={{
-        html: {
-          lineHeight: 1.6,
-          backgroundColor: t.colors.error.main(9)
-        },
-        h2: {
-          marginTop: t.space(5),
-        },
-        hr: {
-          margin: t.space([0, 0, 4]),
-          border: 'none',
-          height: 2,
-          background: `linear-gradient(
-            90deg,
-            ${t.colors.primary.deco(5)},
-            ${t.colors.secondary.deco(10)}
-          )`
-        },
-        p: {
-          margin: t.space([0, 0, 4]),
-          ...t.typography.body(1),
-          color: t.colors.error.text(1)
-        },
-        img: {
-          margin: t.space([5, 5, 5]),
-          maxWidth: '100%',
-          borderRadius: t.space(2)
-        },
-        cardDiv: {
-          display: 'flex',
-        }
-
-      }} />
-
-      <main style={{
-        display: 'flex',
-        flexDirection: 'row',
-        border: `1px solid ${t.colors.error.main(5)}`,
-        borderRadius: t.space(4),
-        background: `linear-gradient(
-          to bottom right,
-          ${t.colors.error.main(8)},
-          ${t.colors.error.main(9)}
-        )`
-      }}>
-
-        <img width={150} height={150} src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" />
-
-        <div className='cardDiv'>
-        <h2>Titel</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
-        <Link>Visit Project</Link>
-        </div>
-      </main>
-    </Fragment>
-    <br/>
-    <Fragment>
-      <Global styles={{
-        html: {
-          margin: t.space(2),
-          lineHeight: 1.6,
-          backgroundColor: t.colors.error.main(9)
-        },
-        h2: {
-          marginTop: t.space(5),
-        },
-        hr: {
-          margin: t.space([0, 0, 4]),
-          border: 'none',
-          height: 2,
-          background: `linear-gradient(
-            90deg,
-            ${t.colors.primary.deco(5)},
-            ${t.colors.secondary.deco(10)}
-          )`
-        },
-        p: {
-          margin: t.space([0, 0, 4]),
-          ...t.typography.body(1),
-          color: t.colors.error.text(1)
-        },
-        img: {
-          margin: t.space([5, 5, 5]),
-          maxWidth: '100%',
-          borderRadius: t.space(2)
-        },
-        cardDiv: {
-          display: 'flex',
-        }
-
-      }} />
-
-      <main style={{
-        display: 'flex',
-        flexDirection: 'row',
-        border: `1px solid ${t.colors.error.main(5)}`,
-        borderRadius: t.space(4),
-        background: `linear-gradient(
-          to bottom right,
-          ${t.colors.error.main(8)},
-          ${t.colors.error.main(9)}
-        )`
-      }}>
-
-        <img width={150} height={150} src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" />
-
-        <div className='cardDiv'>
-        <h2>Titel</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
-        <Link>Visit Project</Link>
-        </div>
-      </main>
-    </Fragment>
-    <br/>
-    <Fragment>
-      <Global styles={{
-        html: {
-          margin: t.space(2),
-          lineHeight: 1.6,
-          backgroundColor: t.colors.error.main(9)
-        },
-        h2: {
-          marginTop: t.space(5),
-        },
-        hr: {
-          margin: t.space([0, 0, 4]),
-          border: 'none',
-          height: 2,
-          background: `linear-gradient(
-            90deg,
-            ${t.colors.primary.deco(5)},
-            ${t.colors.secondary.deco(10)}
-          )`
-        },
-        p: {
-          margin: t.space([0, 0, 4]),
-          ...t.typography.body(1),
-          color: t.colors.error.text(1)
-        },
-        img: {
-          margin: t.space([5, 5, 5]),
-          maxWidth: '100%',
-          borderRadius: t.space(2)
-        },
-        cardDiv: {
-          display: 'flex',
-        }
-
-      }} />
-
-      <main style={{
-        display: 'flex',
-        flexDirection: 'row',
-        border: `1px solid ${t.colors.error.main(5)}`,
-        borderRadius: t.space(4),
-        background: `linear-gradient(
-          to bottom right,
-          ${t.colors.error.main(8)},
-          ${t.colors.error.main(9)}
-        )`
-      }}>
-
-        <img width={150} height={150} src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" />
-
-        <div className='cardDiv'>
-        <h2>Titel</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
-        <Link>Visit Project</Link>
-        </div>
-      </main>
-    </Fragment>
-    <br/>
-    <Fragment>
-      <Global styles={{
-        html: {
-          margin: t.space(2),
-          lineHeight: 1.6,
-          backgroundColor: t.colors.error.main(9)
-        },
-        h2: {
-          marginTop: t.space(5),
-        },
-        hr: {
-          margin: t.space([0, 0, 4]),
-          border: 'none',
-          height: 2,
-          background: `linear-gradient(
-            90deg,
-            ${t.colors.primary.deco(5)},
-            ${t.colors.secondary.deco(10)}
-          )`
-        },
-        p: {
-          margin: t.space([0, 0, 4]),
-          ...t.typography.body(1),
-          color: t.colors.error.text(1)
-        },
-        img: {
-          margin: t.space([5, 5, 5]),
-          maxWidth: '100%',
-          borderRadius: t.space(2)
-        },
-        cardDiv: {
-          display: 'flex',
-        }
-
-      }} />
-
-      <main style={{
-        display: 'flex',
-        flexDirection: 'row',
-        border: `1px solid ${t.colors.error.main(5)}`,
-        borderRadius: t.space(4),
-        background: `linear-gradient(
-          to bottom right,
-          ${t.colors.error.main(8)},
-          ${t.colors.error.main(9)}
-        )`
-      }}>
-
-        <img width={150} height={150} src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" />
-
-        <div className='cardDiv'>
-        <h2>Titel</h2>
-        <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
-        <Link>Visit Project</Link>
-        </div>
-      </main>
-    </Fragment>
-    </Fader>
-      </Main>
-
-    );
+const labelStyle = {
+  ...highlight,
+  '&:hover': {
+    textShadow: '0 0 5px #DAA520'
   }
-}
+};
 
-export default withStyles(styles)(Portfolio);
+const valueStyle = { color: '#fff', fontWeight: 400 };
+const nativeStyle = {
+  ...highlight,
+  marginLeft: 8,
+  fontSize: '0.95em',
+  '&:hover': {
+    textShadow: '0 0 5px #DAA520'
+  }
+};
+
+const About = () => (
+  <Main>
+    <div style={containerStyle}>
+      {/* Main Profile Section */}
+      <div style={mainStyle}>
+        <h1
+          style={{ ...highlight, fontWeight: 700, letterSpacing: 2, marginBottom: 24, fontSize: '2.2rem', cursor: 'pointer' }}
+        >| PROFILE</h1>
+        <p style={{ fontSize: '1.15rem', marginBottom: 18, color: '#fff' }}>
+          I'm an experienced tech leader with end-to-end expertise in digital product development. I specialize in transforming ideas into scalable, high-impact software products — leading cross-functional and international teams to bridge the gap between business strategy and technical execution.
+        </p>
+        <p style={{ fontSize: '1.15rem', marginBottom: 18, color: '#fff' }}>
+          Recently, I've prototyped and led the development of entirely new products, guiding them from concept to validation. I've defined API schemas, led frontend–backend integration, and managed quality through functional, sanity, and regression testing.
+        </p>
+        <p style={{ fontSize: '1.15rem', color: '#fff' }}>
+          I actively leverage AI to drive innovation and efficiency — from training LLMs and implementing AWS Textract in production workflows to building and integrating custom AI agents. Drawing on my full-stack background, I've launched complete SaaS solutions powered by AI.
+        </p>
+      </div>
+      {/* Sidebar Section */}
+      <div style={sidebarStyle}>
+        <SidebarCard title='PERSONAL INFO'>
+          <div style={{ marginBottom: 8 }}><span style={valueStyle}>14/01/1992, Rudny</span></div>
+          <div style={{ marginBottom: 8 }}><span style={valueStyle}>Brasschaat, Belgium</span></div>
+          <div style={{ marginBottom: 8 }}><span style={valueStyle}>+32499785394</span></div>
+          <div><span style={labelStyle}>✉️</span><span style={valueStyle}>contact@kaizenprojects.be</span></div>
+        </SidebarCard>
+        <SidebarCard title='LANGUAGES'>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={valueStyle}>Dutch/Flemish</span><span style={nativeStyle}>Native</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={valueStyle}>English</span><span style={nativeStyle}>Native</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span style={valueStyle}>Russian</span><span style={nativeStyle}>Native</span>
+          </div>
+        </SidebarCard>
+        <SidebarCard title='CERTIFICATIONS'>
+          <div style={valueStyle}>Behavioral Design Fundamentals</div>
+          <div style={valueStyle}>Prince2 Certified</div>
+          <div style={valueStyle}>CEHv9 - Ethical Hacking</div>
+        </SidebarCard>
+        <SidebarCard title='ONGOING CERTIFICATIONS'>
+          <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> Digital MBA - CTO Academy
+          </div>
+          <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> PMC Certification
+          </div>
+        </SidebarCard>
+        <SidebarCard title='COMMUNITIES'>
+          <div style={valueStyle}>• CTO Club Belgium</div>
+          <div style={valueStyle}>• CTO Academy</div>
+        </SidebarCard>
+      </div>
+    </div>
+  </Main>
+);
+
+export default About;

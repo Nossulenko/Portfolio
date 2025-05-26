@@ -12,14 +12,14 @@ const theme = {
       light: '#ffffff'
     },
     secondary: {
-      dark: '#610000',
-      main: '#FF0000',
-      light: '#f96161'
+      dark: '#B8860B',
+      main: '#DAA520',
+      light: '#FFD700'
     },
     tertiary: {
-      dark: '#610000',
-      main: '#FF0000',
-      light: '#f96161'
+      dark: '#B8860B',
+      main: '#DAA520',
+      light: '#FFD700'
     },
     heading: {
       main: '#eeeeee'
@@ -28,14 +28,14 @@ const theme = {
       main: '#cccccc'
     },
     link: {
-      dark: '#610000',
-      main: '#FF0000',
-      light: '#f96161'
+      dark: '#B8860B',
+      main: '#DAA520',
+      light: '#FFD700'
     },
     background: {
       dark: '#000000',
-      main: '#300000',
-      light: '#610000'
+      main: '#000033',
+      light: '#003399'
     }
   },
   animation: {

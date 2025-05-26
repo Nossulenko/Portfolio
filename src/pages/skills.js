@@ -77,22 +77,50 @@ const projectCardStyle = {
   padding: '20px',
   margin: '16px 0',
   color: '#fff',
-  borderLeft: '4px solid #F6A700',
+  borderLeft: '4px solid #3366FF',
   boxShadow: '0 2px 8px #0008',
+};
+
+const highlight = {
+  color: '#DAA520',
+  fontWeight: 700,
+  letterSpacing: 2,
+  cursor: 'pointer',
+  transition: 'text-shadow 0.2s',
+  '&:hover': {
+    textShadow: '0 0 5px #DAA520'
+  }
+};
+
+const projectTitleStyle = {
+  color: '#DAA520',
+  marginBottom: 8,
+  fontWeight: 600,
+  cursor: 'pointer',
+  transition: 'text-shadow 0.2s',
+  '&:hover': {
+    textShadow: '0 0 5px #DAA520'
+  }
 };
 
 const SkillsPage = () => (
   <Main>
-    <h2 style={{ color: '#F6A700', letterSpacing: 2, marginTop: 0 }}>| SKILLS</h2>
+    <h2
+      style={highlight}
+    >| SKILLS</h2>
     <div style={cardGridStyle}>
       {skillsData.map(card => (
         <SkillCard key={card.title} title={card.title} skills={card.skills} />
       ))}
     </div>
-    <h2 style={{ color: '#F6A700', letterSpacing: 2, marginTop: 40 }}>| PROJECT EXPERIENCE</h2>
+    <h2
+      style={{ ...highlight, marginTop: 40 }}
+    >| PROJECT EXPERIENCE</h2>
     {projects.map(project => (
       <div key={project.title} style={projectCardStyle}>
-        <h3 style={{ color: '#F6A700', marginBottom: 8, fontWeight: 600 }}>{project.title}</h3>
+        <h3
+          style={projectTitleStyle}
+        >{project.title}</h3>
         <p style={{ color: '#fff', margin: 0 }}>{project.description}</p>
       </div>
     ))}

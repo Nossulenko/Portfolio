@@ -53,8 +53,11 @@ const styles = () => ({
       fontFamily: theme.typography.primary,
       lineHeight: 1,
       color: theme.color.heading.main,
-      textShadow: `0 0 5px ${theme.color.secondary.main}`,
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      transition: 'text-shadow 0.2s',
+      '&:hover': {
+        textShadow: `0 0 5px ${theme.color.secondary.main}`
+      }
     },
     h1: { fontSize: 27 },
     h2: { fontSize: 24 },

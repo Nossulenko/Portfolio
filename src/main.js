@@ -9,16 +9,16 @@ import Skills from './pages/skills.js';
 
 export const Main = () => {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Routes>
-          <Route element={<Template location={location} />}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/skills' element={<Skills />} />
-          </Route>
-        </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route element={<Template location={location} />}>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/skills' element={<Skills />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
   );
 };
