@@ -1,0 +1,151 @@
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-main {
+  flex: 1;
+  max-width: calc(100% - 300px);
+  color: #fff;
+}
+
+.about-sidebar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.employment-card {
+  background: #181A20;
+  border-radius: 10px;
+  padding: 28px 28px 18px 28px;
+  margin: 28px 0;
+  color: #fff;
+  border: 1px solid #DAA520;
+  box-shadow: 0 2px 8px #0008;
+  max-width: 900px;
+}
+
+.employment-title {
+  color: #DAA520;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 2px;
+  letter-spacing: 0.2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.employment-meta {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.employment-period {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.05rem;
+  margin-left: 8px;
+}
+
+.employment-location {
+  color: #888;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.employment-description {
+  margin: 16px 0 0 0;
+  color: #fff;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  background: #DAA520;
+  color: #181A20;
+  border-radius: 16px;
+  padding: 4px 14px;
+  margin: 8px 8px 0 0;
+  font-size: 0.98em;
+  font-weight: 700;
+  letter-spacing: 0.2;
+  vertical-align: middle;
+  box-shadow: 0 1px 4px #0002;
+  border: 1px solid #DAA520;
+  transition: background 0.2s;
+}
+
+.profile-text {
+  font-size: 1.15rem;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .about-main {
+    max-width: 100%;
+  }
+
+  .about-sidebar {
+    width: 100%;
+  }
+
+  .employment-card {
+    padding: 20px 16px 16px 16px;
+    margin: 20px 0;
+  }
+
+  .employment-title {
+    font-size: 1.1rem;
+  }
+
+  .employment-meta {
+    font-size: 0.95rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .employment-period {
+    margin-left: 0;
+    font-size: 0.95rem;
+  }
+
+  .employment-location {
+    font-size: 0.9rem;
+  }
+
+  .employment-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .badge {
+    font-size: 0.9em;
+    padding: 3px 12px;
+    margin: 6px 6px 0 0;
+  }
+
+  .profile-text {
+    font-size: 1rem;
+  }
+}

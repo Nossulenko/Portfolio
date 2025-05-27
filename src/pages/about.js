@@ -1,18 +1,28 @@
 import React from 'react';
 import { Main } from '../components/Main';
 import SidebarCard from '../components/SidebarCard';
+import './styles/about.css';
 
 const containerStyle = {
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'flex-start',
-  justifyContent: 'space-between',
-  gap: '48px',
-  margin: '40px 0'
+  gap: 56,
+  maxWidth: 1200,
+  margin: '0 auto',
+  padding: '0 20px',
+  '@media (max-width: 768px)': {
+    flexDirection: 'column',
+    gap: 32,
+    padding: '0 16px'
+  }
 };
 
 const mainStyle = {
   flex: 1,
+  maxWidth: 'calc(100% - 300px)',
+  '@media (max-width: 768px)': {
+    maxWidth: '100%'
+  },
   color: '#fff'
 };
 
@@ -32,6 +42,10 @@ const employmentCardStyle = {
   border: '1px solid #DAA520',
   boxShadow: '0 2px 8px #0008',
   maxWidth: 900,
+  '@media (max-width: 768px)': {
+    padding: '20px 16px 16px 16px',
+    margin: '20px 0'
+  }
 };
 
 const employmentTitleStyle = {
@@ -43,6 +57,9 @@ const employmentTitleStyle = {
   display: 'flex',
   alignItems: 'center',
   gap: 8,
+  '@media (max-width: 768px)': {
+    fontSize: '1.1rem'
+  }
 };
 
 const employmentMetaStyle = {
@@ -53,6 +70,12 @@ const employmentMetaStyle = {
   display: 'flex',
   alignItems: 'center',
   gap: 8,
+  '@media (max-width: 768px)': {
+    fontSize: '0.95rem',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: 4
+  }
 };
 
 const employmentPeriodStyle = {
@@ -60,6 +83,10 @@ const employmentPeriodStyle = {
   fontWeight: 400,
   fontSize: '1.05rem',
   marginLeft: 8,
+  '@media (max-width: 768px)': {
+    marginLeft: 0,
+    fontSize: '0.95rem'
+  }
 };
 
 const employmentLocationStyle = {
@@ -67,6 +94,9 @@ const employmentLocationStyle = {
   fontWeight: 400,
   fontSize: '1rem',
   marginBottom: 10,
+  '@media (max-width: 768px)': {
+    fontSize: '0.9rem'
+  }
 };
 
 const employmentDescriptionStyle = {
@@ -75,6 +105,10 @@ const employmentDescriptionStyle = {
   fontSize: '1.08rem',
   lineHeight: 1.6,
   fontWeight: 500,
+  '@media (max-width: 768px)': {
+    fontSize: '0.95rem',
+    lineHeight: 1.5
+  }
 };
 
 const badgeStyle = {
@@ -91,14 +125,20 @@ const badgeStyle = {
   boxShadow: '0 1px 4px #0002',
   border: '1px solid #DAA520',
   transition: 'background 0.2s',
+  '@media (max-width: 768px)': {
+    fontSize: '0.9em',
+    padding: '3px 12px',
+    margin: '6px 6px 0 0'
+  }
 };
 
 const sidebarStyle = {
+  width: 300,
+  '@media (max-width: 768px)': {
+    width: '100%'
+  },
   display: 'flex',
-  flexDirection: 'column',
-  gap: '16px',
-  minWidth: '280px',
-  maxWidth: '340px'
+  flexDirection: 'column'
 };
 
 const valueStyle = { color: '#fff', fontWeight: 400 };
@@ -179,35 +219,35 @@ const employmentHistory = [
 
 const About = () => (
   <Main>
-    <div style={containerStyle}>
+    <div className="about-container">
       {/* Main Profile Section */}
-      <div style={mainStyle}>
+      <div className="about-main">
         <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
-        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+        <p className="profile-text">
           I'm an experienced tech leader with end-to-end expertise in digital product development. I specialize in
           transforming ideas into scalable, high-impact software products leading cross-functional and international
           teams to bridge the gap between business strategy and technical execution.
         </p>
-        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+        <p className="profile-text">
           Recently, I've prototyped and led the development of entirely new products, guiding them from concept
           to validation. I've defined API schemas, led frontend–backend integration, and managed quality through
           functional, sanity, and regression testing even taking on QA responsibilities and learning the discipline
           hands-on.
         </p>
-        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+        <p className="profile-text">
           Beyond product delivery, I've played a key role in governance and operational optimization: supporting
           ISO 27001 certification, coordinating penetration tests, building FinOps dashboards, setting up cost
           alerts, and delivering executive-level reporting. My efforts in agile coaching, release management, and
           requirements traceability have helped shift engineering cultures from consultancy-driven to product-led
           improving predictability, delivery, and accountability.
         </p>
-        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+        <p className="profile-text">
           I actively leverage AI to drive innovation and efficiency from training LLMs and implementing AWS
           Textract in production workflows to building and integrating custom AI agents. These agents include
           personal productivity assistants, SDLC automation tools, and systems that support internal teams via
           company communication platforms.
         </p>
-        <p style={{ fontSize: '1.15rem', marginBottom: 40 }}>
+        <p className="profile-text" style={{ marginBottom: 40 }}>
           Drawing on my full-stack background, I've launched complete SaaS solutions powered by AI and
           introduced engineers to "vibe-coding" a fusion of traditional coding and AI-assisted development. I coach
           teams and interns on adopting AI tools in daily workflows, helping them stay in flow, ship faster, and build
@@ -219,7 +259,7 @@ const About = () => (
         <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>| EMPLOYMENT HISTORY</h2>
       </div>
       {/* Sidebar Section */}
-      <div style={sidebarStyle}>
+      <div className="about-sidebar">
         <SidebarCard title='PERSONAL INFO'>
           <div style={{ marginBottom: 8 }}><span style={valueStyle}>14/01/1992, Rudny</span></div>
           <div style={{ marginBottom: 8 }}><span style={valueStyle}>Antwerp, Belgium</span></div>
@@ -260,23 +300,23 @@ const About = () => (
     {employmentHistory.map((job) => (
       <div
         key={job.title + job.period}
+        className="employment-card"
         style={{
-          ...employmentCardStyle,
           width: '100%',
           maxWidth: 'none',
           marginLeft: 0,
           marginRight: 0
         }}
       >
-        <div style={employmentTitleStyle}>{job.title}</div>
-        <div style={employmentMetaStyle}>
-          {job.company} <span style={{ color: '#DAA520' }}>•</span> <span style={employmentPeriodStyle}>{job.period}</span>
+        <div className="employment-title">{job.title}</div>
+        <div className="employment-meta">
+          {job.company} <span style={{ color: '#DAA520' }}>•</span> <span className="employment-period">{job.period}</span>
         </div>
-        <div style={employmentLocationStyle}>{job.location}</div>
-        <div style={employmentDescriptionStyle}>{job.description}</div>
+        <div className="employment-location">{job.location}</div>
+        <div className="employment-description">{job.description}</div>
         <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap' }}>
           {job.badges.map(badge => (
-            <span key={badge} style={badgeStyle}>{badge}</span>
+            <span key={badge} className="badge">{badge}</span>
           ))}
         </div>
       </div>

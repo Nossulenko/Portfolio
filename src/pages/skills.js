@@ -1,6 +1,7 @@
 import React from 'react';
 import SkillCard from '../components/SkillCard';
 import { Main } from '../components/Main';
+import './styles/skills.css';
 
 const skillsData = [
   {
@@ -74,23 +75,6 @@ const skillsData = [
   }
 ];
 
-const cardGridStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gap: '32px',
-  margin: '32px 0',
-};
-
-const projectCardStyle = {
-  background: '#23242B',
-  borderRadius: '8px',
-  padding: '20px',
-  margin: '16px 0',
-  color: '#fff',
-  borderLeft: '4px solid #3366FF',
-  boxShadow: '0 2px 8px #0008',
-};
-
 const highlight = {
   color: '#DAA520',
   fontWeight: 700,
@@ -102,23 +86,14 @@ const highlight = {
   }
 };
 
-const projectTitleStyle = {
-  color: '#DAA520',
-  marginBottom: 8,
-  fontWeight: 600,
-  cursor: 'pointer',
-  transition: 'text-shadow 0.2s',
-  '&:hover': {
-    textShadow: '0 0 5px #DAA520'
-  }
-};
-
 const SkillsPage = () => (
   <Main>
     <h2 style={highlight}>| SKILLS</h2>
-    <div style={cardGridStyle}>
+    <div className='skills-grid'>
       {skillsData.map(card => (
-        <SkillCard key={card.title} title={card.title} skills={card.skills} />
+        <div className='skill-card' key={card.title}>
+          <SkillCard title={card.title} skills={card.skills} />
+        </div>
       ))}
     </div>
   </Main>

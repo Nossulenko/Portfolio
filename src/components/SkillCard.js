@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
 
 const cardStyle = {
-  background: '#181A20',
-  borderRadius: '10px',
-  padding: '28px 28px 18px 28px',
   margin: '28px 0',
-  color: '#fff',
-  border: '1px solid #DAA520',
-  boxShadow: '0 2px 8px #0008',
   minWidth: '300px',
   maxWidth: '100%',
   flex: 1
