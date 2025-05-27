@@ -172,7 +172,7 @@ const employmentHistory = [
     location: 'Remote',
     description: `As the founder of Kaizen Projects (kaizenprojects.be), I established the company as a vehicle for delivering freelance services in digital product development, technical leadership, and product strategy. Through Kaizen, I've worked with startups and growing companies to prototype, build, and scale digital products across a variety of sectors. As a project leader, I've guided teams through strategic transformations, improved delivery workflows, implemented QA, and delivered results on time and on spec. The role has enabled me to work with truly exciting companies, always focusing on delivering real business value through well-executed technology.`,
     badges: [
-      'Product Strategy', 'Freelance', 'Docker', 'REST APIs', 'Figma', 'Flutter', 'GitHub', 'Cursor', 'Windsurf', 'OpenAI APIs', 'Gemini APIs', 'Claude APIs'
+      'Vercel', 'Angular', 'Nextjs', 'Product Strategy', 'Freelance', 'Docker', 'REST APIs', 'Figma', 'Flutter', 'GitHub', 'Cursor', 'OpenAI APIs'
     ]
   }
 ];
@@ -184,32 +184,39 @@ const About = () => (
       <div style={mainStyle}>
         <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
         <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
-          I'm an experienced tech leader with end-to-end expertise in digital product development. I specialize in transforming ideas into scalable, high-impact software products — leading cross-functional and international teams to bridge the gap between business strategy and technical execution.
+          I'm an experienced tech leader with end-to-end expertise in digital product development. I specialize in
+          transforming ideas into scalable, high-impact software products leading cross-functional and international
+          teams to bridge the gap between business strategy and technical execution.
         </p>
         <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
-          Recently, I've prototyped and led the development of entirely new products, guiding them from concept to validation. I've defined API schemas, led frontend–backend integration, and managed quality through functional, sanity, and regression testing.
+          Recently, I've prototyped and led the development of entirely new products, guiding them from concept
+          to validation. I've defined API schemas, led frontend–backend integration, and managed quality through
+          functional, sanity, and regression testing even taking on QA responsibilities and learning the discipline
+          hands-on.
+        </p>
+        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+          Beyond product delivery, I've played a key role in governance and operational optimization: supporting
+          ISO 27001 certification, coordinating penetration tests, building FinOps dashboards, setting up cost
+          alerts, and delivering executive-level reporting. My efforts in agile coaching, release management, and
+          requirements traceability have helped shift engineering cultures from consultancy-driven to product-led
+          improving predictability, delivery, and accountability.
+        </p>
+        <p style={{ fontSize: '1.15rem', marginBottom: 18 }}>
+          I actively leverage AI to drive innovation and efficiency from training LLMs and implementing AWS
+          Textract in production workflows to building and integrating custom AI agents. These agents include
+          personal productivity assistants, SDLC automation tools, and systems that support internal teams via
+          company communication platforms.
         </p>
         <p style={{ fontSize: '1.15rem', marginBottom: 40 }}>
-          I actively leverage AI to drive innovation and efficiency — from training LLMs and implementing AWS Textract in production workflows to building and integrating custom AI agents. Drawing on my full-stack background, I've launched complete SaaS solutions powered by AI.
+          Drawing on my full-stack background, I've launched complete SaaS solutions powered by AI and
+          introduced engineers to "vibe-coding" a fusion of traditional coding and AI-assisted development. I coach
+          teams and interns on adopting AI tools in daily workflows, helping them stay in flow, ship faster, and build
+          smarter. Curious, adaptable, and data-driven, I'm passionate about both tech and business, and I thrive on
+          leading people to deliver not just products but meaningful, measurable results.
         </p>
 
         {/* EMPLOYMENT HISTORY */}
-        <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>EMPLOYMENT HISTORY</h2>
-        {employmentHistory.map((job) => (
-          <div key={job.title + job.period} style={employmentCardStyle}>
-            <div style={employmentTitleStyle}>{job.title}</div>
-            <div style={employmentMetaStyle}>
-              {job.company} <span style={{ color: '#DAA520' }}>•</span> <span style={employmentPeriodStyle}>{job.period}</span>
-            </div>
-            <div style={employmentLocationStyle}>{job.location}</div>
-            <div style={employmentDescriptionStyle}>{job.description}</div>
-            <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap' }}>
-              {job.badges.map(badge => (
-                <span key={badge} style={badgeStyle}>{badge}</span>
-              ))}
-            </div>
-          </div>
-        ))}
+        <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>| EMPLOYMENT HISTORY</h2>
       </div>
       {/* Sidebar Section */}
       <div style={sidebarStyle}>
@@ -248,6 +255,32 @@ const About = () => (
         </SidebarCard>
       </div>
     </div>
+
+    {/* Render ALL employment cards full width, outside the flex row */}
+    {employmentHistory.map((job) => (
+      <div
+        key={job.title + job.period}
+        style={{
+          ...employmentCardStyle,
+          width: '100%',
+          maxWidth: 'none',
+          marginLeft: 0,
+          marginRight: 0
+        }}
+      >
+        <div style={employmentTitleStyle}>{job.title}</div>
+        <div style={employmentMetaStyle}>
+          {job.company} <span style={{ color: '#DAA520' }}>•</span> <span style={employmentPeriodStyle}>{job.period}</span>
+        </div>
+        <div style={employmentLocationStyle}>{job.location}</div>
+        <div style={employmentDescriptionStyle}>{job.description}</div>
+        <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap' }}>
+          {job.badges.map(badge => (
+            <span key={badge} style={badgeStyle}>{badge}</span>
+          ))}
+        </div>
+      </div>
+    ))}
   </Main>
 );
 

@@ -105,23 +105,34 @@ class Component extends React.PureComponent {
         ref={ref => (this.element = ref)}
         {...etc}
       >
-        <A href='https://contact@kaizenprojects.be' title='E-mail' target='e-mail'>
-          <span className='mdi mdi-email' />
+        <A
+          href="mailto:contact@kaizenprojects.be"
+          title="E-mail"
+          target="email"
+        >
+          <span className="mdi mdi-email" />
         </A>
-        <A href='https://twitter.com/Nossulenko' title='Twitter' target='twitter'>
-          <span className='mdi mdi-twitter' />
+        <A
+          href="https://x.com/NNossulenko"
+          title="Twitter"
+          target="twitter"
+        >
+          <span className="mdi mdi-twitter" />
         </A>
-        <A href='https://t.me/+ujkuOHP8elxlYzZk' title='Telegram' target='telegram'>
-          <span className='mdi mdi-telegram' />
+        <A
+          href="https://www.linkedin.com/in/nikolai-nossulenko/"
+          title="LinkedIn"
+          target="linkedin"
+        >
+          <span className="mdi mdi-linkedin" />
         </A>
-        <A href='https://www.linkedin.com/' title='LinkedIn' target='linkedin'>
-          <span className='mdi mdi-linkedin' />
+        <A
+          href="https://github.com/Nossulenko"
+          title="Gitlab"
+          target="Github"
+        >
+          <span className="mdi mdi-gitlab" />
         </A>
-        <A href='https://github.com/Nossulenko' title='Gitlab' target='Github'>
-          <span className='mdi mdi-gitlab' />
-        </A>
-
-
       </div>
     );
   }
