@@ -341,8 +341,7 @@ const About = () => (
       <div className="about-sidebar">
         <SidebarCard title='PERSONAL INFO'>
           <div style={{ marginBottom: 8 }}><span style={valueStyle}>14/01/1992, Rudny</span></div>
-          <div style={{ marginBottom: 8 }}><span style={valueStyle}>Antwerp, Belgium</span></div>
-          <div><span style={valueStyle}>contact@kaizenprojects.be</span></div>
+          <div style={{ marginBottom: 8 }}><span style={valueStyle}>Belgium</span></div>
         </SidebarCard>
         <SidebarCard title='LANGUAGES'>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
