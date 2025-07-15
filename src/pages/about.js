@@ -156,63 +156,163 @@ const nativeStyle = {
 
 const employmentHistory = [
   {
-    title: 'Lead Engineer',
-    company: 'Docbyte',
+    title: 'Lead Engineer | Product manager',
+    company: <a href="https://docbyte.com/" target="_blank" rel="noopener noreferrer">Docbyte</a>,
     period: 'Jun 2024 — May 2025',
     location: 'Gent',
-    description: `At Docbyte, I held the role of Lead Engineer while taking on full CTO-level responsibilities. I was accountable for technical strategy, product delivery, engineering leadership, and operational decision-making. I led cross-functional teams, managed cloud infrastructure and security practices, introduced AI-driven automation, and drove the development of entirely new SaaS products from the ground up. Operating in a highly regulated environment, I navigated strict security requirements as Docbyte is the only qualified trust service provider (QTSP) in Europe. This required a strong focus on secure system design, audit readiness, and compliance with EU trust and identity standards. To improve operational efficiency, I implemented a monitoring system using AWS CloudWatch, specifically tailored for the customer support team.`,
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Directed technical strategy and product delivery for Europe’s only Qualified Trust Service Provider (QTSP), ensuring compliance with EU trust and identity standards in a highly regulated SaaS environment.</li>
+        <li>Pioneered AI-driven automation and cloud monitoring systems using AWS CloudWatch, slashing issue resolution times for customer support teams by enhancing real-time infrastructure visibility.</li>
+        <li>Led cross-functional teams to launch new cloud-native SaaS products from concept to market, integrating secure system design and audit-ready processes for ISO 27001 certification.</li>
+        <li>Contributed to executive decision-making in management meetings, aligning technology roadmaps with long-term business objectives for measurable impact.</li>
+      </ul>
+    ),
     badges: [
-      'Angular', 'Java Spring', 'AWS Bedrock', 'AWS SageMaker', 'AWS QuickSight', 'Jira', 'Confluence', 'OpenAI', 'Claude', 'Keycloak', 'Figma', 'ngrx', 'Jest', 'RTM', 'GitHub', 'CodeCommit', 'Docker', 'REST APIs', 'AWS OCR', 'Google OCR'
+      'Agile Leadership',
+      'Product Management',
+      'Technical Strategy',
+      'ISO 27001',
+      'AWS CloudWatch',
+      'AWS SageMaker',
+      'AWS Bedrock',
+      'AI Integration',
+      'Claude',
+      'OpenAI',
+      'Vector Databases (FAISS, Pinecone)',
+      'Docker',
+      'QA/QC',
+      'GitHub',
+      'Jira',
+      'REST APIs'
     ]
   },
   {
-    title: 'Management Partner & Digital Product Developer',
-    company: 'The Product Architects',
+    title: 'Management Partner | Product Manager',
+    company: <a href="https://www.productarchitects.eu/" target="_blank" rel="noopener noreferrer">The Product Architects</a>,
     period: 'Aug 2023 — Jun 2024',
-    location: 'UK (Remote)',
-    description: `At The Product Architects, I led the digital product development of early-stage MVPs, working hands-on with a distributed engineering team primarily based in the UK. I was responsible for taking concepts from idea to execution, managing the full product lifecycle and ensuring high technical quality and timely delivery. I collaborated directly with cross-functional teams, aligned development objectives with business goals, and maintained tight control over timelines, requirements, and quality.`,
+    location: 'Antwerp',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Spearheaded development of earlystage MVPs with a UKbased engineering team, managing the full product lifecycle from ideation through technical handover, including infrastructure design, cloud architecture, and integration of AI-driven features to accelerate market differentiation.</li>
+        <li>Ensured highquality, ontime releases by aligning crossfunctional efforts, leveraging AI-assisted workflows, scalable backend design, and modern DevOps practices to optimize UX iterations and delivery sprints.</li>
+        <li>Bridged business goals with technical execution, delivering productionready solutions enhanced by custom AI model development, automation pipelines, and resilient infrastructure that consistently met client expectations and market demands.</li>
+      </ul>
+    ),
     badges: [
-      'React', 'Next.js', 'TypeScript', 'Jira', 'Confluence', 'Figma', 'Design Thinking', 'Flutter', 'GitHub', 'REST APIs'
+      'Fractional CTO',
+      'Business Discovery',
+      'MVP Strategy',
+      'RAG Pipelines',
+      'Custom LLM Development',
+      'Claude',
+      'ChatGPT',
+      'Gemini',
+      'DeepSeek',
+      'Workflow Automation',
+      'Azure AI',
+      'Pinecone',
+      'Service Design',
+      'Product Roadmapping',
+      'Figma',
+      'V0 (Vercel)'
     ]
   },
   {
     title: 'Program Manager',
-    company: 'Qualium Systems',
+    company: <a href="https://www.qualium-systems.com/" target="_blank" rel="noopener noreferrer">qualium-systems.com</a>,
     period: 'Jul 2018 — Feb 2023',
-    location: 'Remote',
-    description: `At Qualium Systems, I led the full lifecycle of two large-scale software projects, overseeing a team of approximately 25 professionals, including 20 developers, a project manager, a 3D designer, and QA engineers. Although I didn't code myself, I was fully responsible for project leadership, technical direction, and delivery oversight, driving both early-stage prototyping with UI/UX designers to final release in close collaboration with the delivery manager. My role included requirements discovery, estimation, project planning, risk management, and stakeholder communication. I worked across both web and mobile technologies, and oversaw the integration of databases, 3D elements, and DevOps pipelines.`,
+    location: 'Belgium / Ukraine',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Oversaw two largescale software projects, leading a 30person team (developers, designers, QA) across web, mobile, and 3D platforms using React, Angular, Node.js, and .NET, while architecting cloud infrastructure and integrating large language model (LLM)–powered features to enhance product capabilities.</li>
+        <li>Defined project scope, timelines, and budgets in an Agile Scrum environment, mitigating risks and ensuring quality through hands-on technical direction, infrastructure design, and alignment with key stakeholders.</li>
+        <li>Implemented DevOps pipelines, AI-assisted testing workflows, and requirements traceability, driving predictable delivery and enhancing collaboration across distributed international teams.</li>
+      </ul>
+    ),
     badges: [
-      'Project Management', 'Agile', 'Jira', 'Confluence', 'Docker', 'AWS', 'REST APIs'
+      'Full‑Stack Development',
+      'MEAN Stack (MongoDB, Express, Angular, Node.js)',
+      'RESTful APIs',
+      'UI/Backend Integration',
+      'Agile / Scrum',
+      'Kanban',
+      'Git & Version Control',
+      'System Scalability',
+      'Public Sector Projects',
+      'Cross‑Functional Collaboration',
+      'Performance Optimization'
     ]
   },
   {
-    title: 'Lead (Full-Stack) Developer',
-    company: 'Carl Van de Velde',
+    title: 'Lead Full-Stack Developer',
+    company: <a href="https://carlvandevelde.be/" target="_blank" rel="noopener noreferrer">carlvandevelde.be</a>,
     period: 'Sep 2017 — Sep 2018',
-    location: 'Sint-Niklaas',
-    description: `At Carl Van de Velde, I worked as a Full Stack Developer, contributing to the design, development, and maintenance of both mobile and web applications. I developed cross-platform mobile apps for iOS and Android and using the Ionic framework in combination with AngularJS and ReactJS, ensuring a smooth and consistent user experience across devices. On the backend, I built and integrated RESTful APIs using NodeJS and MySQL, and maintained high application performance through active debugging, optimization, and troubleshooting. In addition to mobile work, I also developed a web application using the Vue.js and Laravel stack.`,
+    location: 'Schilde',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Designed and developed cross-platform mobile and web applications using Ionic, AngularJS, ReactJS, and Laravel/Vue, ensuring seamless user experiences across devices.</li>
+        <li>Built and integrated RESTful APIs with Node.js and MySQL, optimizing performance through debugging and system troubleshooting for robust digital solutions.</li>
+        <li>Focused on end-to-end delivery, maintaining high reliability and responsiveness in both frontend and backend architectures.</li>
+      </ul>
+    ),
     badges: [
       'AngularJS', 'ReactJS', 'MySQL', 'Ionic', 'Laravel', 'REST APIs'
     ]
   },
   {
-    title: 'Full-Stack Developer',
-    company: 'Diopolis Antwerp',
+    title: 'Full-stack developer',
+    company: <a href="https://www.digipolisantwerpen.be/" target="_blank" rel="noopener noreferrer">digipolisantwerpen.be</a>,
     period: 'Jul 2016 — Jul 2017',
     location: 'Antwerp',
-    description: `At Diopolis Antwerp, I began as a student developer and continued in a professional capacity, contributing to the development and maintenance of web applications using the MEAN stack (MongoDB, Express, Angular, Node.js). I worked on both the frontend and backend, implementing new features, optimizing performance, and integrating UI components with backend services. My responsibilities included designing and building RESTful APIs with NodeJS and MySQL, troubleshooting application issues, and ensuring reliability and scalability across systems. I gained hands-on experience working in Agile environments, using Scrum and Kanban methodologies for structured delivery.`,
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Developed scalable web applications using the MEAN stack (MongoDB, Express, Angular, Node.js), integrating UI components with backend services for optimal performance.</li>
+        <li>Designed RESTful APIs and ensured system reliability in Agile Scrum and Kanban environments, collaborating with cross-functional teams using Git for version control.</li>
+        <li>Gained foundational expertise in full-stack development, contributing to feature implementation and system scalability for public sector projects.</li>
+      </ul>
+    ),
     badges: [
-      'MongoDB', 'Angular', 'NodeJS', 'MySQL', 'Git', 'Scrum', 'Kanban', 'REST APIs'
+      'Full‑Stack Development',
+      'MEAN Stack (MongoDB, Express, Angular, Node.js)',
+      'RESTful APIs',
+      'UI/Backend Integration',
+      'Agile / Scrum',
+      'Kanban',
+      'Git & Version Control',
+      'System Scalability',
+      'Public Sector Projects',
+      'Cross‑Functional Collaboration',
+      'Performance Optimization'
     ]
   },
   {
     title: 'Founder',
-    company: 'Kaizen Projects',
+    company: <a href="https://kaizenprojects.be/" target="_blank" rel="noopener noreferrer">kaizenproject.be</a>,
     period: 'Jun 2016 — Present',
-    location: 'Remote',
-    description: `As the founder of Kaizen Projects (kaizenprojects.be), I established the company as a vehicle for delivering freelance services in digital product development, technical leadership, and product strategy. Through Kaizen, I've worked with startups and growing companies to prototype, build, and scale digital products across a variety of sectors. As a project leader, I've guided teams through strategic transformations, improved delivery workflows, implemented QA, and delivered results on time and on spec. The role has enabled me to work with truly exciting companies, always focusing on delivering real business value through well-executed technology.`,
+    location: 'Antwerp',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Established a boutique consultancy delivering strategic product development and technical leadership, supporting startups and scaleups in building and scaling digital solutions with AI at their core.</li>
+        <li>Guided agile transformations and introduced advanced AI-enhanced workflows, including Retrieval-Augmented Generation (RAG) systems, custom LLM model design, and automation pipelines—coaching teams to adopt tools like Cursor and AI-powered CI/CD for faster, smarter development cycles.</li>
+        <li>Combined hands-on coding with high-level strategy, prototyping SaaS products, architecting AI-driven infrastructures, and driving business value through innovative technology implementations such as custom model training, vector database integration, and automated data workflows.</li>
+      </ul>
+    ),
     badges: [
-      'Vercel', 'Angular', 'Nextjs', 'Product Strategy', 'Freelance', 'Docker', 'REST APIs', 'Figma', 'Flutter', 'GitHub', 'Cursor', 'OpenAI APIs'
+      'Fractional CTO',
+      'Product Strategy',
+      'AI‑Driven Solutions',
+      'RAG Pipelines',
+      'Custom LLM Model Design',
+      'Vector Database Integration',
+      'Workflow Automation',
+      'SaaS Prototyping',
+      'Business Discovery',
+      'Agile Transformation',
+      'CI/CD Coaching',
+      'Cloud Architecture',
+      'Technical Leadership',
+      'Innovation Management'
     ]
   }
 ];
@@ -224,35 +324,14 @@ const About = () => (
       <div className="about-main">
         <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
         <p className="profile-text">
-          I'm an experienced tech leader with end-to-end expertise in digital product development. I specialize in
-          transforming ideas into scalable, high-impact software products leading cross-functional and international
-          teams to bridge the gap between business strategy and technical execution.
-        </p>
-        <p className="profile-text">
-          Recently, I've prototyped and led the development of entirely new products, guiding them from concept
-          to validation. I've defined API schemas, led frontend–backend integration, and managed quality through
-          functional, sanity, and regression testing even taking on QA responsibilities and learning the discipline
-          hands-on.
-        </p>
-        <p className="profile-text">
-          Beyond product delivery, I've played a key role in governance and operational optimization: supporting
-          ISO 27001 certification, coordinating penetration tests, building FinOps dashboards, setting up cost
-          alerts, and delivering executive-level reporting. My efforts in agile coaching, release management, and
-          requirements traceability have helped shift engineering cultures from consultancy-driven to product-led
-          improving predictability, delivery, and accountability.
-        </p>
-        <p className="profile-text">
-          I actively leverage AI to drive innovation and efficiency from training LLMs and implementing AWS
-          Textract in production workflows to building and integrating custom AI agents. These agents include
-          personal productivity assistants, SDLC automation tools, and systems that support internal teams via
-          company communication platforms.
-        </p>
-        <p className="profile-text" style={{ marginBottom: 40 }}>
-          Drawing on my full-stack background, I've launched complete SaaS solutions powered by AI and
-          introduced engineers to "vibe-coding" a fusion of traditional coding and AI-assisted development. I coach
-          teams and interns on adopting AI tools in daily workflows, helping them stay in flow, ship faster, and build
-          smarter. Curious, adaptable, and data-driven, I'm passionate about both tech and business, and I thrive on
-          leading people to deliver not just products but meaningful, measurable results.
+          Technology and Product Leader with over a decade of experience and a deep, hands on understanding of the
+          entire digital product lifecycle. Starting as a full stack developer, I became obsessed with tech and mastering
+          every phase of product development from the importance of well designed UX/UI and rigorous validation, to
+          Agile execution, leadership, and product management. In today’s exciting era of AI, I’m actively exploring and
+          applying how AI can be leveraged across this process enhancing decision making, accelerating delivery, and
+          creating smarter workflows. Equally important is business discovery: translating business needs into a clear
+          product backlog and guiding teams from proof of concept through MVP, while ensuring quality, alignment, and
+          measurable impact.
         </p>
 
         {/* EMPLOYMENT HISTORY */}
@@ -276,11 +355,6 @@ const About = () => (
             <span style={valueStyle}>Russian</span><span style={nativeStyle}>Native</span>
           </div>
         </SidebarCard>
-        <SidebarCard title='CERTIFICATIONS'>
-          <div style={valueStyle}>Behavioral Design Fundamentals</div>
-          <div style={valueStyle}>Prince2 Certified</div>
-          <div style={valueStyle}>CEHv9 - Ethical Hacking</div>
-        </SidebarCard>
         <SidebarCard title='ONGOING CERTIFICATIONS'>
           <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> Digital MBA - CTO Academy
@@ -288,10 +362,6 @@ const About = () => (
           <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> PMC Certification
           </div>
-        </SidebarCard>
-        <SidebarCard title='COMMUNITIES'>
-          <div style={valueStyle}>• CTO Club Belgium</div>
-          <div style={valueStyle}>• CTO Academy</div>
         </SidebarCard>
       </div>
     </div>

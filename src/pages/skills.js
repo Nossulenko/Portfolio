@@ -1,79 +1,6 @@
 import React from 'react';
-import SkillCard from '../components/SkillCard';
 import { Main } from '../components/Main';
 import './styles/skills.css';
-
-const skillsData = [
-  {
-    title: 'FRONTEND DEVELOPMENT',
-    skills: [
-      { name: 'React/Next.js', level: 95 },
-      { name: 'Angular', level: 90 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Vue.js', level: 85 },
-      { name: 'TailwindCSS', level: 85 },
-      { name: 'Flutter', level: 70 },
-      { name: 'ngrx', level: 65 }
-    ]
-  },
-  {
-    title: 'BACKEND DEVELOPMENT',
-    skills: [
-      { name: 'Node.js', level: 90 },
-      { name: 'Java Spring', level: 85 },
-      { name: 'Express', level: 85 },
-      { name: 'NestJS', level: 80 },
-      { name: 'Laravel', level: 75 },
-      { name: 'REST APIs', level: 95 },
-      { name: 'GraphQL', level: 77 }
-    ]
-  },
-  {
-    title: 'AI TOOLS & PLATFORMS',
-    skills: [
-      { name: 'AWS Bedrock', level: 80 },
-      { name: 'AWS SageMaker', level: 80 },
-      { name: 'Cursor', level: 90 },
-      { name: 'V0 (Vercel)', level: 90 },
-      { name: 'OpenAI', level: 90 },
-      { name: 'n8n', level: 75 },
-      { name: 'Pinecone', level: 75 },
-      { name: 'Supermemory', level: 60 }
-    ]
-  },
-  {
-    title: 'DATABASE & CLOUD',
-    skills: [
-      { name: 'PostgreSQL', level: 90 },
-      { name: 'MongoDB', level: 85 },
-      { name: 'MySQL', level: 80 },
-      { name: 'AWS', level: 80 },
-      { name: 'Azure', level: 80 },
-      { name: 'Firebase', level: 75 },
-      { name: 'Vercel', level: 65 }
-    ]
-  },
-  {
-    title: 'TECHNICAL LEADERSHIP',
-    skills: [
-      // Product Manager Responsibilities
-      { name: 'Product Roadmapping & Vision', level: 90 },
-      { name: 'Backlog Prioritization & Grooming', level: 88 },
-      { name: 'User Research & Feedback Loops', level: 85 },
-      { name: 'Go-to-Market Strategy & Launch Planning', level: 87 },
-      { name: 'OKR Definition & Tracking', level: 86 },
-
-      // CTO Responsibilities
-      { name: 'Technology Strategy & Roadmap', level: 92 },
-      { name: 'Enterprise Architecture & Scalability', level: 90 },
-      { name: 'Budgeting & P&L Oversight', level: 88 },
-      { name: 'Talent Acquisition & Org Design', level: 89 },
-      { name: 'Vendor / Partner Management', level: 85 },
-      { name: 'Innovation & R&D Oversight', level: 87 },
-      { name: 'Security & Compliance Governance', level: 86 }
-    ]
-  }
-];
 
 const highlight = {
   color: '#DAA520',
@@ -88,13 +15,36 @@ const highlight = {
 
 const SkillsPage = () => (
   <Main>
-    <h2 style={highlight}>| SKILLS</h2>
-    <div className='skills-grid'>
-      {skillsData.map(card => (
-        <div className='skill-card' key={card.title}>
-          <SkillCard title={card.title} skills={card.skills} />
-        </div>
-      ))}
+    <h2 style={highlight}>| CORE SKILLS</h2>
+    <div className='core-skills-section' style={{ maxWidth: 800, margin: '0 auto', color: '#fff', fontSize: '1.13rem', lineHeight: 1.7 }}>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>Product Leadership & Strategy</div>
+        <div>Digital Product Management, Roadmap Definition, KPI Setting, Go-to-Market Planning</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>Fractional & Interim CTO Expertise</div>
+        <div>Technical Strategy, Governance, Architecture Oversight, Executive Reporting</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>AI & Automation Integration</div>
+        <div>LLMs, Workflow Automation, Custom AI Agents, AI-Assisted SDLC</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>Agile Transformation & Team Leadership</div>
+        <div>Agile/Scrum Leadership, Cross-Functional Team Management, Remote/Offshore Teams</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>Operational Excellence</div>
+        <div>FinOps, Cost Optimization, Cloud Infrastructure (AWS Lambda, S3, CloudWatch, Textract)</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>Quality & Delivery Management</div>
+        <div>QA/QC Management, Release Management, Requirements Traceability</div>
+      </div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontWeight: 700, fontSize: '1.13em', marginBottom: 2, color: '#DAA520' }}>FullStack Execution & Product Development</div>
+        <div>React, Angular, Next.js, Node.js, and modern web stacks — skilled in taking products from low-fidelity prototypes to validated MVPs, translating business requirements into scalable, production-ready solutions.</div>
+      </div>
     </div>
   </Main>
 );

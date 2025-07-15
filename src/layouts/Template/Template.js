@@ -55,7 +55,7 @@ class Component extends React.Component {
 
   componentDidUpdate (prevProps, prevState, snapshot) {
     const { location } = prevProps;
-    const isURLContent = ['/about', '/skills'].find(path => {
+    const isURLContent = ['/about', '/skills', '/recommendations'].find(path => {
       return location.pathname.includes(path);
     });
 

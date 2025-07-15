@@ -8,13 +8,13 @@ const styles = () => ({
     justifyContent: 'space-around',
     alignItems: 'center',
     margin: [0, 'auto'],
-    userSelect: 'none'
-    // flexWrap: 'wrap', // Allow items to wrap if they exceed the container width
+    userSelect: 'none',
+    gap: '20px'
   },
   item: {
     display: 'block',
-    padding: [10, 0, 10],
-    width: '100%',
+    padding: [10, 15, 10],
+    width: 'auto',
     lineHeight: 1,
     fontSize: 14,
     textAlign: 'center',
@@ -22,7 +22,8 @@ const styles = () => ({
     textShadow: `0 0 5px ${theme.color.secondary.main}`,
     fontFamily: theme.typography.primary,
     color: theme.color.text.main,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flex: '0 0 auto'
   },
   divisor: {
     display: 'none',
@@ -31,11 +32,13 @@ const styles = () => ({
     textShadow: `0 0 5px ${theme.color.tertiary.main}`,
     fontWeight: 'normal',
     transform: 'scale(1, 0)',
-    transformOrigin: 'center center'
+    transformOrigin: 'center center',
+    flex: '0 0 auto'
   },
   link: {
     overflow: 'hidden',
     opacity: ({ scheme }) => (scheme === SCHEME_EXPAND ? 0 : 1),
+    flex: '0 0 auto',
 
     '&.link-active': {
       color: theme.color.tertiary.main,
