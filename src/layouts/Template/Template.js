@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { Layout } from '../../components/Layout';
 import { Background } from '../../components/Background';
 import { App } from '../../components/App';
-import { Popup } from '../../components/Popup';
 import { Outlet } from 'react-router-dom';
-import theme from '../../settings/theme.js';
 
 class Component extends React.Component {
   static displayName = 'Template';
@@ -29,28 +27,9 @@ class Component extends React.Component {
     super(...arguments);
 
     this.state = {
-      show: false,
-      enterShow: false,
-      isURLContent: false,
-
-      // Initially enter element is animation shown.
-      enterAnimationShow: true
+      show: true,
+      isURLContent: false
     };
-  }
-
-  componentDidMount () {
-    setTimeout(
-      () => this.setState({ enterShow: true }),
-      theme.animation.time
-    );
-  }
-
-  onEnter = () => {
-    this.setState({ enterAnimationShow: false });
-    setTimeout(
-      () => this.setState({ show: true }),
-      theme.animation.time + theme.animation.stagger
-    );
   }
 
   componentDidUpdate (prevProps, prevState, snapshot) {
@@ -66,8 +45,8 @@ class Component extends React.Component {
   }
 
   render () {
-    const { show, enterShow, enterAnimationShow, isURLContent } = this.state;
-    const { classes, layout, background } = this.props;
+    const { show, isURLContent } = this.state;
+    const { layout, background } = this.props;
 
     return (
       <Layout {...layout}>
@@ -76,22 +55,6 @@ class Component extends React.Component {
           animation={{ show, ...background.animation }}
         >
           {isURLContent ? <App><Outlet /></App> : <Outlet />}
-
-          {!show && (
-            <div className={classes.enterOverlay}>
-              {enterShow && (
-                <Popup
-                  className={classes.enterElement}
-                  ref={ref => (this.enterElement = ref)}
-                  audio={{ silent: true }}
-                  animation={{ independent: true, show: enterAnimationShow }}
-                  message='nossulenko.com uses sounds.'
-                  option='Enter'
-                  onOption={this.onEnter}
-                />
-              )}
-            </div>
-          )}
         </Background>
       </Layout>
     );
