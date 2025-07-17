@@ -19,16 +19,17 @@ const nativeStyle = {
 
 const employmentHistory = [
   {
-    title: 'Lead Engineer | Product manager',
-    company: <a href="https://docbyte.com/" target="_blank" rel="noopener noreferrer">Docbyte</a>,
+    title: 'Lead Engineer | Product Manager',
+    company: <a href='https://docbyte.com/' target='_blank' rel='noopener noreferrer'>Docbyte</a>,
     period: 'Jun 2024 — May 2025',
     location: 'Gent',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Directed technical strategy and product delivery for Europe’s only Qualified Trust Service Provider (QTSP), ensuring compliance with EU trust and identity standards in a highly regulated SaaS environment.</li>
+        <li>Directed technical strategy and product delivery for Europe's only Qualified Trust Service Provider (QTSP), ensuring compliance with EU trust and identity standards in a highly regulated SaaS environment.</li>
         <li>Pioneered AI-driven automation and cloud monitoring systems using AWS CloudWatch, slashing issue resolution times for customer support teams by enhancing real-time infrastructure visibility.</li>
         <li>Led cross-functional teams to launch new cloud-native SaaS products from concept to market, integrating secure system design and audit-ready processes for ISO 27001 certification.</li>
         <li>Contributed to executive decision-making in management meetings, aligning technology roadmaps with long-term business objectives for measurable impact.</li>
+        <li>Leveraged Figma for prototyping and cross-platform frameworks such as Nextjs and React native to deliver performant, scalable mobile solutions efficiently.</li>
       </ul>
     ),
     badges: [
@@ -47,19 +48,24 @@ const employmentHistory = [
       'QA/QC',
       'GitHub',
       'Jira',
-      'REST APIs'
+      'REST APIs',
+      'Figma',
+      'Next.js',
+      'React Native'
     ]
   },
   {
     title: 'Management Partner | Product Manager',
-    company: <a href="https://www.productarchitects.eu/" target="_blank" rel="noopener noreferrer">The Product Architects</a>,
+    company: <a href='https://www.productarchitects.eu/' target='_blank' rel='noopener noreferrer'>The Product Architects</a>,
     period: 'Aug 2023 — Jun 2024',
     location: 'Antwerp',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Spearheaded development of earlystage MVPs with a UKbased engineering team, managing the full product lifecycle from ideation through technical handover, including infrastructure design, cloud architecture, and integration of AI-driven features to accelerate market differentiation.</li>
-        <li>Ensured highquality, ontime releases by aligning crossfunctional efforts, leveraging AI-assisted workflows, scalable backend design, and modern DevOps practices to optimize UX iterations and delivery sprints.</li>
-        <li>Bridged business goals with technical execution, delivering productionready solutions enhanced by custom AI model development, automation pipelines, and resilient infrastructure that consistently met client expectations and market demands.</li>
+        <li>Spearheaded development of earlystage MVPs with a UKbased engineering team, managing the full product lifecycle from ideation through technical handover, including infrastructure design, cloud architecture, and integration of Aldriven features to accelerate market differentiation.</li>
+        <li>Ensured highquality, ontime releases by aligning crossfunctional efforts, leveraging Alassisted workflows, scalable backend design, and modern DevOps practices to optimize UX iterations and delivery sprints.</li>
+        <li>Bridged business goals with technical execution, delivering productionready solutions enhanced by custom Al model development, automation pipelines, and resilient infrastructure that consistently met client expectations and market demands.</li>
+        <li>Leveraged crossplatform mobile frameworks such as Flutter and React Native to deliver performant mobile solutions efficiently.</li>
+        <li>Figma was used extensively to design, prototype, and validate products, enabling rapid iteration and clear communication of UX/UI concepts.</li>
       </ul>
     ),
     badges: [
@@ -82,15 +88,16 @@ const employmentHistory = [
     ]
   },
   {
-    title: 'Program Manager',
-    company: <a href="https://www.qualium-systems.com/" target="_blank" rel="noopener noreferrer">qualium-systems.com</a>,
+    title: 'Product Manager',
+    company: <a href='https://www.qualium-systems.com/' target='_blank' rel='noopener noreferrer'>qualium-systems.com</a>,
     period: 'Jul 2018 — Feb 2023',
     location: 'Belgium / Ukraine',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Oversaw two largescale software projects, leading a 30person team (developers, designers, QA) across web, mobile, and 3D platforms using React, Angular, Node.js, and .NET, while architecting cloud infrastructure and integrating large language model (LLM)–powered features to enhance product capabilities.</li>
-        <li>Defined project scope, timelines, and budgets in an Agile Scrum environment, mitigating risks and ensuring quality through hands-on technical direction, infrastructure design, and alignment with key stakeholders.</li>
-        <li>Implemented DevOps pipelines, AI-assisted testing workflows, and requirements traceability, driving predictable delivery and enhancing collaboration across distributed international teams.</li>
+        <li>Oversaw two largescale software projects, leading a 30person team (developers, designers, QA) across web, mobile, and 3D platforms using React Native, Flutter, Node.js, and .NET, while architecting cloud infrastructure and integrating large language model (LLM)–powered features to enhance product capabilities.</li>
+        <li>Defined project scope, timelines, and budgets in an Agile Scrum environment, mitigating risks and ensuring quality through handson technical direction, infrastructure design, and alignment with key stakeholders.</li>
+        <li>Implemented DevOps pipelines, Alassisted testing workflows, and requirements traceability, driving predictable delivery and enhancing collaboration across distributed international teams.</li>
+        <li>Figma served as a core tool for designing and testing product ideas, streamlining iterations and ensuring shared understanding of user experience goals.</li>
       </ul>
     ),
     badges: [
@@ -108,13 +115,13 @@ const employmentHistory = [
     ]
   },
   {
-    title: 'Lead Full-Stack Developer',
+    title: 'Lead (full-stack) developer',
     company: <a href="https://carlvandevelde.be/" target="_blank" rel="noopener noreferrer">carlvandevelde.be</a>,
     period: 'Sep 2017 — Sep 2018',
     location: 'Schilde',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Designed and developed cross-platform mobile and web applications using Ionic, AngularJS, ReactJS, and Laravel/Vue, ensuring seamless user experiences across devices.</li>
+        <li>Designed and developed cross-platform mobile and web applications using React Native and Ionic, AngularJS, React Native, and Laravel/Vue, ensuring seamless user experiences across devices.</li>
         <li>Built and integrated RESTful APIs with Node.js and MySQL, optimizing performance through debugging and system troubleshooting for robust digital solutions.</li>
         <li>Focused on end-to-end delivery, maintaining high reliability and responsiveness in both frontend and backend architectures.</li>
       </ul>
@@ -153,12 +160,14 @@ const employmentHistory = [
     title: 'Founder',
     company: <a href="https://kaizenprojects.be/" target="_blank" rel="noopener noreferrer">kaizenproject.be</a>,
     period: 'Jun 2016 — Present',
-    location: 'Antwerp',
+    location: '2000 Antwerpen',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Established a boutique consultancy delivering strategic product development and technical leadership, supporting startups and scaleups in building and scaling digital solutions with AI at their core.</li>
-        <li>Guided agile transformations and introduced advanced AI-enhanced workflows, including Retrieval-Augmented Generation (RAG) systems, custom LLM model design, and automation pipelines—coaching teams to adopt tools like Cursor and AI-powered CI/CD for faster, smarter development cycles.</li>
-        <li>Combined hands-on coding with high-level strategy, prototyping SaaS products, architecting AI-driven infrastructures, and driving business value through innovative technology implementations such as custom model training, vector database integration, and automated data workflows.</li>
+        <li>Established a boutique consultancy delivering strategic product development and technical leadership, supporting startups and scaleups in building and scaling digital solutions with Al at their core.</li>
+        <li>Guided agile transformations and introduced advanced Alenhanced workflows, including Retrieval - Augmented Generation (RAG) systems, custom LLM model design, and automation pipelines coaching teams to adopt tools like Cursor and Alpowered CI/CD for faster, smarter development cycles.</li>
+        <li>Combined handson coding with highlevel strategy, prototyping SaaS products, architecting Aldriven infrastructures, and driving business value through innovative technology implementations such as custom model training, vector database integration, and automated data workflows.</li>
+        <li>For Hybrid applications, leveraged frameworks like Nextjs, Angular, React Native, Flutter, or lonic to deliver crossplatform solutions efficiently.</li>
+        <li>Extensive use of Figma enabled rapid prototyping, continuous validation of ideas, and clear communication of UX/UI direction.</li>
       </ul>
     ),
     badges: [
@@ -180,33 +189,109 @@ const employmentHistory = [
   }
 ];
 
-const About = () => (
-  <Main>
-    <div className="about-container">
-      {/* Main Profile Section */}
-      <div className="about-main">
-        <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
-        <p className="profile-text">
-          Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the
-          entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every
-          phase of digital product development from early-stage ideation and facilitating workshops, translating complex
-          business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving
-          UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and
-          designing enterprise-level infrastructures and managing products at scale. In today’s exciting era of AI, I actively
-          explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate
-          delivery, and create smarter, data-driven workflows.
-          <br/>
-          As a Tech Lead, I’ve learned that technology alone is not enough, you can have great projects and brilliant
-          engineers, but only through clear vision and strong leadership can teams achieve meaningful, measurable
-          outcomes. I excel at building and enabling high-performing, cross-functional teams, setting direction, aligning
-          technical strategy with business objectives, and fostering a culture of accountability and innovation. I bring
-          strategic insight, governance, and operational discipline to ensure that teams deliver not only products but also
-          tangible, measurable business results.
-        </p>
+const About = () => {
+  const [showFullProfile, setShowFullProfile] = React.useState(false);
+  const [showDownloadForm, setShowDownloadForm] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    reason: ''
+  });
 
-        {/* EMPLOYMENT HISTORY */}
-        <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>| EMPLOYMENT HISTORY</h2>
-      </div>
+  const shortProfileText = "Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every phase of digital product development from early-stage ideation and facilitating workshops, translating complex business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and designing enterprise-level infrastructures and managing products at scale. In today's exciting era of AI, I actively explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate delivery, and create smarter, data-driven workflows.";
+
+  const fullProfileText = "Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every phase of digital product development from early-stage ideation and facilitating workshops, translating complex business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and designing enterprise-level infrastructures and managing products at scale. In today's exciting era of AI, I actively explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate delivery, and create smarter, data-driven workflows. As a Tech Lead, I've learned that technology alone is not enough, you can have great projects and brilliant engineers, but only through clear vision and strong leadership can teams achieve meaningful, measurable outcomes. I excel at building and enabling high-performing, cross-functional teams, setting direction, aligning technical strategy with business objectives, and fostering a culture of accountability and innovation. I bring strategic insight, governance, and operational discipline to ensure that teams deliver not only products but also tangible, measurable business results.";
+
+  const handleDownload = async () => {
+    // Check if all required fields are filled
+    const requiredFields = ['firstName', 'lastName', 'email', 'reason'];
+    const missingFields = requiredFields.filter(field => !formData[field].trim());
+
+    if (missingFields.length > 0) {
+      alert('Please fill in all required fields before downloading.');
+      return;
+    }
+
+    try {
+      // Send form data to backend
+      const response = await fetch('/api/download-resume', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Download the resume
+        const link = document.createElement('a');
+        link.href = '/resume.pdf';
+        link.download = 'Nikolai_Nossulenko_Resume.pdf';
+        link.click();
+
+        // Close the form
+        setShowDownloadForm(false);
+        setFormData({ firstName: '', lastName: '', email: '', reason: '' });
+
+        alert('Resume downloaded successfully! You will receive a confirmation email.');
+      } else {
+        alert(`Error: ${result.error || 'Failed to process download request'}`);
+      }
+    } catch (error) {
+      console.error('Error downloading resume:', error);
+      alert('Failed to process download request. Please try again.');
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  return (
+    <Main>
+      <div className="about-container">
+        {/* Main Profile Section */}
+        <div className="about-main">
+          <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
+          <p className="profile-text">
+            {showFullProfile ? fullProfileText : shortProfileText}
+            {!showFullProfile && (
+              <span
+                onClick={() => setShowFullProfile(true)}
+                style={{
+                  color: '#DAA520',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  marginLeft: '8px'
+                }}
+              >
+                ... Read more
+              </span>
+            )}
+            {showFullProfile && (
+              <span
+                onClick={() => setShowFullProfile(false)}
+                style={{
+                  color: '#DAA520',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  marginLeft: '8px'
+                }}
+              >
+                ... Show less
+              </span>
+            )}
+          </p>
+
+          {/* EMPLOYMENT HISTORY */}
+          <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>| EMPLOYMENT HISTORY</h2>
+        </div>
       {/* Sidebar Section */}
       <div className="about-sidebar">
         <SidebarCard title='PERSONAL INFO'>
@@ -231,6 +316,67 @@ const About = () => (
           <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> PMC Certification
           </div>
+        </SidebarCard>
+        <SidebarCard title='DOWNLOAD RESUME'>
+          <button
+            onClick={() => setShowDownloadForm(true)}
+            style={{
+              background: '#DAA520',
+              color: '#181A20',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '12px 20px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#B8860B';
+              e.target.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#DAA520';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            📄 Download PDF Resume
+          </button>
+        </SidebarCard>
+        <SidebarCard title='CONNECT ON LINKEDIN'>
+          <a
+            href="https://www.linkedin.com/in/nikolai-nossulenko"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: '#0077B5',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '12px 20px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              textDecoration: 'none',
+              display: 'block',
+              textAlign: 'center'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#005885';
+              e.target.style.transform = 'translateY(-1px)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#0077B5';
+              e.target.style.transform = 'translateY(0)';
+            }}
+          >
+            🔗 Connect on LinkedIn
+          </a>
         </SidebarCard>
       </div>
     </div>
@@ -260,7 +406,64 @@ const About = () => (
         </div>
       </div>
     ))}
+
+    {/* Download Form Modal */}
+    {showDownloadForm && (
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <h2>Download Resume</h2>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleDownload();
+          }}>
+            <div style={{ marginBottom: 15 }}>
+              <label>First Name:</label>
+              <input
+                type="text"
+                value={formData.firstName}
+                onChange={(e) => handleInputChange('firstName', e.target.value)}
+                required
+              />
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <label>Last Name:</label>
+              <input
+                type="text"
+                value={formData.lastName}
+                onChange={(e) => handleInputChange('lastName', e.target.value)}
+                required
+              />
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <label>Email:</label>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                required
+              />
+            </div>
+            <div style={{ marginBottom: 15 }}>
+              <label>Reason for Download:</label>
+              <textarea
+                value={formData.reason}
+                onChange={(e) => handleInputChange('reason', e.target.value)}
+                required
+                rows="4"
+              ></textarea>
+            </div>
+            <button type="submit" style={{ background: '#DAA520', color: '#181A20', border: 'none', borderRadius: '8px', padding: '12px 20px', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', width: '100%', transition: 'all 0.2s ease', boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+              Download Resume
+            </button>
+            <button type="button" onClick={() => setShowDownloadForm(false)} style={{ background: '#181A20', color: '#DAA520', border: '1px solid #DAA520', borderRadius: '8px', padding: '12px 20px', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', width: '100%', transition: 'all 0.2s ease', marginTop: '10px' }}>
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+    )}
   </Main>
-);
+  );
+};
 
 export default About;
