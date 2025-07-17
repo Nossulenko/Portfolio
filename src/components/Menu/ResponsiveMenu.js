@@ -5,11 +5,10 @@ import anime from 'animejs';
 import { getViewportRange } from '../../tools/viewport';
 import { Link } from '../Link';
 import { Text } from '../Text';
-import { Secuence } from '../Secuence';
 import { SCHEME_NORMAL, SCHEME_EXPAND } from './Menu.constants';
 
 class Component extends React.PureComponent {
-  static displayName = 'Menu';
+  static displayName = 'ResponsiveMenu';
 
   static propTypes = {
     theme: PropTypes.object.isRequired,
@@ -33,12 +32,24 @@ class Component extends React.PureComponent {
     super(...arguments);
 
     this.state = {
-      showSecuence: false
+      showSecuence: false,
+      isMobile: window.innerWidth < 768
     };
   }
 
   componentDidMount () {
-    // No wallet connection setup needed
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount () {
+    const elements = this.element.querySelectorAll('a, b');
+    anime.remove(elements);
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    const newIsMobile = window.innerWidth < 768;
+    this.setState({ isMobile: newIsMobile });
   }
 
   componentDidUpdate (prevProps) {
@@ -51,13 +62,6 @@ class Component extends React.PureComponent {
         this.setState({ showSecuence: false }); // eslint-disable-line react/no-did-update-set-state
       }
     }
-  }
-
-  componentWillUnmount () {
-    const elements = this.element.querySelectorAll('a, b');
-    anime.remove(elements);
-
-    window.removeEventListener('route-change', this.onURLChange);
   }
 
   onURLChange = () => {
@@ -168,7 +172,9 @@ class Component extends React.PureComponent {
       onLinkEnd,
       ...etc
     } = this.props;
-    const { showSecuence } = this.state;
+    const { showSecuence, isMobile } = this.state;
+
+    console.log('ResponsiveMenu render:', { showSecuence, isMobile, classes, className });
 
     const animateText = scheme === SCHEME_NORMAL;
     const linkProps = {
@@ -179,52 +185,52 @@ class Component extends React.PureComponent {
     };
 
     return (
-      <Secuence
-        animation={{ show: showSecuence, independent: true }}
-        stagger
+      <nav
+        className={cx(classes.root, className)}
+        ref={(ref) => (this.element = ref)}
+        {...etc}
+        style={{
+          position: 'relative',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? '20px' : '10px'
+        }}
       >
-        <nav
-          className={cx(classes.root, className)}
-          ref={(ref) => (this.element = ref)}
-          {...etc}
-        >
-          <Link href='/about' {...linkProps}>
-            <Text
-              animation={{ animate: animateText }}
-              audio={{ silent: !animateText }}
-            >
-              Resume
-            </Text>
-          </Link>
-          <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/skills' {...linkProps}>
-            <Text
-              animation={{ animate: animateText }}
-              audio={{ silent: !animateText }}
-            >
-              skills
-            </Text>
-          </Link>
-          <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/recommendations' {...linkProps}>
-            <Text
-              animation={{ animate: animateText }}
-              audio={{ silent: !animateText }}
-            >
-              Testimonials
-            </Text>
-          </Link>
-          <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps}>
-            <Text
-              animation={{ animate: animateText }}
-              audio={{ silent: !animateText }}
-            >
-              Connect
-            </Text>
-          </Link>
-        </nav>
-      </Secuence>
+        <Link href='/about' {...linkProps}>
+          <Text
+            animation={{ animate: animateText }}
+            audio={{ silent: !animateText }}
+          >
+            Resume
+          </Text>
+        </Link>
+        {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
+        <Link href='/skills' {...linkProps}>
+          <Text
+            animation={{ animate: animateText }}
+            audio={{ silent: !animateText }}
+          >
+            skills
+          </Text>
+        </Link>
+        {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
+        <Link href='/recommendations' {...linkProps}>
+          <Text
+            animation={{ animate: animateText }}
+            audio={{ silent: !animateText }}
+          >
+            Testimonials
+          </Text>
+        </Link>
+        {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
+        <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps}>
+          <Text
+            animation={{ animate: animateText }}
+            audio={{ silent: !animateText }}
+          >
+            Connect
+          </Text>
+        </Link>
+      </nav>
     );
   }
 }

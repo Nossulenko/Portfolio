@@ -4,12 +4,12 @@ import theme from '../../settings/theme.js';
 const styles = () => ({
   root: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
     margin: [0, 'auto'],
     userSelect: 'none',
-    gap: '10px'
+    gap: '20px'
   },
   item: {
     display: 'block',
@@ -51,11 +51,21 @@ const styles = () => ({
   },
 
   '@media (min-width: 768px)': {
+    root: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      gap: '10px'
+    },
     item: {
       display: 'block'
     },
     divisor: {
       display: 'block'
+    }
+  },
+  '@media (max-width: 767px)': {
+    divisor: {
+      display: 'none'
     }
   },
   '@media (max-width: 360px)': {

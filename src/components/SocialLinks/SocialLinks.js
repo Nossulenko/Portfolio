@@ -108,28 +108,30 @@ class Component extends React.PureComponent {
         <A
           href="mailto:contact@kaizenprojects.be"
           title="E-mail"
-          target="email"
         >
           <span className="mdi mdi-email" />
         </A>
         <A
           href="https://x.com/NNossulenko"
           title="Twitter"
-          target="twitter"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span className="mdi mdi-twitter" />
         </A>
         <A
           href="https://www.linkedin.com/in/nikolai-nossulenko/"
           title="LinkedIn"
-          target="linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span className="mdi mdi-linkedin" />
         </A>
         <A
           href="https://github.com/Nossulenko"
-          title="Gitlab"
-          target="Github"
+          title="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <span className="mdi mdi-gitlab" />
         </A>

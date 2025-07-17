@@ -106,6 +106,8 @@
   justify-content: center;
   align-items: center;
   z-index: 10000;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .modal-content {
@@ -114,9 +116,11 @@
   border-radius: 12px;
   padding: 30px;
   max-width: 500px;
-  width: 90%;
+  width: 100%;
   color: #fff;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -214,5 +218,51 @@
 
   .profile-text {
     font-size: 1rem;
+  }
+
+  /* Mobile Modal Styles */
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 60px; /* Account for navbar */
+  }
+
+  .modal-content {
+    padding: 20px;
+    max-height: calc(100vh - 80px);
+    margin-top: 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .modal-content input,
+  .modal-content textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 12px;
+  }
+
+  .modal-content button {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 5px;
+    padding-top: 50px;
+  }
+
+  .modal-content {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
   }
 }
