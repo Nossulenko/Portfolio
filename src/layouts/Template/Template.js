@@ -5,6 +5,7 @@ import { Layout } from '../../components/Layout';
 import { Background } from '../../components/Background';
 import { App } from '../../components/App';
 import { Outlet } from 'react-router-dom';
+import { setupAudioUnlock } from '../../tools/audioUnlock.js';
 
 class Component extends React.Component {
   static displayName = 'Template';
@@ -30,6 +31,11 @@ class Component extends React.Component {
       show: true,
       isURLContent: false
     };
+  }
+
+  componentDidMount () {
+    // Setup audio unlock on user interactions
+    setupAudioUnlock();
   }
 
   componentDidUpdate (prevProps, prevState, snapshot) {

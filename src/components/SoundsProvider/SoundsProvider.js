@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { createSounds as createSoundsModule } from '../../tools/createSounds';
 import { createPlayer as createPlayerModule } from '../../tools/createPlayer';
 import { SoundsContext } from '../SoundsContext';
+import { unlockAudio } from '../../tools/audioUnlock.js';
 
 class Component extends React.PureComponent {
   static propTypes = {
@@ -24,6 +25,13 @@ class Component extends React.PureComponent {
     const sounds = this.getSounds();
 
     this.state = { sounds };
+  }
+
+  componentDidMount () {
+    // Try to unlock audio when sounds are loaded
+    setTimeout(() => {
+      unlockAudio();
+    }, 500);
   }
 
   componentDidUpdate (prevProps) {
