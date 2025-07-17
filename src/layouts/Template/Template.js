@@ -27,9 +27,14 @@ class Component extends React.Component {
   constructor () {
     super(...arguments);
 
+    const { location } = this.props;
+    const isURLContent = ['/about', '/skills', '/recommendations'].find(path => {
+      return location.pathname.includes(path);
+    });
+
     this.state = {
       show: true,
-      isURLContent: false
+      isURLContent: isURLContent || false
     };
   }
 
@@ -39,7 +44,7 @@ class Component extends React.Component {
   }
 
   componentDidUpdate (prevProps, prevState, snapshot) {
-    const { location } = prevProps;
+    const { location } = this.props;
     const isURLContent = ['/about', '/skills', '/recommendations'].find(path => {
       return location.pathname.includes(path);
     });
