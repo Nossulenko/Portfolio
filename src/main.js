@@ -10,17 +10,18 @@ import Recommendations from './pages/recommendations.js';
 
 export const Main = () => {
   return (
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Routes>
-            <Route element={<Template location={location} />}>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/skills' element={<Skills />} />
-              <Route path='/recommendations' element={<Recommendations />} />
-            </Route>
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route element={<Template location={location} />}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/resume' element={<About />} />
+            <Route path='/skills' element={<Skills />} />
+            <Route path='/recommendations' element={<Recommendations />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };

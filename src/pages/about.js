@@ -56,7 +56,7 @@ const employmentHistory = [
   },
   {
     title: 'Management Partner | Product Manager',
-    company: <a href='https://www.productarchitects.eu/' target='_blank' rel='noopener noreferrer'>The Product Architects</a>,
+    company: <a href="https://www.productarchitects.eu/" target="_blank" rel="noopener noreferrer">The Product Architects</a>,
     period: 'Aug 2023 — Jun 2024',
     location: 'Antwerp',
     description: (
@@ -89,7 +89,7 @@ const employmentHistory = [
   },
   {
     title: 'Product Manager',
-    company: <a href='https://www.qualium-systems.com/' target='_blank' rel='noopener noreferrer'>qualium-systems.com</a>,
+    company: <a href="https://www.qualium-systems.com/" target="_blank" rel="noopener noreferrer">qualium-systems.com</a>,
     period: 'Jul 2018 — Feb 2023',
     location: 'Belgium / Ukraine',
     description: (
@@ -203,7 +203,7 @@ const About = () => {
 
   const fullProfileText = "Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every phase of digital product development from early-stage ideation and facilitating workshops, translating complex business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and designing enterprise-level infrastructures and managing products at scale. In today's exciting era of AI, I actively explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate delivery, and create smarter, data-driven workflows. As a Tech Lead, I've learned that technology alone is not enough, you can have great projects and brilliant engineers, but only through clear vision and strong leadership can teams achieve meaningful, measurable outcomes. I excel at building and enabling high-performing, cross-functional teams, setting direction, aligning technical strategy with business objectives, and fostering a culture of accountability and innovation. I bring strategic insight, governance, and operational discipline to ensure that teams deliver not only products but also tangible, measurable business results.";
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     // Check if all required fields are filled
     const requiredFields = ['firstName', 'lastName', 'email', 'reason'];
     const missingFields = requiredFields.filter(field => !formData[field].trim());
@@ -213,37 +213,18 @@ const About = () => {
       return;
     }
 
-    try {
-      // Send form data to backend
-      const response = await fetch('/api/download-resume', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+    // Here you could send the form data to your backend/analytics
+    console.log('Download requested by:', formData);
 
-      const result = await response.json();
+    // Download the resume
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Nikolai_Nossulenko_Resume.pdf';
+    link.click();
 
-      if (response.ok) {
-        // Download the resume
-        const link = document.createElement('a');
-        link.href = '/resume.pdf';
-        link.download = 'Nikolai_Nossulenko_Resume.pdf';
-        link.click();
-
-        // Close the form
-        setShowDownloadForm(false);
-        setFormData({ firstName: '', lastName: '', email: '', reason: '' });
-
-        alert('Resume downloaded successfully! You will receive a confirmation email.');
-      } else {
-        alert(`Error: ${result.error || 'Failed to process download request'}`);
-      }
-    } catch (error) {
-      console.error('Error downloading resume:', error);
-      alert('Failed to process download request. Please try again.');
-    }
+    // Close the form
+    setShowDownloadForm(false);
+    setFormData({ firstName: '', lastName: '', email: '', reason: '' });
   };
 
   const handleInputChange = (field, value) => {
