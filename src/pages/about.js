@@ -1,6 +1,7 @@
 import React from 'react';
 import { Main } from '../components/Main';
 import SidebarCard from '../components/SidebarCard';
+import { trackDownloadResume } from '../tools/analytics.js';
 import './styles/about.css';
 
 const highlight = {
@@ -20,7 +21,7 @@ const nativeStyle = {
 const employmentHistory = [
   {
     title: 'Lead Engineer | Product Manager',
-    company: <a href='https://docbyte.com/' target='_blank' rel='noopener noreferrer'>Docbyte</a>,
+    company: <a href="https://docbyte.com/" target="_blank" rel="noopener noreferrer">Docbyte</a>,
     period: 'Jun 2024 — May 2025',
     location: 'Gent',
     description: (
@@ -212,6 +213,9 @@ const About = () => {
       alert('Please fill in all required fields before downloading.');
       return;
     }
+
+    // Track the download event with user data
+    trackDownloadResume(formData);
 
     // Here you could send the form data to your backend/analytics
     console.log('Download requested by:', formData);

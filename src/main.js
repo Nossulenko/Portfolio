@@ -7,8 +7,14 @@ import HomePage from './pages/index.js';
 import About from './pages/about.js';
 import Skills from './pages/skills.js';
 import Recommendations from './pages/recommendations.js';
+import { initializeAnalytics } from './tools/analytics.js';
 
 export const Main = () => {
+  // Initialize Google Analytics
+  React.useEffect(() => {
+    initializeAnalytics();
+  }, []);
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>

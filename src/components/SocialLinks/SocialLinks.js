@@ -4,6 +4,7 @@ import cx from 'classnames';
 import anime from 'animejs';
 
 import { Link } from '../Link';
+import { trackSocialLink } from '../../tools/analytics.js';
 
 class Component extends React.PureComponent {
   static displayName = 'SocialLinks';
@@ -55,22 +56,21 @@ class Component extends React.PureComponent {
   }
 
   exit () {
-    const { energy, sounds, onExit } = this.props;
+    const { energy, onExit } = this.props;
     const { duration } = energy;
-
-    sounds.fade.play();
 
     anime({
       targets: this.element,
       easing: 'easeOutCubic',
-      keyframes: [
-        { opacity: 0, duration: duration.exit / 3 },
-        { opacity: 1, duration: duration.exit / 5 },
-        { opacity: 0, duration: duration.exit / 2 }
-      ],
+      opacity: 0,
+      duration: duration.exit,
       complete: () => onExit && onExit()
     });
   }
+
+  handleSocialLinkClick = (platform) => {
+    trackSocialLink(platform);
+  };
 
   render () {
     const {
@@ -95,6 +95,7 @@ class Component extends React.PureComponent {
         onLinkStart={onLinkStart}
         onLinkEnd={onLinkEnd}
         onMouseEnter={() => sounds.hover.play()}
+        onClick={() => this.handleSocialLinkClick(elprops.title?.toLowerCase())}
         {...elprops}
       />
     );

@@ -7,6 +7,7 @@ import { Link } from '../Link';
 import { Text } from '../Text';
 import { Secuence } from '../Secuence';
 import { SCHEME_NORMAL, SCHEME_EXPAND } from './Menu.constants';
+import { trackNavigation } from '../../tools/analytics.js';
 
 class Component extends React.PureComponent {
   static displayName = 'Menu';
@@ -153,6 +154,10 @@ class Component extends React.PureComponent {
     });
   }
 
+  handleNavigationClick = (page) => {
+    trackNavigation(page);
+  };
+
   render () {
     const {
       theme,
@@ -188,7 +193,7 @@ class Component extends React.PureComponent {
           ref={(ref) => (this.element = ref)}
           {...etc}
         >
-          <Link href='/about' {...linkProps}>
+          <Link href='/about' {...linkProps} onClick={() => this.handleNavigationClick('resume')}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -197,7 +202,7 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/skills' {...linkProps}>
+          <Link href='/skills' {...linkProps} onClick={() => this.handleNavigationClick('skills')}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -206,7 +211,7 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/recommendations' {...linkProps}>
+          <Link href='/recommendations' {...linkProps} onClick={() => this.handleNavigationClick('testimonials')}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -215,7 +220,7 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps}>
+          <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps} onClick={() => this.handleNavigationClick('connect')}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
