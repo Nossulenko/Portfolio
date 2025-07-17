@@ -8,6 +8,7 @@ import { Menu } from '../components/Menu';
 import { SocialLinks } from '../components/SocialLinks';
 import { Legal } from '../components/Legal';
 import { withRouter } from '../tools/withRouter/index.js';
+import { setupAudioUnlock } from '../tools/audioUnlock.js';
 
 const styles = () => {
   return {
@@ -47,6 +48,11 @@ const styles = () => {
 };
 
 class Component extends React.Component {
+  componentDidMount () {
+    // Setup audio unlock for home page
+    setupAudioUnlock();
+  }
+
   onLinkStart = (event, { isInternal }) => {
     if (isInternal) {
       this.secuenceElement.exit();

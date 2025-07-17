@@ -31,7 +31,17 @@ class Component extends React.PureComponent {
     // Try to unlock audio when sounds are loaded
     setTimeout(() => {
       unlockAudio();
-    }, 500);
+    }, 100);
+
+    // Try again after a longer delay for mobile devices
+    setTimeout(() => {
+      unlockAudio();
+    }, 1000);
+
+    // Try again after 3 seconds for stubborn mobile browsers
+    setTimeout(() => {
+      unlockAudio();
+    }, 3000);
   }
 
   componentDidUpdate (prevProps) {

@@ -42,24 +42,82 @@ export const unlockAudio = () => {
   }
 };
 
+// Mobile-specific audio unlock
+export const unlockMobileAudio = () => {
+  if (typeof window === 'undefined') return;
+
+  // Create a silent audio element for mobile
+  try {
+    const audio = new Audio();
+    audio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+    audio.volume = 0;
+    audio.play().catch(() => {
+      // Ignore errors, this is expected on some mobile browsers
+    });
+  } catch (error) {
+    console.log('Mobile audio unlock failed:', error);
+  }
+};
+
 // Setup audio unlock on user interactions
 export const setupAudioUnlock = () => {
   if (typeof window === 'undefined') return;
 
-  const events = ['click', 'touchstart', 'touchend', 'keydown', 'mousedown'];
+  // More comprehensive list of events for mobile
+  const events = [
+    'click',
+    'touchstart',
+    'touchend',
+    'touchmove',
+    'keydown',
+    'mousedown',
+    'mouseup',
+    'scroll',
+    'focus',
+    'blur'
+  ];
+
+  let unlocked = false;
 
   const unlockHandler = () => {
+    if (unlocked) return;
+
     unlockAudio();
+    unlockMobileAudio();
+    unlocked = true;
+
     // Remove listeners after first successful unlock
     events.forEach(event => {
       document.removeEventListener(event, unlockHandler, { passive: true });
     });
+
+    // Also remove from window and body
+    window.removeEventListener('focus', unlockHandler);
+    window.removeEventListener('blur', unlockHandler);
   };
 
+  // Add listeners to document
   events.forEach(event => {
     document.addEventListener(event, unlockHandler, { passive: true });
   });
 
+  // Add listeners to window for focus events
+  window.addEventListener('focus', unlockHandler);
+  window.addEventListener('blur', unlockHandler);
+
   // Also try to unlock immediately
-  setTimeout(unlockAudio, 100);
+  setTimeout(() => {
+    if (!unlocked) {
+      unlockAudio();
+      unlockMobileAudio();
+    }
+  }, 100);
+
+  // Try again after a longer delay
+  setTimeout(() => {
+    if (!unlocked) {
+      unlockAudio();
+      unlockMobileAudio();
+    }
+  }, 1000);
 };
