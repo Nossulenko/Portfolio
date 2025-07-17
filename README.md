@@ -2,6 +2,8 @@
 
 A React-based portfolio website with resume download functionality and email notifications.
 
+<!-- Updated: Latest deployment with email notifications -->
+
 ## Setup Instructions
 
 ### 1. Install Dependencies
