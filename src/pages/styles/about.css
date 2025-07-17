@@ -105,7 +105,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: 99999;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -224,13 +224,15 @@
   .modal-overlay {
     padding: 10px;
     align-items: flex-start;
-    padding-top: 60px; /* Account for navbar */
+    padding-top: 80px; /* Account for navbar */
   }
 
   .modal-content {
     padding: 20px;
-    max-height: calc(100vh - 80px);
-    margin-top: 20px;
+    max-height: calc(100vh - 100px);
+    margin-top: 10px;
+    position: relative;
+    z-index: 99999;
   }
 
   .modal-content h2 {
@@ -253,12 +255,13 @@
 @media (max-width: 480px) {
   .modal-overlay {
     padding: 5px;
-    padding-top: 50px;
+    padding-top: 100px; /* Extra space for very small screens */
   }
 
   .modal-content {
     padding: 15px;
     border-radius: 8px;
+    max-height: calc(100vh - 120px);
   }
 
   .modal-content h2 {
