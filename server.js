@@ -44,22 +44,27 @@ app.post('/api/download-resume', async (req, res) => {
     }
 
     // Send email notification (if configured)
-    if (transporter) {
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        subject: 'Resume Download Request',
-        html: `
-          <h2>New Resume Download Request</h2>
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Reason for Download:</strong></p>
-          <p>${reason}</p>
-          <p><strong>Download Date:</strong> ${new Date().toLocaleString()}</p>
-        `
-      };
+    if (transporter && process.env.EMAIL_USER) {
+      try {
+        const mailOptions = {
+          from: process.env.EMAIL_USER,
+          to: process.env.EMAIL_USER,
+          subject: 'Resume Download Request',
+          html: `
+            <h2>New Resume Download Request</h2>
+            <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Reason for Download:</strong></p>
+            <p>${reason}</p>
+            <p><strong>Download Date:</strong> ${new Date().toLocaleString()}</p>
+          `
+        };
 
-      await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Continue with download even if email fails
+      }
     }
 
     // Log the download request
