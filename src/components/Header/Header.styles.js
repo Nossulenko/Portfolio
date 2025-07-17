@@ -19,18 +19,35 @@ const styles = () => ({
     zIndex: 10,
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: [0, 'auto'],
-    padding: [20, 20, 10],
+    padding: [20, 20, 20],
     width: '100%',
-    maxWidth: 1000
+    maxWidth: 1000,
+    minHeight: 80
   },
   brand: {
-    margin: [0, 'auto', 10],
+    margin: [0, 'auto', 0],
     width: '100%',
-    maxWidth: 300
+    maxWidth: 300,
+    textAlign: 'center',
+    transform: 'translateY(-6px)'
   },
+
   menu: {
     width: '100%'
+  },
+  burgerIcon: {
+    position: 'absolute',
+    left: 20,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    zIndex: 20,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%'
   },
 
   '@media screen and (min-width: 768px)': {
@@ -39,23 +56,27 @@ const styles = () => ({
     },
     content: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      justifyContent: 'flex-start',
       alignItems: 'center',
-      padding: [20, 20, 30]
+      padding: [20, 20, 20],
+      gap: '40px'
     },
     brand: {
       margin: 0
     },
     menu: {
       margin: 0,
-      maxWidth: 375
+      maxWidth: 300
+    },
+    burgerIcon: {
+      display: 'none'
     }
   },
 
   '@media screen and (min-width: 1025px)': {
     menu: {
       margin: 0,
-      width: 460,
+      width: 350,
       maxWidth: 'none'
     }
   }

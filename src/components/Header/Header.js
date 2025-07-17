@@ -10,6 +10,85 @@ import { Brand } from '../Brand';
 import { Menu } from '../Menu';
 import theme from '../../settings/theme.js';
 
+// BurgerIcon component
+function BurgerIcon({ open, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        width: 36,
+        height: 36,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        cursor: 'pointer',
+        zIndex: 1001
+      }}
+      aria-label="Open navigation menu"
+      role="button"
+      tabIndex={0}
+    >
+      <div style={{
+        width: 26,
+        height: 3,
+        background: open ? '#DAA520' : '#fff',
+        borderRadius: 2,
+        margin: '3px 0',
+        transition: 'all 0.3s',
+        transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none'
+      }} />
+      <div style={{
+        width: 26,
+        height: 3,
+        background: open ? 'transparent' : '#fff',
+        borderRadius: 2,
+        margin: '3px 0',
+        transition: 'all 0.3s'
+      }} />
+      <div style={{
+        width: 26,
+        height: 3,
+        background: open ? '#DAA520' : '#fff',
+        borderRadius: 2,
+        margin: '3px 0',
+        transition: 'all 0.3s',
+        transform: open ? 'rotate(-45deg) translate(5px, -5px)' : 'none'
+      }} />
+    </div>
+  );
+}
+BurgerIcon.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
+// Add CloseButton component
+function CloseButton({ onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label="Close menu"
+      style={{
+        position: 'absolute',
+        top: 24,
+        right: 24,
+        background: 'none',
+        border: 'none',
+        color: '#DAA520',
+        fontSize: 32,
+        cursor: 'pointer',
+        zIndex: 2100
+      }}
+    >
+      &times;
+    </button>
+  );
+}
+CloseButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
+
 class Component extends React.Component {
   static displayName = 'Header';
 
@@ -28,7 +107,9 @@ class Component extends React.Component {
 
     this.state = {
       show: false,
-      shapes: []
+      shapes: [],
+      mobileMenuOpen: false,
+      isMobile: window.innerWidth < 768
     };
 
     const { energy } = this.props;
@@ -50,8 +131,14 @@ class Component extends React.Component {
   }
 
   onResize = () => {
+    console.log('Resize detected, window width:', window.innerWidth);
     this.draw();
     this.reset();
+    const newIsMobile = window.innerWidth < 768;
+    console.log('Setting isMobile to:', newIsMobile);
+    this.setState({ isMobile: newIsMobile }, () => {
+      console.log('State updated, isMobile is now:', this.state.isMobile);
+    });
   }
 
   draw () {
@@ -279,6 +366,14 @@ class Component extends React.Component {
     anime.set(shapes, { opacity: show ? 1 : 0 });
   }
 
+  handleBurgerClick = () => {
+    this.setState((prev) => ({ mobileMenuOpen: !prev.mobileMenuOpen }));
+  };
+
+  handleCloseMobileMenu = () => {
+    this.setState({ mobileMenuOpen: false });
+  };
+
   render () {
     const {
       classes,
@@ -288,13 +383,15 @@ class Component extends React.Component {
       className,
       ...etc
     } = this.props;
-    const { show, shapes } = this.state;
+    const { show, shapes, mobileMenuOpen, isMobile } = this.state;
 
     return (
       <header
+        key={`header-${isMobile ? 'mobile' : 'desktop'}`}
         className={cx(classes.root, className)}
         ref={ref => (this.element = ref)}
         {...etc}
+        style={{ position: 'relative', zIndex: 1000 }}
       >
         <svg
           className={classes.svg}
@@ -313,11 +410,59 @@ class Component extends React.Component {
           ))}
         </svg>
         <div className={classes.content}>
+          {isMobile && (
+            <div className={classes.burgerIcon}>
+              <BurgerIcon open={mobileMenuOpen} onClick={this.handleBurgerClick} />
+            </div>
+          )}
           <Secuence animation={{ show, independent: true }}>
             <Brand className={classes.brand} stableTime />
-            <Menu className={classes.menu} />
+            {!isMobile && <Menu className={classes.menu} />}
           </Secuence>
         </div>
+        {/* Mobile menu overlay */}
+        {isMobile && mobileMenuOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              background: 'rgba(24,26,32,0.98)',
+              zIndex: 2000,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'background 0.3s',
+            }}
+            onClick={this.handleCloseMobileMenu}
+          >
+            <div
+              style={{
+                position: 'relative',
+                background: 'rgba(24,26,32,1)',
+                borderRadius: 12,
+                boxShadow: '0 4px 32px #000a',
+                padding: '48px 32px 32px 32px',
+                minWidth: 240,
+                minHeight: 200,
+                animation: 'slideInMenu 0.3s cubic-bezier(.4,1.6,.6,1)'
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              <CloseButton onClick={this.handleCloseMobileMenu} />
+              <Menu {...this.props} />
+            </div>
+            <style>{`
+              @keyframes slideInMenu {
+                from { transform: translateY(-40px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+              }
+            `}</style>
+          </div>
+        )}
       </header>
     );
   }

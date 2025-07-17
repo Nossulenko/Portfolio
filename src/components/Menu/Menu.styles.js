@@ -9,7 +9,7 @@ const styles = () => ({
     alignItems: 'center',
     margin: [0, 'auto'],
     userSelect: 'none',
-    gap: '20px'
+    gap: '10px'
   },
   item: {
     display: 'block',

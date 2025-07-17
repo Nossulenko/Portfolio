@@ -3,29 +3,6 @@ import { Main } from '../components/Main';
 import SidebarCard from '../components/SidebarCard';
 import './styles/about.css';
 
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  gap: 56,
-  maxWidth: 1200,
-  margin: '0 auto',
-  padding: '0 20px',
-  '@media (max-width: 768px)': {
-    flexDirection: 'column',
-    gap: 32,
-    padding: '0 16px'
-  }
-};
-
-const mainStyle = {
-  flex: 1,
-  maxWidth: 'calc(100% - 300px)',
-  '@media (max-width: 768px)': {
-    maxWidth: '100%'
-  },
-  color: '#fff'
-};
-
 const highlight = {
   color: '#DAA520',
   fontWeight: 700,
@@ -33,121 +10,7 @@ const highlight = {
   cursor: 'pointer'
 };
 
-const employmentCardStyle = {
-  background: '#181A20',
-  borderRadius: '10px',
-  padding: '28px 28px 18px 28px',
-  margin: '28px 0',
-  color: '#fff',
-  border: '1px solid #DAA520',
-  boxShadow: '0 2px 8px #0008',
-  maxWidth: 900,
-  '@media (max-width: 768px)': {
-    padding: '20px 16px 16px 16px',
-    margin: '20px 0'
-  }
-};
-
-const employmentTitleStyle = {
-  color: '#DAA520',
-  fontWeight: 700,
-  fontSize: '1.3rem',
-  marginBottom: 2,
-  letterSpacing: 0.2,
-  display: 'flex',
-  alignItems: 'center',
-  gap: 8,
-  '@media (max-width: 768px)': {
-    fontSize: '1.1rem'
-  }
-};
-
-const employmentMetaStyle = {
-  color: '#fff',
-  fontWeight: 500,
-  fontSize: '1.05rem',
-  marginBottom: 2,
-  display: 'flex',
-  alignItems: 'center',
-  gap: 8,
-  '@media (max-width: 768px)': {
-    fontSize: '0.95rem',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: 4
-  }
-};
-
-const employmentPeriodStyle = {
-  color: '#fff',
-  fontWeight: 400,
-  fontSize: '1.05rem',
-  marginLeft: 8,
-  '@media (max-width: 768px)': {
-    marginLeft: 0,
-    fontSize: '0.95rem'
-  }
-};
-
-const employmentLocationStyle = {
-  color: '#888',
-  fontWeight: 400,
-  fontSize: '1rem',
-  marginBottom: 10,
-  '@media (max-width: 768px)': {
-    fontSize: '0.9rem'
-  }
-};
-
-const employmentDescriptionStyle = {
-  margin: '16px 0 0 0',
-  color: '#fff',
-  fontSize: '1.08rem',
-  lineHeight: 1.6,
-  fontWeight: 500,
-  '@media (max-width: 768px)': {
-    fontSize: '0.95rem',
-    lineHeight: 1.5
-  }
-};
-
-const badgeStyle = {
-  display: 'inline-block',
-  background: '#DAA520',
-  color: '#181A20',
-  borderRadius: '16px',
-  padding: '4px 14px',
-  margin: '8px 8px 0 0',
-  fontSize: '0.98em',
-  fontWeight: 700,
-  letterSpacing: 0.2,
-  verticalAlign: 'middle',
-  boxShadow: '0 1px 4px #0002',
-  border: '1px solid #DAA520',
-  transition: 'background 0.2s',
-  '@media (max-width: 768px)': {
-    fontSize: '0.9em',
-    padding: '3px 12px',
-    margin: '6px 6px 0 0'
-  }
-};
-
-const sidebarStyle = {
-  width: 300,
-  '@media (max-width: 768px)': {
-    width: '100%'
-  },
-  display: 'flex',
-  flexDirection: 'column'
-};
-
 const valueStyle = { color: '#fff', fontWeight: 400 };
-const labelStyle = {
-  color: '#DAA520',
-  fontWeight: 500,
-  marginRight: 8,
-  display: 'inline-block'
-};
 const nativeStyle = {
   color: '#DAA520',
   marginLeft: 8,
@@ -324,14 +187,21 @@ const About = () => (
       <div className="about-main">
         <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
         <p className="profile-text">
-          Technology and Product Leader with over a decade of experience and a deep, hands on understanding of the
-          entire digital product lifecycle. Starting as a full stack developer, I became obsessed with tech and mastering
-          every phase of product development from the importance of well designed UX/UI and rigorous validation, to
-          Agile execution, leadership, and product management. In today’s exciting era of AI, I’m actively exploring and
-          applying how AI can be leveraged across this process enhancing decision making, accelerating delivery, and
-          creating smarter workflows. Equally important is business discovery: translating business needs into a clear
-          product backlog and guiding teams from proof of concept through MVP, while ensuring quality, alignment, and
-          measurable impact.
+          Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the
+          entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every
+          phase of digital product development from early-stage ideation and facilitating workshops, translating complex
+          business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving
+          UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and
+          designing enterprise-level infrastructures and managing products at scale. In today’s exciting era of AI, I actively
+          explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate
+          delivery, and create smarter, data-driven workflows.
+          <br/>
+          As a Tech Lead, I’ve learned that technology alone is not enough, you can have great projects and brilliant
+          engineers, but only through clear vision and strong leadership can teams achieve meaningful, measurable
+          outcomes. I excel at building and enabling high-performing, cross-functional teams, setting direction, aligning
+          technical strategy with business objectives, and fostering a culture of accountability and innovation. I bring
+          strategic insight, governance, and operational discipline to ensure that teams deliver not only products but also
+          tangible, measurable business results.
         </p>
 
         {/* EMPLOYMENT HISTORY */}
