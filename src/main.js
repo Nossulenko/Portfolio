@@ -16,7 +16,6 @@ export const Main = () => {
           <Route element={<Template location={location} />}>
             <Route path='/' element={<HomePage />} />
             <Route path='/about' element={<About />} />
-            <Route path='/resume' element={<About />} />
             <Route path='/skills' element={<Skills />} />
             <Route path='/recommendations' element={<Recommendations />} />
           </Route>

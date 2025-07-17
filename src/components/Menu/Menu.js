@@ -188,7 +188,7 @@ class Component extends React.PureComponent {
           ref={(ref) => (this.element = ref)}
           {...etc}
         >
-          <Link href='/resume' {...linkProps}>
+          <Link href='/about' {...linkProps}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
