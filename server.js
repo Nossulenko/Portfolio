@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(morgan('common'));
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('dist'));
 
 // Email configuration (optional)
 let transporter = null;
@@ -84,6 +84,11 @@ app.post('/api/download-resume', async (req, res) => {
       error: 'Failed to process download request'
     });
   }
+});
+
+// Handle client-side routing - serve index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' });
 });
 
 app.listen(port, host, error => {

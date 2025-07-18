@@ -10,7 +10,7 @@
     "build:dev": "cross-env NODE_ENV=development vite build",
     "preview": "vite preview",
     "server": "NODE_ENV=production PORT=14000 HOST=127.0.0.1 node server.js",
-    "deploy:build": "npm run build && cp -r dist/* public/",
+    "deploy:build": "npm run build",
     "vercel-build": "npm run deploy:build"
   },
   "dependencies": {
