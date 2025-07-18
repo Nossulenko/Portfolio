@@ -4,6 +4,9 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -11,13 +14,23 @@ const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 14000;
 const host = process.env.HOST || '0.0.0.0';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 
 app.use(helmet());
 app.use(morgan('common'));
 app.use(cors());
 app.use(express.json());
-app.use(express.static('dist'));
+
+// Serve static files from dist directory
+const distPath = join(__dirname, 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+} else {
+  console.warn('dist directory not found, static files may not be served correctly');
+}
 
 // Email configuration (optional)
 let transporter = null;
@@ -88,7 +101,12 @@ app.post('/api/download-resume', async (req, res) => {
 
 // Handle client-side routing - serve index.html for all non-API routes
 app.get('*', (req, res) => {
-  res.sendFile('index.html', { root: 'dist' });
+  const indexPath = join(distPath, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).send('Page not found');
+  }
 });
 
 app.listen(port, host, error => {
