@@ -7,6 +7,7 @@ import HomePage from './pages/index.js';
 import About from './pages/about.js';
 import Skills from './pages/skills.js';
 import Recommendations from './pages/recommendations.js';
+import NotFound from './pages/404.js';
 import { initializeAnalytics } from './tools/analytics.js';
 
 export const Main = () => {
@@ -24,6 +25,7 @@ export const Main = () => {
             <Route path='/about' element={<About />} />
             <Route path='/skills' element={<Skills />} />
             <Route path='/recommendations' element={<Recommendations />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
       </ThemeProvider>
