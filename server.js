@@ -61,10 +61,13 @@ app.post('/api/download-resume', async (req, res) => {
         };
 
         await transporter.sendMail(mailOptions);
+        console.log('Email notification sent successfully');
       } catch (emailError) {
         console.error('Email sending failed:', emailError);
         // Continue with download even if email fails
       }
+    } else {
+      console.log('Email notifications not configured - skipping email send');
     }
 
     // Log the download request

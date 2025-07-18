@@ -115,10 +115,9 @@ class Component extends React.Component {
         <Link
           className={classes.link}
           href={link}
-          title='Quant FX logo'
+          title='nossulenko-logo'
           onLinkStart={onLinkStart}
           onLinkEnd={onLinkEnd}
-
         >
           <span className={classes.title}>nossulenko</span>
           <svg
@@ -127,9 +126,8 @@ class Component extends React.Component {
             viewBox='0 0 1400 150'
             xmlns='http://www.w3.org/2000/svg'
             onMouseEnter={() => sounds.hover.play()}
-
           />
-          <img src={logo} alt='logo' />
+          <img src={logo} alt='logo' className={classes.img} />
         </Link>
 
       </h1>

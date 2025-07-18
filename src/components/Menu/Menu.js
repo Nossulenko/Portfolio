@@ -23,7 +23,9 @@ class Component extends React.PureComponent {
     onEnter: PropTypes.func,
     onExit: PropTypes.func,
     onLinkStart: PropTypes.func,
-    onLinkEnd: PropTypes.func
+    onLinkEnd: PropTypes.func,
+    onMobileMenuClose: PropTypes.func,
+    navigate: PropTypes.func
   };
 
   static defaultProps = {
@@ -156,6 +158,39 @@ class Component extends React.PureComponent {
 
   handleNavigationClick = (page) => {
     trackNavigation(page);
+    if (this.props.onMobileMenuClose) {
+      this.props.onMobileMenuClose();
+    }
+  };
+
+  handleResumeClick = () => {
+    this.handleNavigationClick('resume');
+    if (this.props.navigate) {
+      this.props.navigate('/about');
+    }
+    if (this.props.onMobileMenuClose) {
+      this.props.onMobileMenuClose();
+    }
+  };
+
+  handleSkillsClick = () => {
+    this.handleNavigationClick('skills');
+    if (this.props.navigate) {
+      this.props.navigate('/skills');
+    }
+    if (this.props.onMobileMenuClose) {
+      this.props.onMobileMenuClose();
+    }
+  };
+
+  handleTestimonialsClick = () => {
+    this.handleNavigationClick('testimonials');
+    if (this.props.navigate) {
+      this.props.navigate('/recommendations');
+    }
+    if (this.props.onMobileMenuClose) {
+      this.props.onMobileMenuClose();
+    }
   };
 
   render () {
@@ -193,7 +228,7 @@ class Component extends React.PureComponent {
           ref={(ref) => (this.element = ref)}
           {...etc}
         >
-          <Link href='/about' {...linkProps} onClick={() => this.handleNavigationClick('resume')}>
+          <Link href='/about' {...linkProps} onClick={this.handleResumeClick}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -202,7 +237,7 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/skills' {...linkProps} onClick={() => this.handleNavigationClick('skills')}>
+          <Link href='/skills' {...linkProps} onClick={this.handleSkillsClick}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -211,7 +246,7 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='/recommendations' {...linkProps} onClick={() => this.handleNavigationClick('testimonials')}>
+          <Link href='/recommendations' {...linkProps} onClick={this.handleTestimonialsClick}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}
@@ -220,7 +255,12 @@ class Component extends React.PureComponent {
             </Text>
           </Link>
           <b className={cx(classes.item, classes.divisor)}>|</b>
-          <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps} onClick={() => this.handleNavigationClick('connect')}>
+          <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps} onClick={() => {
+            this.handleNavigationClick('connect');
+            if (this.props.onMobileMenuClose) {
+              this.props.onMobileMenuClose();
+            }
+          }}>
             <Text
               animation={{ animate: animateText }}
               audio={{ silent: !animateText }}

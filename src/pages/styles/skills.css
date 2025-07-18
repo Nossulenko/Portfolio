@@ -32,3 +32,110 @@
     font-size: 0.98em;
   }
 }
+
+/* Core Skills Card with Liquid Glass Effect */
+.core-skills-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+  background: rgba(24, 26, 32, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.core-skills-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(218, 165, 32, 0.08) 0%,
+    rgba(218, 165, 32, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.core-skills-card:hover {
+  background: rgba(24, 26, 32, 0.25);
+  border-color: rgba(218, 165, 32, 0.3);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.skill-item {
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-item:last-child {
+  margin-bottom: 0;
+}
+
+.skill-title {
+  color: #DAA520;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.skill-description {
+  color: #e0e0e0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .core-skills-card {
+    margin: 0 16px;
+    padding: 24px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  .skill-title {
+    font-size: 1.1rem;
+  }
+
+  .skill-description {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-skills-card {
+    margin: 0 12px;
+    padding: 20px 16px;
+  }
+
+  .skill-title {
+    font-size: 1rem;
+  }
+
+  .skill-description {
+    font-size: 0.95rem;
+  }
+}

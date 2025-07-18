@@ -11,7 +11,7 @@ import { Menu } from '../Menu';
 import theme from '../../settings/theme.js';
 
 // BurgerIcon component
-function BurgerIcon({ open, onClick }) {
+function BurgerIcon ({ open, onClick }) {
   return (
     <div
       onClick={onClick}
@@ -25,8 +25,8 @@ function BurgerIcon({ open, onClick }) {
         cursor: 'pointer',
         zIndex: 1001
       }}
-      aria-label="Open navigation menu"
-      role="button"
+      aria-label='Open navigation menu'
+      role='button'
       tabIndex={0}
     >
       <div style={{
@@ -64,11 +64,11 @@ BurgerIcon.propTypes = {
 };
 
 // Add CloseButton component
-function CloseButton({ onClick }) {
+function CloseButton ({ onClick }) {
   return (
     <button
       onClick={onClick}
-      aria-label="Close menu"
+      aria-label='Close menu'
       style={{
         position: 'absolute',
         top: 24,
@@ -435,7 +435,7 @@ class Component extends React.Component {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.3s',
+              transition: 'background 0.3s'
             }}
             onClick={this.handleCloseMobileMenu}
           >
@@ -453,7 +453,7 @@ class Component extends React.Component {
               onClick={e => e.stopPropagation()}
             >
               <CloseButton onClick={this.handleCloseMobileMenu} />
-              <Menu {...this.props} />
+              <Menu {...this.props} onMobileMenuClose={this.handleCloseMobileMenu} />
             </div>
             <style>{`
               @keyframes slideInMenu {

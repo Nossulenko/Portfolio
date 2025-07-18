@@ -103,7 +103,7 @@ const employmentHistory = [
     ),
     badges: [
       'Full‑Stack Development',
-      'MEAN Stack (MongoDB, Express, Angular, Node.js)',
+      'MEAN Stack',
       'RESTful APIs',
       'UI/Backend Integration',
       'Agile / Scrum',
@@ -145,7 +145,7 @@ const employmentHistory = [
     ),
     badges: [
       'Full‑Stack Development',
-      'MEAN Stack (MongoDB, Express, Angular, Node.js)',
+      'MEAN Stack',
       'RESTful APIs',
       'UI/Backend Integration',
       'Agile / Scrum',
@@ -204,7 +204,7 @@ const About = () => {
 
   const fullProfileText = "Technology and Product Leader with over a decade of experience and a deep, hands-on understanding of the entire digital product lifecycle. Starting as a full-stack developer, I became passionate about mastering every phase of digital product development from early-stage ideation and facilitating workshops, translating complex business needs into clear product backlogs, shaping initial wireframes, and defining proofs of concept, to driving UX/UI design, applying rigorous validation, executing Agile methodologies, and ultimately architecting and designing enterprise-level infrastructures and managing products at scale. In today's exciting era of AI, I actively explore and apply how AI can be leveraged throughout this process to enhance decision-making, accelerate delivery, and create smarter, data-driven workflows. As a Tech Lead, I've learned that technology alone is not enough, you can have great projects and brilliant engineers, but only through clear vision and strong leadership can teams achieve meaningful, measurable outcomes. I excel at building and enabling high-performing, cross-functional teams, setting direction, aligning technical strategy with business objectives, and fostering a culture of accountability and innovation. I bring strategic insight, governance, and operational discipline to ensure that teams deliver not only products but also tangible, measurable business results.";
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     // Check if all required fields are filled
     const requiredFields = ['firstName', 'lastName', 'email', 'reason'];
     const missingFields = requiredFields.filter(field => !formData[field].trim());
@@ -214,21 +214,40 @@ const About = () => {
       return;
     }
 
-    // Track the download event with user data
-    trackDownloadResume(formData);
+    try {
+      // Send form data to backend API
+      const response = await fetch('/api/download-resume', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
 
-    // Here you could send the form data to your backend/analytics
-    console.log('Download requested by:', formData);
+      if (!response.ok) {
+        throw new Error('Failed to process download request');
+      }
 
-    // Download the resume
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Nikolai_Nossulenko_Resume.pdf';
-    link.click();
+      const result = await response.json();
+      console.log('Download processed:', result);
 
-    // Close the form
-    setShowDownloadForm(false);
-    setFormData({ firstName: '', lastName: '', email: '', reason: '' });
+      // Track the download event with user data
+      trackDownloadResume(formData);
+
+      // Download the resume
+      const link = document.createElement('a');
+      link.href = '/resume.pdf';
+      link.download = 'Nikolai_Nossulenko_Resume.pdf';
+      link.click();
+
+      // Close the form
+      setShowDownloadForm(false);
+      setFormData({ firstName: '', lastName: '', email: '', reason: '' });
+
+    } catch (error) {
+      console.error('Error processing download:', error);
+      alert('There was an error processing your download request. Please try again.');
+    }
   };
 
   const handleInputChange = (field, value) => {
@@ -243,7 +262,7 @@ const About = () => {
       <div className="about-container">
         {/* Main Profile Section */}
         <div className="about-main">
-          <h1 style={{ ...highlight, fontSize: '2.2rem', marginBottom: 24 }}>| PROFILE</h1>
+          <h1 className="employment-history-title" style={{ ...highlight, marginBottom: 24 }}>| PROFILE</h1>
           <p className="profile-text">
             {showFullProfile ? fullProfileText : shortProfileText}
             {!showFullProfile && (
@@ -274,8 +293,7 @@ const About = () => {
             )}
           </p>
 
-          {/* EMPLOYMENT HISTORY */}
-          <h2 style={{ ...highlight, fontSize: '1.8rem', margin: '48px 0 12px 0' }}>| EMPLOYMENT HISTORY</h2>
+
         </div>
       {/* Sidebar Section */}
       <div className="about-sidebar">
@@ -292,14 +310,6 @@ const About = () => {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span style={valueStyle}>Russian</span><span style={nativeStyle}>Native</span>
-          </div>
-        </SidebarCard>
-        <SidebarCard title='ONGOING CERTIFICATIONS'>
-          <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> Digital MBA - CTO Academy
-          </div>
-          <div style={{ ...valueStyle, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#DAA520', fontSize: '1.2em', transition: 'text-shadow 0.2s', cursor: 'pointer' }}>•</span> PMC Certification
           </div>
         </SidebarCard>
         <SidebarCard title='DOWNLOAD RESUME'>
@@ -327,7 +337,7 @@ const About = () => {
               e.target.style.transform = 'translateY(0)';
             }}
           >
-            📄 Download PDF Resume
+            Download PDF Resume
           </button>
         </SidebarCard>
         <SidebarCard title='CONNECT ON LINKEDIN'>
@@ -336,9 +346,9 @@ const About = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              background: '#0077B5',
-              color: '#fff',
-              border: 'none',
+              background: '#181A20',
+              color: '#DAA520',
+              border: '1px solid #DAA520',
               borderRadius: '8px',
               padding: '12px 20px',
               fontSize: '14px',
@@ -352,45 +362,56 @@ const About = () => {
               textAlign: 'center'
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = '#005885';
+              e.target.style.background = '#DAA520';
+              e.target.style.color = '#181A20';
               e.target.style.transform = 'translateY(-1px)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = '#0077B5';
+              e.target.style.background = '#181A20';
+              e.target.style.color = '#DAA520';
               e.target.style.transform = 'translateY(0)';
             }}
           >
-            🔗 Connect on LinkedIn
+            Connect on LinkedIn
           </a>
         </SidebarCard>
       </div>
     </div>
 
-    {/* Render ALL employment cards full width, outside the flex row */}
-    {employmentHistory.map((job) => (
-      <div
-        key={job.title + job.period}
-        className="employment-card"
-        style={{
-          width: '100%',
-          maxWidth: 'none',
-          marginLeft: 0,
-          marginRight: 0
-        }}
-      >
-        <div className="employment-title">{job.title}</div>
-        <div className="employment-meta">
-          {job.company} <span style={{ color: '#DAA520' }}>•</span> <span className="employment-period">{job.period}</span>
+    {/* EMPLOYMENT HISTORY - positioned to align with LinkedIn card */}
+    <div style={{ marginTop: '20px' }}>
+      <h2 className="employment-history-title" style={{
+        ...highlight,
+        margin: '0 0 24px 0',
+        whiteSpace: 'nowrap'
+      }}>| EMPLOYMENT HISTORY</h2>
+
+      {employmentHistory.map((job, index) => (
+        <div
+          key={job.title + job.period}
+          className="employment-card"
+          style={{
+            width: '100%',
+            maxWidth: 'none',
+            marginLeft: 0,
+            marginRight: 0,
+            marginTop: index === 0 ? '0' : '28px'
+          }}
+        >
+          <div className="employment-title">{job.title}</div>
+          <div className="employment-meta">
+            {job.company} <span className="employment-bullet" style={{ color: '#DAA520' }}>•</span> <span className="employment-period">{job.period}</span>
+          </div>
+          <div className="employment-location">{job.location}</div>
+          <div className="employment-description">{job.description}</div>
+          <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap' }}>
+            {job.badges.map(badge => (
+              <span key={badge} className="badge">{badge}</span>
+            ))}
+          </div>
         </div>
-        <div className="employment-location">{job.location}</div>
-        <div className="employment-description">{job.description}</div>
-        <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap' }}>
-          {job.badges.map(badge => (
-            <span key={badge} className="badge">{badge}</span>
-          ))}
-        </div>
-      </div>
-    ))}
+      ))}
+    </div>
 
     {/* Download Form Modal */}
     {showDownloadForm && (

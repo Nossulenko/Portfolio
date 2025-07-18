@@ -109,11 +109,30 @@ const RecommendationCard = ({ recommendation }) => {
     <div style={{
       marginBottom: 32,
       padding: 24,
-      background: '#181A20',
-      borderRadius: 12,
-      border: '1px solid #333',
-      boxShadow: '0 2px 8px #0008'
+      background: 'rgba(24, 26, 32, 0.15)',
+      backdropFilter: 'blur(20px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+      borderRadius: 16,
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+      position: 'relative',
+      overflow: 'hidden',
+      transition: 'all 0.3s ease'
     }}>
+      {/* Glass overlay */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'linear-gradient(135deg, rgba(218, 165, 32, 0.08) 0%, rgba(218, 165, 32, 0.03) 50%, rgba(255, 255, 255, 0.02) 100%)',
+        borderRadius: 16,
+        pointerEvents: 'none',
+        zIndex: -1
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ marginBottom: 16 }}>
         <div style={{ fontWeight: 700, color: '#DAA520', fontSize: '1.1em', marginBottom: 4 }}>
           {recommendation.name}
@@ -151,6 +170,7 @@ const RecommendationCard = ({ recommendation }) => {
           {isExpanded ? 'Read less' : 'Read more'}
         </button>
       )}
+      </div>
     </div>
   );
 };
@@ -158,7 +178,7 @@ const RecommendationCard = ({ recommendation }) => {
 const RecommendationsPage = () => (
   <Main>
     <h2 style={highlight}>| RECOMMENDATIONS</h2>
-    <div style={{ maxWidth: 900, margin: '0 auto', color: '#fff' }}>
+    <div style={{ maxWidth: 900, margin: '0 auto', color: '#e0e0e0' }}>
       {recommendations.map((rec, idx) => (
         <RecommendationCard key={idx} recommendation={rec} />
       ))}

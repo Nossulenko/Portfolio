@@ -1,0 +1,9 @@
+node_modules
+build
+public
+static
+out
+www
+.deprecated
+.cache
+.next

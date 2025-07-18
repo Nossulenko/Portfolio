@@ -60,12 +60,28 @@ class Component extends React.PureComponent {
       </button>;
     }
 
+    // Handle external links
+    if (href.startsWith('http')) {
+      return (
+        <a
+          {...etc}
+          className={cx(className, linkMatchesURL && activeClassName)}
+          href={href}
+          target={target}
+          onClick={onClick}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link
         {...etc}
         className={cx(className, linkMatchesURL && activeClassName)}
         to={href}
         target={target}
+        onClick={onClick}
       >
         {children}
       </Link>

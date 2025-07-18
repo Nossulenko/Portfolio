@@ -21,7 +21,8 @@ class Component extends React.PureComponent {
     onEnter: PropTypes.func,
     onExit: PropTypes.func,
     onLinkStart: PropTypes.func,
-    onLinkEnd: PropTypes.func
+    onLinkEnd: PropTypes.func,
+    onMobileMenuClose: PropTypes.func
   };
 
   static defaultProps = {
@@ -195,7 +196,11 @@ class Component extends React.PureComponent {
           gap: isMobile ? '20px' : '10px'
         }}
       >
-        <Link href='/about' {...linkProps}>
+        <Link
+          href='/about'
+          {...linkProps}
+          onClick={isMobile && this.props.onMobileMenuClose ? this.props.onMobileMenuClose : undefined}
+        >
           <Text
             animation={{ animate: animateText }}
             audio={{ silent: !animateText }}
@@ -204,7 +209,11 @@ class Component extends React.PureComponent {
           </Text>
         </Link>
         {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
-        <Link href='/skills' {...linkProps}>
+        <Link
+          href='/skills'
+          {...linkProps}
+          onClick={isMobile && this.props.onMobileMenuClose ? this.props.onMobileMenuClose : undefined}
+        >
           <Text
             animation={{ animate: animateText }}
             audio={{ silent: !animateText }}
@@ -213,7 +222,11 @@ class Component extends React.PureComponent {
           </Text>
         </Link>
         {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
-        <Link href='/recommendations' {...linkProps}>
+        <Link
+          href='/recommendations'
+          {...linkProps}
+          onClick={isMobile && this.props.onMobileMenuClose ? this.props.onMobileMenuClose : undefined}
+        >
           <Text
             animation={{ animate: animateText }}
             audio={{ silent: !animateText }}
@@ -222,7 +235,13 @@ class Component extends React.PureComponent {
           </Text>
         </Link>
         {!isMobile && <b className={cx(classes.item, classes.divisor)}>|</b>}
-        <Link href='https://www.linkedin.com/in/nikolai-nossulenko' target='_blank' rel='noopener noreferrer' {...linkProps}>
+        <Link
+          href='https://www.linkedin.com/in/nikolai-nossulenko'
+          target='_blank'
+          rel='noopener noreferrer'
+          {...linkProps}
+          onClick={isMobile && this.props.onMobileMenuClose ? this.props.onMobileMenuClose : undefined}
+        >
           <Text
             animation={{ animate: animateText }}
             audio={{ silent: !animateText }}

@@ -10,6 +10,7 @@ coverage
 nbproject
 .next
 dist
+arwser
 
 *.log
 *.pid

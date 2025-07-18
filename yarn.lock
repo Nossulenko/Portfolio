@@ -10,33 +10,39 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@arwes/animated@^1.0.0-alpha.20", "@arwes/animated@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/animated/-/animated-1.0.0-alpha.23.tgz"
-  integrity sha512-eGtDlCZbi9KqDbu9nrnEBZ6h4EG+CvaA1Ig2bwkV5NCPypN7ukFrAbIxu8wMsZmg1mzzFpfrvcL+HbdXx/HjLA==
+"@arwes/animated@^1.0.0-alpha.23", "@arwes/animated@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/animated/-/animated-1.0.0-next.25020502.tgz"
+  integrity sha512-MCcbapmTP2RPMPXTI3hPivpemPaOp7nnJfXda4biF+jwceF46dm68OBR8Nd9LXEDp6spLcvO9VIDqLX0ZW6pfQ==
   dependencies:
-    tslib "^2.3.1"
+    "@arwes/animator" "^1.0.0-next.25020502"
+    csstype "3"
+    tslib "2"
 
-"@arwes/animator@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/animator/-/animator-1.0.0-alpha.23.tgz"
-  integrity sha512-IyzJkZVTYaAs6YWiaoep0UUqQH0He3gZB+yzlimKEwJF/51ktesixS1eamA7uLQIcKCOU0a4A11reTPeN9GeBQ==
+"@arwes/animator@^1.0.0-alpha.23", "@arwes/animator@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/animator/-/animator-1.0.0-next.25020502.tgz"
+  integrity sha512-YM83CDFHbXDRCwDkzjJ+GxBURIum9XT58x3ApgL9i9Ob3fKXVsswg/llAIDM1J5dqErmFPRcdKP1SWKN6mEKhQ==
   dependencies:
-    tslib "^2.3.1"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
 
-"@arwes/bgs@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/bgs/-/bgs-1.0.0-alpha.23.tgz"
-  integrity sha512-8ym1d/m2FgIoF/MpsKhag1cRjMs4J48F7DiSb5ulmGYxqeQVTyKRKZR08NzmuzkZn9EUhau2FZnLCKJQtTEmMQ==
+"@arwes/bgs@^1.0.0-alpha.23", "@arwes/bgs@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/bgs/-/bgs-1.0.0-next.25020502.tgz"
+  integrity sha512-cvhy/mmaLGXXogtZwORYU532J7tw5bBFPjYdXnyEo+kcPbTmxAtfuo+bNaCrrx4xdroSdz2Jtuy1dwRNor/Ieg==
   dependencies:
-    tslib "^2.3.1"
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/animator" "^1.0.0-next.25020502"
+    tslib "2"
 
-"@arwes/bleeps@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/bleeps/-/bleeps-1.0.0-alpha.23.tgz"
-  integrity sha512-1kHImfXToL4kMay9Mb3CmBNNa4ELbJMdV0qL/uc3QjjiU9jiBkf4Ulr4rmIyK5tfcuUK4BtVd+eLmYEKRyTy7A==
+"@arwes/bleeps@^1.0.0-alpha.23", "@arwes/bleeps@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/bleeps/-/bleeps-1.0.0-next.25020502.tgz"
+  integrity sha512-AqcuD6e0K8m+CuM1zLnoY6FdcMiyV5hhN8LtHSdJXIsU06mE8/q5DA20TYrjBNbaFabAt095pfHvkgkBLYTi5A==
   dependencies:
-    tslib "^2.3.1"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
 
 "@arwes/core@^1.0.0-alpha.23":
   version "1.0.0-alpha.23"
@@ -46,20 +52,127 @@
     csstype "^3.0.11"
     tslib "^2.3.1"
 
-"@arwes/frames@^1.0.0-alpha.20", "@arwes/frames@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/frames/-/frames-1.0.0-alpha.23.tgz"
-  integrity sha512-EstcYXHzR6Fefu8cvvfJ9I2+ncZTfvklWri0zx4JIUksc0G+ouoFogDZfNH68cNoBs/JBNFNe4Q/ICMOVpG3ug==
+"@arwes/frames@^1.0.0-alpha.20", "@arwes/frames@^1.0.0-alpha.23", "@arwes/frames@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/frames/-/frames-1.0.0-next.25020502.tgz"
+  integrity sha512-/dh2OklvHlUT8lnP9C9CkBxBI1pDUTWcLP0vxYjI0QJzC+B6ucD8x9kNsJj9MxYuIw4/jkvBnmJZhkNyCwyd4A==
   dependencies:
-    csstype "^3.1.1"
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    csstype "3"
+    tslib "2"
+
+"@arwes/react-animated@^1.0.0-alpha.23":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-animated/-/react-animated-1.0.0-next.25020502.tgz"
+  integrity sha512-d3QChWm+bYHai2tr63xTJ1Dp8zCgObOjbGE8Id6o6Tj1ImRodUtytC2I/zmIfzwhkaWANajy2OAbshEtBRO0Qw==
+  dependencies:
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/animator" "^1.0.0-next.25020502"
+    "@arwes/react-animator" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-animator@^1.0.0-alpha.23", "@arwes/react-animator@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-animator/-/react-animator-1.0.0-next.25020502.tgz"
+  integrity sha512-msOfTeBhizCWmKi7UsH76n3pjwbJtpaaB3oW/BKK3j8SAw5ViL8WyKaj45WmWNVUKQhzL8yoR4WqnGi4WonmkQ==
+  dependencies:
+    "@arwes/animator" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-bgs@^1.0.0-alpha.23":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-bgs/-/react-bgs-1.0.0-next.25020502.tgz"
+  integrity sha512-LplJbcL4tQchCjmrUNxn241tsUcsjn/9tFwK8hUFDe5WWf1OTCIBYyK8qdlLK157QMl9eCGx/ATJbYB4RZLEOA==
+  dependencies:
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/animator" "^1.0.0-next.25020502"
+    "@arwes/bgs" "^1.0.0-next.25020502"
+    "@arwes/react-animator" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-bleeps@^1.0.0-alpha.23", "@arwes/react-bleeps@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-bleeps/-/react-bleeps-1.0.0-next.25020502.tgz"
+  integrity sha512-3qNJA3mxYGP1muxKQQuOuvDdQlgPXv/8fTNqzMbOgi2nOLL/us+Cdn1sfLw6wNHOKzBP7npALfmEwgYKdNnqoA==
+  dependencies:
+    "@arwes/bleeps" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-core@^1.0.0-alpha.23":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-core/-/react-core-1.0.0-next.25020502.tgz"
+  integrity sha512-3nPOVrZnks9g28PVDn+TrYWT/nxK4Sf84iCWUJ/rSWAoPnmr1b+8nMHSsc+iQ823VD+jVGH1q/zOrkTx1EIhHQ==
+  dependencies:
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/animator" "^1.0.0-next.25020502"
+    "@arwes/bleeps" "^1.0.0-next.25020502"
+    "@arwes/react-animator" "^1.0.0-next.25020502"
+    "@arwes/react-bleeps" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-frames@^1.0.0-alpha.23":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-frames/-/react-frames-1.0.0-next.25020502.tgz"
+  integrity sha512-cDeVqgLFpRcS3IVW/gdCEE8uRAiykLyqy2b5bYxmgxXuwRtXsFtlHv560zjHmvX52V8EbIQfR92SeKBp+LNcBA==
+  dependencies:
+    "@arwes/frames" "^1.0.0-next.25020502"
+    "@arwes/react-animator" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-text@^1.0.0-alpha.23":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-text/-/react-text-1.0.0-next.25020502.tgz"
+  integrity sha512-9EWiTdHea7KMVRLwZJiE/FHdDgRWNG699A7sqcxWEkLVFByoccPEOk2cHaAJhDkEV2PMBl7iwd9QSN6Ze11jEw==
+  dependencies:
+    "@arwes/animator" "^1.0.0-next.25020502"
+    "@arwes/react-animator" "^1.0.0-next.25020502"
+    "@arwes/react-tools" "^1.0.0-next.25020502"
+    "@arwes/text" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
+
+"@arwes/react-tools@^1.0.0-alpha.23", "@arwes/react-tools@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/react-tools/-/react-tools-1.0.0-next.25020502.tgz"
+  integrity sha512-Kr7HpyX8h50SqluZTtugHnRG2MNpHWSwSTuUjWCuNw1FwcVpClEVrP7RPs8MbM5EZDZ4Zzn7G4ftgX+FDfJlkQ==
+  dependencies:
+    tslib "2"
+
+"@arwes/react@^1.0.0-alpha.23":
+  version "1.0.0-alpha.23"
+  resolved "https://registry.npmjs.org/@arwes/react/-/react-1.0.0-alpha.23.tgz"
+  integrity sha512-PpGUI8ukNNSQ7DK75pLlY0qlYaNMfoTg6LJeqLq0FSbfKdDDOMRqpE3bWBQZb7l+mM753WorYvPIe4GbFVEnAw==
+  dependencies:
+    "@arwes/react-animated" "^1.0.0-alpha.23"
+    "@arwes/react-animator" "^1.0.0-alpha.23"
+    "@arwes/react-bgs" "^1.0.0-alpha.23"
+    "@arwes/react-bleeps" "^1.0.0-alpha.23"
+    "@arwes/react-core" "^1.0.0-alpha.23"
+    "@arwes/react-frames" "^1.0.0-alpha.23"
+    "@arwes/react-text" "^1.0.0-alpha.23"
+    "@arwes/react-tools" "^1.0.0-alpha.23"
+    arwes "^1.0.0-alpha.23"
     tslib "^2.3.1"
 
-"@arwes/text@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/text/-/text-1.0.0-alpha.23.tgz"
-  integrity sha512-6USePe8dfdHGpMGTjnIdK2q781HdPIWHi33QBX8WmPzukeZo/8mAxwTQTTN/amTU1QoxqEa+oTkCLt4QIC2rYA==
+"@arwes/text@^1.0.0-alpha.23", "@arwes/text@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/text/-/text-1.0.0-next.25020502.tgz"
+  integrity sha512-oL1aemeLFWIZgrpS2FtHmUq5JxxU7A9pVRKEoBxDtEICyT94kHoADbvhN4aJ7AXYJwvECMrmsAPuw7/27bXJvA==
   dependencies:
-    tslib "^2.3.1"
+    "@arwes/animated" "^1.0.0-next.25020502"
+    "@arwes/tools" "^1.0.0-next.25020502"
+    tslib "2"
 
 "@arwes/theme@^1.0.0-alpha.20", "@arwes/theme@^1.0.0-alpha.23":
   version "1.0.0-alpha.23"
@@ -69,12 +182,12 @@
     csstype "^3.0.11"
     tslib "^2.3.1"
 
-"@arwes/tools@^1.0.0-alpha.20", "@arwes/tools@^1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.npmjs.org/@arwes/tools/-/tools-1.0.0-alpha.23.tgz"
-  integrity sha512-bywCbC2e7fD5jRD65rmlZK9q0gYLzhZu1RR1DMOp3IG5KBlUAOROO4D4mPR566e0ELw43yWoHEBjWsb5tfSbOA==
+"@arwes/tools@^1.0.0-alpha.20", "@arwes/tools@^1.0.0-alpha.23", "@arwes/tools@^1.0.0-next.25020502":
+  version "1.0.0-next.25020502"
+  resolved "https://registry.npmjs.org/@arwes/tools/-/tools-1.0.0-next.25020502.tgz"
+  integrity sha512-RMo4b6K3xKdsZxdrvE8MxG4XCy+1HlURxVWoFnk1yjllz9e3Ng3FkvsMau8S758zfkm8/SFCSJE1bBnTOj1ukg==
   dependencies:
-    tslib "^2.3.1"
+    tslib "2"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.22.13":
   version "7.22.13"
@@ -1870,7 +1983,7 @@ css-vendor@^2.0.8:
     "@babel/runtime" "^7.8.3"
     is-in-browser "^1.0.2"
 
-csstype@^3.0.11, csstype@^3.0.2, csstype@^3.1.1:
+csstype@^3.0.11, csstype@^3.0.2, csstype@3:
   version "3.1.2"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
@@ -4577,6 +4690,11 @@ tslib@^2.1.0:
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tslib@^2.3.1:
+  version "2.6.2"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+
+tslib@2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
