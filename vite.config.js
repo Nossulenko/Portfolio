@@ -20,6 +20,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
+      external: ['motion'],
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
