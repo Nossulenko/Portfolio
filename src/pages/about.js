@@ -196,7 +196,7 @@ const About = () => {
   const [showAudioPopup, setShowAudioPopup] = React.useState(false);
   const [showChatPopup, setShowChatPopup] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const [audio] = React.useState(new Audio('/sounds/nikolai-intro.wav'));
+  const [audio] = React.useState(new Audio('/sounds/nikolai-intro.mp3'));
   const [audioData, setAudioData] = React.useState(new Array(50).fill(4));
   const [chatMessages, setChatMessages] = React.useState([
     { id: 1, sender: 'ai', text: "Hi! I'm Nikolai's AI clone. How can I help you today?", timestamp: new Date() }
@@ -219,7 +219,7 @@ const About = () => {
         analyserRef.current.fftSize = 256;
         analyserRef.current.smoothingTimeConstant = 0.8;
 
-                const response = await fetch('/sounds/nikolai-intro.wav');
+                const response = await fetch('/sounds/nikolai-intro.mp3');
         const arrayBuffer = await response.arrayBuffer();
         audioBufferRef.current = await audioContextRef.current.decodeAudioData(arrayBuffer);
 
@@ -502,9 +502,9 @@ const About = () => {
               setShowChatPopup(true);
             }}
             style={{
-              background: 'transparent',
-              color: '#DAA520',
-              border: '2px solid #DAA520',
+              background: '#DAA520',
+              color: '#181A20',
+              border: 'none',
               borderRadius: '8px',
               padding: '12px 20px',
               fontSize: '14px',
@@ -515,16 +515,12 @@ const About = () => {
               boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = '#DAA520';
-              e.target.style.color = '#181A20';
+              e.target.style.background = '#B8860B';
               e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = 'transparent';
-              e.target.style.color = '#DAA520';
+              e.target.style.background = '#DAA520';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
             }}
           >
             Chat with Nikolai
@@ -536,9 +532,9 @@ const About = () => {
               setShowAudioPopup(true);
             }}
             style={{
-              background: 'transparent',
-              color: '#DAA520',
-              border: '2px solid #DAA520',
+              background: '#DAA520',
+              color: '#181A20',
+              border: 'none',
               borderRadius: '8px',
               padding: '12px 20px',
               fontSize: '14px',
@@ -549,16 +545,12 @@ const About = () => {
               boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = '#DAA520';
-              e.target.style.color = '#181A20';
+              e.target.style.background = '#B8860B';
               e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = 'transparent';
-              e.target.style.color = '#DAA520';
+              e.target.style.background = '#DAA520';
               e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
             }}
           >
             Listen about Nikolai
