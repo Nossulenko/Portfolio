@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import babel from 'vite-plugin-babel';
 import react from '@vitejs/plugin-react';
-import { ViteImageOptimize } from 'vite-plugin-imagemin';
 
 export default defineConfig({
   define: {
@@ -17,10 +16,6 @@ export default defineConfig({
         configFile: false,
         presets: ['@babel/preset-react']
       }
-    }),
-    ViteImageOptimize({
-      test: /\.(jpe?g|png|gif|tiff|webp|svg)$/i,
-      includePublicDir: true
     })
   ],
   build: {
