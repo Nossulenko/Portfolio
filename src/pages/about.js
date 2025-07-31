@@ -375,6 +375,41 @@ const About = () => {
             Connect on LinkedIn
           </a>
         </SidebarCard>
+        <SidebarCard title='LISTEN ABOUT NIKOLAI'>
+          <button
+            onClick={() => {
+              // Add your audio functionality here
+              console.log('Listen about Nikolai clicked');
+            }}
+            style={{
+              background: 'transparent',
+              color: '#DAA520',
+              border: '2px solid #DAA520',
+              borderRadius: '8px',
+              padding: '12px 20px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#DAA520';
+              e.target.style.color = '#181A20';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'transparent';
+              e.target.style.color = '#DAA520';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+            }}
+          >
+            Listen about Nikolai
+          </button>
+        </SidebarCard>
       </div>
     </div>
 
