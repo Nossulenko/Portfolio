@@ -8,9 +8,13 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
 
-dotenv.config();
-
+// Load environment variables based on NODE_ENV
 const env = process.env.NODE_ENV || 'development';
+if (env === 'development') {
+  dotenv.config({ path: '.env.development' });
+} else {
+  dotenv.config({ path: '.env.production' });
+}
 const port = process.env.PORT || 14000;
 const host = process.env.HOST || '0.0.0.0';
 
