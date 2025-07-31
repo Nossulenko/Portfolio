@@ -193,6 +193,101 @@ const employmentHistory = [
 const About = () => {
   const [showFullProfile, setShowFullProfile] = React.useState(false);
   const [showDownloadForm, setShowDownloadForm] = React.useState(false);
+  const [showAudioPopup, setShowAudioPopup] = React.useState(false);
+  const [showChatPopup, setShowChatPopup] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [audio] = React.useState(new Audio('/sounds/nikolai-intro.wav'));
+  const [audioData, setAudioData] = React.useState(new Array(50).fill(4));
+  const [chatMessages, setChatMessages] = React.useState([
+    { id: 1, sender: 'ai', text: "Hi! I'm Nikolai's AI clone. How can I help you today?", timestamp: new Date() }
+  ]);
+  const [newMessage, setNewMessage] = React.useState('');
+  const [isTyping, setIsTyping] = React.useState(false);
+  const audioContextRef = React.useRef(null);
+  const analyserRef = React.useRef(null);
+  const sourceRef = React.useRef(null);
+  const audioBufferRef = React.useRef(null);
+  const startTimeRef = React.useRef(0);
+  const pausedAtRef = React.useRef(0);
+
+    // Initialize Web Audio API
+  React.useEffect(() => {
+    const initAudio = async () => {
+      try {
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        analyserRef.current = audioContextRef.current.createAnalyser();
+        analyserRef.current.fftSize = 256;
+        analyserRef.current.smoothingTimeConstant = 0.8;
+
+                const response = await fetch('/sounds/nikolai-intro.wav');
+        const arrayBuffer = await response.arrayBuffer();
+        audioBufferRef.current = await audioContextRef.current.decodeAudioData(arrayBuffer);
+
+        sourceRef.current = audioContextRef.current.createBufferSource();
+        sourceRef.current.buffer = audioBufferRef.current;
+        sourceRef.current.connect(analyserRef.current);
+        analyserRef.current.connect(audioContextRef.current.destination);
+      } catch (error) {
+        console.error('Error initializing audio:', error);
+      }
+    };
+
+    initAudio();
+
+    return () => {
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+      }
+    };
+  }, []);
+
+  // Audio analysis loop
+  React.useEffect(() => {
+    if (!isPlaying || !analyserRef.current) return;
+
+    const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
+    const updateAudioData = () => {
+      if (!isPlaying || !analyserRef.current) return;
+
+      analyserRef.current.getByteFrequencyData(dataArray);
+
+      // Convert frequency data to waveform bars
+      const newAudioData = [];
+      const step = Math.floor(dataArray.length / 50);
+
+      for (let i = 0; i < 50; i++) {
+        const start = i * step;
+        const end = start + step;
+        let sum = 0;
+        for (let j = start; j < end && j < dataArray.length; j++) {
+          sum += dataArray[j];
+        }
+        const average = sum / step;
+        // Convert to height (4px to 60px)
+        const height = Math.max(4, (average / 255) * 60);
+        newAudioData.push(height);
+      }
+
+      setAudioData(newAudioData);
+      requestAnimationFrame(updateAudioData);
+    };
+
+    updateAudioData();
+  }, [isPlaying]);
+
+  // Add audio event listeners
+  React.useEffect(() => {
+    audio.addEventListener('ended', () => {
+      setIsPlaying(false);
+    });
+
+    return () => {
+      audio.removeEventListener('ended', () => {
+        setIsPlaying(false);
+      });
+    };
+  }, [audio]);
+
   const [formData, setFormData] = React.useState({
     firstName: '',
     lastName: '',
@@ -255,6 +350,67 @@ const About = () => {
       ...prev,
       [field]: value
     }));
+  };
+
+    const handleSendMessage = async () => {
+    if (!newMessage.trim() || isTyping) return;
+
+    const userMessage = {
+      id: Date.now(),
+      sender: 'user',
+      text: newMessage.trim(),
+      timestamp: new Date()
+    };
+
+    setChatMessages(prev => [...prev, userMessage]);
+    setNewMessage('');
+    setIsTyping(true);
+
+    try {
+      // Call your AI API endpoint
+      const response = await fetch('http://localhost:14000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: newMessage.trim(),
+          conversationHistory: chatMessages.map(msg => ({
+            role: msg.sender === 'user' ? 'user' : 'assistant',
+            content: msg.text
+          }))
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get AI response');
+      }
+
+      const data = await response.json();
+
+      const aiMessage = {
+        id: Date.now() + 1,
+        sender: 'ai',
+        text: data.response,
+        timestamp: new Date()
+      };
+
+      setChatMessages(prev => [...prev, aiMessage]);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+
+      // Fallback response
+      const fallbackMessage = {
+        id: Date.now() + 1,
+        sender: 'ai',
+        text: "I apologize, but I'm having trouble connecting to my AI system right now. Please try again in a moment.",
+        timestamp: new Date()
+      };
+
+      setChatMessages(prev => [...prev, fallbackMessage]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   return (
@@ -340,15 +496,15 @@ const About = () => {
             Download PDF Resume
           </button>
         </SidebarCard>
-        <SidebarCard title='CONNECT ON LINKEDIN'>
-          <a
-            href="https://www.linkedin.com/in/nikolai-nossulenko"
-            target="_blank"
-            rel="noopener noreferrer"
+        <SidebarCard title='CHAT WITH NIKOLAI'>
+          <button
+            onClick={() => {
+              setShowChatPopup(true);
+            }}
             style={{
-              background: '#181A20',
+              background: 'transparent',
               color: '#DAA520',
-              border: '1px solid #DAA520',
+              border: '2px solid #DAA520',
               borderRadius: '8px',
               padding: '12px 20px',
               fontSize: '14px',
@@ -356,30 +512,28 @@ const About = () => {
               cursor: 'pointer',
               width: '100%',
               transition: 'all 0.2s ease',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              textDecoration: 'none',
-              display: 'block',
-              textAlign: 'center'
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
             }}
             onMouseEnter={(e) => {
               e.target.style.background = '#DAA520';
               e.target.style.color = '#181A20';
               e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.background = '#181A20';
+              e.target.style.background = 'transparent';
               e.target.style.color = '#DAA520';
               e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
             }}
           >
-            Connect on LinkedIn
-          </a>
+            Chat with Nikolai
+          </button>
         </SidebarCard>
         <SidebarCard title='LISTEN ABOUT NIKOLAI'>
           <button
             onClick={() => {
-              // Add your audio functionality here
-              console.log('Listen about Nikolai clicked');
+              setShowAudioPopup(true);
             }}
             style={{
               background: 'transparent',
@@ -500,6 +654,328 @@ const About = () => {
               Cancel
             </button>
           </form>
+        </div>
+      </div>
+    )}
+
+    {/* Audio Popup Modal */}
+    {showAudioPopup && (
+      <div className="modal-overlay">
+        <div className="modal-content" style={{ maxWidth: '500px' }}>
+          <h2 style={{ color: '#DAA520', marginBottom: '20px', textAlign: 'center' }}>
+            Listen About Nikolai
+          </h2>
+
+                    {/* Audio Waveform Visualization */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '30px',
+            height: '120px'
+          }}>
+            <div style={{
+              position: 'relative',
+              width: '300px',
+              height: '80px',
+              background: '#181A20',
+              borderRadius: '10px',
+              border: '2px solid #DAA520',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {/* Audio Waveform Bars */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '2px',
+                height: '60px'
+              }}>
+                {audioData.map((height, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: '4px',
+                      background: '#DAA520',
+                      borderRadius: '2px',
+                      height: `${height}px`,
+                      transition: 'height 0.1s ease'
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Audio Controls */}
+          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                                                <button
+              onClick={async () => {
+                if (!isPlaying) {
+                  try {
+                    if (audioContextRef.current && audioBufferRef.current) {
+                      // Resume audio context if suspended
+                      if (audioContextRef.current.state === 'suspended') {
+                        await audioContextRef.current.resume();
+                      }
+
+                      // Create new audio source
+                      sourceRef.current = audioContextRef.current.createBufferSource();
+                      sourceRef.current.buffer = audioBufferRef.current;
+                      sourceRef.current.connect(analyserRef.current);
+
+                      // Calculate start time (resume from where we paused)
+                      const currentTime = audioContextRef.current.currentTime;
+                      const offset = pausedAtRef.current > 0 ? pausedAtRef.current : 0;
+
+                      sourceRef.current.start(0, offset);
+                      startTimeRef.current = currentTime - offset;
+                      setIsPlaying(true);
+                    } else {
+                      // Fallback to HTML5 audio
+                      audio.play().then(() => {
+                        setIsPlaying(true);
+                      }).catch(error => {
+                        console.error('Error playing audio:', error);
+                      });
+                    }
+                  } catch (error) {
+                    console.error('Error playing audio:', error);
+                  }
+                } else {
+                  try {
+                    if (sourceRef.current) {
+                      // Calculate current position before stopping
+                      const currentTime = audioContextRef.current.currentTime;
+                      pausedAtRef.current = currentTime - startTimeRef.current;
+
+                      sourceRef.current.stop();
+                      sourceRef.current = null;
+                    } else {
+                      audio.pause();
+                    }
+                    setIsPlaying(false);
+                    setAudioData(new Array(50).fill(4));
+                  } catch (error) {
+                    console.error('Error stopping audio:', error);
+                  }
+                }
+              }}
+              style={{
+                background: isPlaying ? '#B8860B' : '#DAA520',
+                color: '#181A20',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '12px 24px',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+              }}
+            >
+              {isPlaying ? 'Pause' : 'Play'}
+            </button>
+          </div>
+
+          {/* Close Button */}
+                              <button
+            onClick={() => {
+              if (sourceRef.current) {
+                sourceRef.current.stop();
+                sourceRef.current = null;
+              } else {
+                audio.pause();
+                audio.currentTime = 0;
+              }
+              // Reset pause position
+              pausedAtRef.current = 0;
+              startTimeRef.current = 0;
+              setShowAudioPopup(false);
+              setIsPlaying(false);
+              setAudioData(new Array(50).fill(4));
+            }}
+            style={{
+              background: '#181A20',
+              color: '#DAA520',
+              border: '1px solid #DAA520',
+              borderRadius: '8px',
+              padding: '12px 20px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#DAA520';
+              e.target.style.color = '#181A20';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#181A20';
+              e.target.style.color = '#DAA520';
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    )}
+
+    {/* Chat Popup Modal */}
+    {showChatPopup && (
+      <div className="modal-overlay">
+        <div className="modal-content" style={{ maxWidth: '600px', height: '500px', display: 'flex', flexDirection: 'column' }}>
+          <h2 style={{ color: '#DAA520', marginBottom: '20px', textAlign: 'center' }}>
+            Chat with Nikolai's AI Clone
+          </h2>
+
+          {/* Chat Messages */}
+          <div style={{
+            flex: 1,
+            overflowY: 'auto',
+            marginBottom: '20px',
+            padding: '10px',
+            background: 'rgba(24, 26, 32, 0.3)',
+            borderRadius: '8px',
+            border: '1px solid rgba(218, 165, 32, 0.2)'
+          }}>
+            {chatMessages.map((message) => (
+              <div
+                key={message.id}
+                style={{
+                  marginBottom: '15px',
+                  display: 'flex',
+                  justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start'
+                }}
+              >
+                <div style={{
+                  maxWidth: '70%',
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  background: message.sender === 'user' ? '#DAA520' : 'rgba(218, 165, 32, 0.1)',
+                  color: message.sender === 'user' ? '#181A20' : '#DAA520',
+                  border: message.sender === 'user' ? 'none' : '1px solid rgba(218, 165, 32, 0.3)',
+                  fontSize: '14px',
+                  lineHeight: '1.4'
+                }}>
+                  {message.text}
+                  <div style={{
+                    fontSize: '11px',
+                    opacity: 0.7,
+                    marginTop: '4px'
+                  }}>
+                    {message.timestamp.toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+            ))}
+            {isTyping && (
+              <div style={{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                marginBottom: '15px'
+              }}>
+                <div style={{
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  background: 'rgba(218, 165, 32, 0.1)',
+                  color: '#DAA520',
+                  border: '1px solid rgba(218, 165, 32, 0.3)',
+                  fontSize: '14px'
+                }}>
+                  <span style={{ animation: 'typing 1.5s infinite' }}>AI is typing...</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Message Input */}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && newMessage.trim()) {
+                  handleSendMessage();
+                }
+              }}
+              placeholder="Type your message..."
+              style={{
+                flex: 1,
+                padding: '12px 16px',
+                border: '1px solid rgba(218, 165, 32, 0.3)',
+                borderRadius: '8px',
+                background: 'rgba(24, 26, 32, 0.3)',
+                color: '#e0e0e0',
+                fontSize: '14px'
+              }}
+            />
+            <button
+              onClick={handleSendMessage}
+              disabled={!newMessage.trim() || isTyping}
+              style={{
+                padding: '12px 20px',
+                background: newMessage.trim() && !isTyping ? '#DAA520' : 'rgba(218, 165, 32, 0.3)',
+                color: newMessage.trim() && !isTyping ? '#181A20' : 'rgba(218, 165, 32, 0.5)',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                cursor: newMessage.trim() && !isTyping ? 'pointer' : 'not-allowed',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Send
+            </button>
+          </div>
+
+          {/* Close Button */}
+          <button
+            onClick={() => {
+              setShowChatPopup(false);
+              setChatMessages([
+                { id: 1, sender: 'ai', text: "Hi! I'm Nikolai's AI clone. How can I help you today?", timestamp: new Date() }
+              ]);
+              setNewMessage('');
+              setIsTyping(false);
+            }}
+            style={{
+              background: '#181A20',
+              color: '#DAA520',
+              border: '1px solid #DAA520',
+              borderRadius: '8px',
+              padding: '12px 20px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              width: '100%',
+              transition: 'all 0.2s ease',
+              marginTop: '15px'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#DAA520';
+              e.target.style.color = '#181A20';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#181A20';
+              e.target.style.color = '#DAA520';
+            }}
+          >
+            Close Chat
+          </button>
         </div>
       </div>
     )}

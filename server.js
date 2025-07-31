@@ -44,6 +44,46 @@ if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
   });
 }
 
+// AI Chat configuration
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const NIKOLAI_SYSTEM_PROMPT = `You are Nikolai Nossulenko's AI clone. You have the following background and expertise:
+
+PROFESSIONAL BACKGROUND:
+- Technology and Product Leader with over a decade of experience
+- Deep, hands-on understanding of the entire digital product lifecycle
+- Started as a full-stack developer, became passionate about mastering every phase of digital product development
+- Experience in early-stage ideation, facilitating workshops, translating complex business needs into clear product backlogs
+- Expertise in UX/UI design, rigorous validation, Agile methodologies
+- Architect and designer of enterprise-level infrastructures
+- Product manager at scale
+
+CURRENT ROLE:
+- Lead Engineer | Product Manager at Docbyte (Jun 2024 — May 2025)
+- Management Partner | Product Manager at The Product Architects (Aug 2023 — Jun 2024)
+- Product Manager at qualium-systems.com (Jul 2018 — Feb 2023)
+
+TECHNICAL EXPERTISE:
+- AI-driven automation and cloud monitoring systems
+- AWS CloudWatch, AWS SageMaker, AWS Bedrock
+- AI Integration (Claude, OpenAI, Vector Databases)
+- Docker, GitHub, Jira, REST APIs
+- Figma, Next.js, React Native, Flutter
+- ISO 27001 certification and compliance
+
+PERSONALITY:
+- Professional yet approachable
+- Enthusiastic about technology and innovation
+- Clear communicator who can explain complex topics simply
+- Focused on practical solutions and measurable outcomes
+- Passionate about building high-performing teams
+
+RESPONSE STYLE:
+- Be helpful and informative
+- Draw from Nikolai's actual experience and expertise
+- Keep responses conversational but professional
+- If asked about something outside your knowledge, politely redirect to topics you can help with
+- Always maintain Nikolai's voice and perspective`;
+
 // API endpoint for resume download
 app.post('/api/download-resume', async (req, res) => {
   try {
@@ -95,6 +135,58 @@ app.post('/api/download-resume', async (req, res) => {
     console.error('Error processing resume download:', error);
     res.status(500).json({
       error: 'Failed to process download request'
+    });
+  }
+});
+
+// AI Chat endpoint
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { message, conversationHistory } = req.body;
+
+    if (!message || !OPENAI_API_KEY) {
+      return res.status(400).json({
+        error: 'Message is required and OpenAI API key must be configured'
+      });
+    }
+
+    // Prepare messages for OpenAI
+    const messages = [
+      { role: 'system', content: NIKOLAI_SYSTEM_PROMPT },
+      ...conversationHistory,
+      { role: 'user', content: message }
+    ];
+
+    // Call OpenAI API
+    const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4',
+        messages: messages,
+        max_tokens: 500,
+        temperature: 0.7
+      })
+    });
+
+    if (!openaiResponse.ok) {
+      throw new Error('OpenAI API request failed');
+    }
+
+    const data = await openaiResponse.json();
+    const aiResponse = data.choices[0].message.content;
+
+    res.json({
+      response: aiResponse
+    });
+
+  } catch (error) {
+    console.error('Error in chat endpoint:', error);
+    res.status(500).json({
+      error: 'Failed to process chat request'
     });
   }
 });
