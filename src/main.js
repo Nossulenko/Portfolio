@@ -22,12 +22,12 @@ export const Main = () => {
       <ThemeProvider theme={theme}>
         <Routes>
           <Route element={<Template location={location} />}>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/skills' element={<Skills />} />
+            <Route path='/' element={<UnderConstruction />} />
+            <Route path='/about' element={<UnderConstruction />} />
+            <Route path='/skills' element={<UnderConstruction />} />
             <Route path='/recommendations' element={<UnderConstruction />} />
             <Route path='/under-construction' element={<UnderConstruction />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<UnderConstruction />} />
           </Route>
         </Routes>
       </ThemeProvider>

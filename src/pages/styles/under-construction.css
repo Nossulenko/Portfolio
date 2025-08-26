@@ -7,17 +7,23 @@
   color: #ffffff;
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  position: relative;
 }
 
 .construction-content {
   text-align: center;
   max-width: 600px;
+  width: 90%;
   padding: 40px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .construction-icon {
@@ -46,11 +52,17 @@
   margin-bottom: 30px;
 }
 
-.back-home-btn {
+.construction-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.contact-btn, .linkedin-btn {
   display: inline-block;
   padding: 15px 30px;
-  background: #DAA520;
-  color: #181A20;
   text-decoration: none;
   border-radius: 10px;
   font-weight: bold;
@@ -60,10 +72,29 @@
   cursor: pointer;
 }
 
-.back-home-btn:hover {
-  background: #B8860B;
+.contact-btn {
+  background: #DAA520;
+  color: #181A20;
+}
+
+.linkedin-btn {
+  background: #0077B5;
+  color: #ffffff;
+}
+
+.contact-btn:hover, .linkedin-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-btn:hover {
+  background: #B8860B;
   box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+}
+
+.linkedin-btn:hover {
+  background: #005885;
+  box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
 }
 
 @keyframes bounce {
@@ -82,18 +113,24 @@
 @media (max-width: 768px) {
   .construction-content {
     padding: 30px 20px;
-    margin: 20px;
+    width: 95%;
+    margin: 0;
   }
-
+  
   .construction-content h1 {
     font-size: 2rem;
   }
-
+  
   .construction-content p {
     font-size: 1rem;
   }
-
+  
   .construction-icon {
     font-size: 3rem;
+  }
+  
+  .construction-links {
+    flex-direction: column;
+    gap: 15px;
   }
 }

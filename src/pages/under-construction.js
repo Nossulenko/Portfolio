@@ -7,14 +7,19 @@ const UnderConstruction = () => {
     <div className="under-construction">
       <div className="construction-content">
         <div className="construction-icon">🚧</div>
-        <h1>Under Construction</h1>
-        <p>We're working hard to bring you something amazing!</p>
+        <h1>Welcome to Nikolai's Portfolio</h1>
+        <p>We're currently building something amazing for you!</p>
         <p className="construction-subtitle">
-          This page is currently being built and will be available soon.
+          This website is under construction and will be available very soon.
         </p>
-        <Link to="/" className="back-home-btn">
-          Back to Home
-        </Link>
+        <div className="construction-links">
+          <a href="mailto:nikolai@example.com" className="contact-btn">
+            Contact Me
+          </a>
+          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="linkedin-btn">
+            LinkedIn
+          </a>
+        </div>
       </div>
     </div>
   );
