@@ -7,6 +7,7 @@ import HomePage from './pages/index.js';
 import About from './pages/about.js';
 import Skills from './pages/skills.js';
 import Recommendations from './pages/recommendations.js';
+import UnderConstruction from './pages/under-construction.js';
 import NotFound from './pages/404.js';
 import { initializeAnalytics } from './tools/analytics.js';
 
@@ -24,7 +25,8 @@ export const Main = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/about' element={<About />} />
             <Route path='/skills' element={<Skills />} />
-            <Route path='/recommendations' element={<Recommendations />} />
+            <Route path='/recommendations' element={<UnderConstruction />} />
+            <Route path='/under-construction' element={<UnderConstruction />} />
             <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
