@@ -16,7 +16,7 @@ const UnderConstruction = () => {
           <a href="mailto:nikolai@example.com" className="contact-btn">
             Contact Me
           </a>
-          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="linkedin-btn">
+          <a href="https://www.linkedin.com/in/nikolai-nossulenko/" target="_blank" rel="noopener noreferrer" className="linkedin-btn">
             LinkedIn
           </a>
         </div>
