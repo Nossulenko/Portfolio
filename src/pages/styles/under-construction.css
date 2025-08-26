@@ -20,10 +20,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .construction-icon {
@@ -37,6 +33,8 @@
   margin-bottom: 20px;
   color: #DAA520;
   font-weight: bold;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .construction-content p {
@@ -44,6 +42,8 @@
   margin-bottom: 15px;
   line-height: 1.6;
   color: #cccccc;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .construction-subtitle {
@@ -116,19 +116,19 @@
     width: 95%;
     margin: 0;
   }
-  
+
   .construction-content h1 {
     font-size: 2rem;
   }
-  
+
   .construction-content p {
     font-size: 1rem;
   }
-  
+
   .construction-icon {
     font-size: 3rem;
   }
-  
+
   .construction-links {
     flex-direction: column;
     gap: 15px;
