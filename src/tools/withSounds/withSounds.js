@@ -4,6 +4,9 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import { SoundsContext } from '../../components/SoundsContext';
 
+// Global audio state
+let globalMuted = false;
+
 function withSounds () {
   return Inner => {
     class Sounds extends React.PureComponent {
@@ -21,6 +24,33 @@ function withSounds () {
       getAudio () {
         return {
           silent: false,
+          muted: globalMuted,
+          mute: () => {
+            globalMuted = true;
+            // Mute all sounds in context
+            if (this.context) {
+              Object.values(this.context).forEach(sound => {
+                if (sound && typeof sound.mute === 'function') {
+                  sound.mute();
+                }
+              });
+            }
+            // Force re-render
+            this.forceUpdate();
+          },
+          unmute: () => {
+            globalMuted = false;
+            // Unmute all sounds in context
+            if (this.context) {
+              Object.values(this.context).forEach(sound => {
+                if (sound && typeof sound.unmute === 'function') {
+                  sound.unmute();
+                }
+              });
+            }
+            // Force re-render
+            this.forceUpdate();
+          },
           ...this.props.audio
         };
       }
