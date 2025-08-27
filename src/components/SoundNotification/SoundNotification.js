@@ -40,9 +40,9 @@ class Component extends React.Component {
   handleToggleMute = () => {
     const { audio } = this.props;
     const newMutedState = !this.state.isMuted;
-    
+
     this.setState({ isMuted: newMutedState });
-    
+
     if (newMutedState) {
       audio.mute();
     } else {
@@ -84,7 +84,7 @@ class Component extends React.Component {
               </svg>
             )}
           </div>
-          
+
           <div className={classes.content}>
             <div className={classes.title}>This website uses sounds</div>
             <div className={classes.description}>
