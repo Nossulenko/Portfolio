@@ -1,1 +1,0 @@
-export { createThemeColor } from './createThemeColor';
