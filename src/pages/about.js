@@ -20,121 +20,110 @@ const nativeStyle = {
 
 const employmentHistory = [
   {
-    title: 'Lead Engineer | Product Manager',
-    company: <a href="https://docbyte.com/" target="_blank" rel="noopener noreferrer">Docbyte</a>,
+    title: 'Lead Engineer',
+    company: <a href='https://docbyte.com/' target='_blank' rel='noopener noreferrer'>Docbyte</a>,
     period: 'Jun 2024 — May 2025',
     location: 'Gent',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Directed technical strategy and product delivery for Europe's only Qualified Trust Service Provider (QTSP), ensuring compliance with EU trust and identity standards in a highly regulated SaaS environment.</li>
-        <li>Pioneered AI-driven automation and cloud monitoring systems using AWS CloudWatch, slashing issue resolution times for customer support teams by enhancing real-time infrastructure visibility.</li>
-        <li>Led cross-functional teams to launch new cloud-native SaaS products from concept to market, integrating secure system design and audit-ready processes for ISO 27001 certification.</li>
-        <li>Contributed to executive decision-making in management meetings, aligning technology roadmaps with long-term business objectives for measurable impact.</li>
-        <li>Leveraged Figma for prototyping and cross-platform frameworks such as Nextjs and React native to deliver performant, scalable mobile solutions efficiently.</li>
+        <li>Directed cloud strategy and architecture refinement for a Qualified Trust Service Provider (QTSP), optimizing performance and compliance in a highly regulated SaaS environment.</li>
+        <li>Designed and optimized AWS-based architectures integrating Textract, SageMaker, Google OCR, and Terraform for automation and infrastructure-as-code.</li>
+        <li>Implemented monitoring and observability solutions with Grafana and AWS QuickSight, delivering real-time dashboards that improved incident detection and accelerated resolution times.</li>
+        <li>Coached and mentored engineering teams to adopt best practices in cloud operations, DevOps workflows, and Agile delivery, fostering efficiency and accountability.</li>
+        <li>Managed pentests and security reviews as part of compliance audits, embedding ISO 27001 audit-ready processes and secure system design.</li>
+        <li>Delivered C-level reporting on cloud initiatives, risk management, and compliance status, ensuring alignment with long-term business strategy and measurable impact.</li>
       </ul>
     ),
     badges: [
-      'Agile Leadership',
-      'Product Management',
-      'Technical Strategy',
+      'Cloud Strategy',
+      'AWS Architecture',
+      'SageMaker',
+      'Textract',
+      'Terraform',
+      'Grafana',
+      'QuickSight',
+      'DevOps',
       'ISO 27001',
-      'AWS CloudWatch',
-      'AWS SageMaker',
-      'AWS Bedrock',
-      'AI Integration',
-      'Claude',
-      'OpenAI',
-      'Vector Databases (FAISS, Pinecone)',
-      'Docker',
-      'QA/QC',
-      'GitHub',
-      'Jira',
-      'REST APIs',
-      'Figma',
-      'Next.js',
-      'React Native'
+      'Security Audits',
+      'C-level Reporting'
     ]
   },
   {
-    title: 'Management Partner | Product Manager',
-    company: <a href="https://www.productarchitects.eu/" target="_blank" rel="noopener noreferrer">The Product Architects</a>,
+    title: 'Full-stack Developer',
+    company: <a href='https://www.productarchitects.eu/' target='_blank' rel='noopener noreferrer'>The Product Architects</a>,
     period: 'Aug 2023 — Jun 2024',
     location: 'Antwerp',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Spearheaded development of earlystage MVPs with a UKbased engineering team, managing the full product lifecycle from ideation through technical handover, including infrastructure design, cloud architecture, and integration of Aldriven features to accelerate market differentiation.</li>
-        <li>Ensured highquality, ontime releases by aligning crossfunctional efforts, leveraging Alassisted workflows, scalable backend design, and modern DevOps practices to optimize UX iterations and delivery sprints.</li>
-        <li>Bridged business goals with technical execution, delivering productionready solutions enhanced by custom Al model development, automation pipelines, and resilient infrastructure that consistently met client expectations and market demands.</li>
-        <li>Leveraged crossplatform mobile frameworks such as Flutter and React Native to deliver performant mobile solutions efficiently.</li>
-        <li>Figma was used extensively to design, prototype, and validate products, enabling rapid iteration and clear communication of UX/UI concepts.</li>
+        <li>Developed cloud-native MVPs with a UK-based engineering team, managing the full product lifecycle from architecture to technical handover.</li>
+        <li>Designed and implemented scalable cloud infrastructures with integrated AI-driven features, accelerating market differentiation for clients in highly competitive industries.</li>
+        <li>Ensured high-quality, on-time releases by aligning cross-functional teams, introducing AI-assisted workflows, and embedding modern DevOps and cloud automation practices.</li>
+        <li>Acted as a consultant in digital transformation projects for major airlines and airports, including Swiss Air, Lufthansa Group, and Air Astana, advising on cloud adoption, compliance, and data-driven operations.</li>
+        <li>Bridged business goals with technical execution, delivering production-ready, cloud-resilient solutions enhanced by automation pipelines, custom AI model development, and secure infrastructure.</li>
+        <li>Coached teams and stakeholders to adopt agile delivery models, fostering collaboration and efficiency across distributed teams.</li>
       </ul>
     ),
     badges: [
-      'Fractional CTO',
-      'Business Discovery',
-      'MVP Strategy',
-      'RAG Pipelines',
-      'Custom LLM Development',
-      'Claude',
-      'ChatGPT',
-      'Gemini',
-      'DeepSeek',
-      'Workflow Automation',
-      'Azure AI',
-      'Pinecone',
-      'Service Design',
-      'Product Roadmapping',
-      'Figma',
-      'V0 (Vercel)'
+      'Cloud-native MVPs',
+      'AI-driven Features',
+      'DevOps Automation',
+      'Digital Transformation',
+      'Airline Industry',
+      'Cloud Adoption',
+      'Compliance',
+      'Agile Delivery'
     ]
   },
   {
-    title: 'Product Manager',
-    company: <a href="https://www.qualium-systems.com/" target="_blank" rel="noopener noreferrer">qualium-systems.com</a>,
+    title: 'Technical Lead',
+    company: <a href='https://www.qualium-systems.com/' target='_blank' rel='noopener noreferrer'>qualium-systems.com</a>,
     period: 'Jul 2018 — Feb 2023',
     location: 'Belgium / Ukraine',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Oversaw two largescale software projects, leading a 30person team (developers, designers, QA) across web, mobile, and 3D platforms using React Native, Flutter, Node.js, and .NET, while architecting cloud infrastructure and integrating large language model (LLM)–powered features to enhance product capabilities.</li>
-        <li>Defined project scope, timelines, and budgets in an Agile Scrum environment, mitigating risks and ensuring quality through handson technical direction, infrastructure design, and alignment with key stakeholders.</li>
-        <li>Implemented DevOps pipelines, Alassisted testing workflows, and requirements traceability, driving predictable delivery and enhancing collaboration across distributed international teams.</li>
-        <li>Figma served as a core tool for designing and testing product ideas, streamlining iterations and ensuring shared understanding of user experience goals.</li>
+        <li>Oversaw two large-scale cloud software projects, leading a 30-person cross-functional team (developers, designers, QA).</li>
+        <li>Architected and optimized scalable cloud infrastructures, ensuring reliability, performance, and alignment with enterprise requirements.</li>
+        <li>Defined project scope, timelines, and budgets in an Agile Scrum environment, mitigating risks and ensuring consistent delivery through hands-on technical direction and infrastructure governance.</li>
+        <li>Implemented DevOps pipelines, monitoring, and requirements traceability, driving predictable releases and improving collaboration across distributed international teams.</li>
+        <li>Coached and mentored teams on cloud best practices, agile workflows, and secure system design, strengthening delivery discipline and efficiency.</li>
       </ul>
     ),
     badges: [
-      'Full‑Stack Development',
-      'MEAN Stack',
-      'RESTful APIs',
-      'UI/Backend Integration',
-      'Agile / Scrum',
-      'Kanban',
-      'Git & Version Control',
-      'System Scalability',
-      'Public Sector Projects',
-      'Cross‑Functional Collaboration',
-      'Performance Optimization'
+      'Cloud Infrastructure',
+      'Team Leadership',
+      'Agile Scrum',
+      'DevOps Pipelines',
+      'Monitoring',
+      'Requirements Traceability',
+      'Secure System Design'
     ]
   },
   {
-    title: 'Lead (full-stack) developer',
+    title: 'Full-stack Developer',
     company: <a href="https://carlvandevelde.be/" target="_blank" rel="noopener noreferrer">carlvandevelde.be</a>,
-    period: 'Sep 2017 — Sep 2018',
-    location: 'Schilde',
+    period: '2016 — 2018',
+    location: 'Belgium',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Designed and developed cross-platform mobile and web applications using React Native and Ionic, AngularJS, React Native, and Laravel/Vue, ensuring seamless user experiences across devices.</li>
-        <li>Built and integrated RESTful APIs with Node.js and MySQL, optimizing performance through debugging and system troubleshooting for robust digital solutions.</li>
-        <li>Focused on end-to-end delivery, maintaining high reliability and responsiveness in both frontend and backend architectures.</li>
+        <li>Designed and delivered cross-platform mobile and web applications, ensuring seamless user experiences across devices and platforms.</li>
+        <li>Built and integrated scalable RESTful APIs with Node.js and MySQL, optimizing system performance and reliability through proactive debugging and troubleshooting.</li>
+        <li>Took ownership of end-to-end delivery, ensuring high availability, responsiveness, and maintainability across both frontend and backend architectures.</li>
+        <li>Contributed to the foundation of cloud-ready applications, setting the stage for scalable deployment and long-term operational efficiency.</li>
       </ul>
     ),
     badges: [
-      'AngularJS', 'ReactJS', 'MySQL', 'Ionic', 'Laravel', 'REST APIs'
+      'Cross-platform Development',
+      'RESTful APIs',
+      'Node.js',
+      'MySQL',
+      'System Performance',
+      'Cloud-ready Applications'
     ]
   },
   {
-    title: 'Full-stack developer',
-    company: <a href="https://www.digipolisantwerpen.be/" target="_blank" rel="noopener noreferrer">digipolisantwerpen.be</a>,
-    period: 'Jul 2016 — Jul 2017',
+    title: 'Full-stack Developer',
+    company: <a href="https://digipolisantwerpen.be/" target="_blank" rel="noopener noreferrer">digipolisantwerpen.be</a>,
+    period: '2015 — 2016',
     location: 'Antwerp',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
@@ -144,17 +133,16 @@ const employmentHistory = [
       </ul>
     ),
     badges: [
-      'Full‑Stack Development',
       'MEAN Stack',
+      'MongoDB',
+      'Express',
+      'Angular',
+      'Node.js',
       'RESTful APIs',
-      'UI/Backend Integration',
-      'Agile / Scrum',
+      'Agile Scrum',
       'Kanban',
-      'Git & Version Control',
-      'System Scalability',
-      'Public Sector Projects',
-      'Cross‑Functional Collaboration',
-      'Performance Optimization'
+      'Git',
+      'Public Sector'
     ]
   },
   {
@@ -164,28 +152,23 @@ const employmentHistory = [
     location: '2000 Antwerpen',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Established a boutique consultancy delivering strategic product development and technical leadership, supporting startups and scaleups in building and scaling digital solutions with Al at their core.</li>
-        <li>Guided agile transformations and introduced advanced Alenhanced workflows, including Retrieval - Augmented Generation (RAG) systems, custom LLM model design, and automation pipelines coaching teams to adopt tools like Cursor and Alpowered CI/CD for faster, smarter development cycles.</li>
-        <li>Combined handson coding with highlevel strategy, prototyping SaaS products, architecting Aldriven infrastructures, and driving business value through innovative technology implementations such as custom model training, vector database integration, and automated data workflows.</li>
-        <li>For Hybrid applications, leveraged frameworks like Nextjs, Angular, React Native, Flutter, or lonic to deliver crossplatform solutions efficiently.</li>
-        <li>Extensive use of Figma enabled rapid prototyping, continuous validation of ideas, and clear communication of UX/UI direction.</li>
+        <li>Founded a consultancy delivering cloud-native solutions and technical leadership for startups and scale-ups.</li>
+        <li>Leading the designing and refining AWS-based architectures to ensure scalability, efficiency, and compliance.</li>
+        <li>Built AI-driven infrastructures and coached teams to adapt AI technologies into their workflows to accelerate delivery.</li>
+        <li>Advised clients on cloud adoption, compliance (ISO 27001, SOC 2), and penetration testing for audit readiness.</li>
+        <li>Supported digital transformation projects in regulated industries.</li>
       </ul>
     ),
     badges: [
-      'Fractional CTO',
-      'Product Strategy',
-      'AI‑Driven Solutions',
-      'RAG Pipelines',
-      'Custom LLM Model Design',
-      'Vector Database Integration',
-      'Workflow Automation',
-      'SaaS Prototyping',
-      'Business Discovery',
-      'Agile Transformation',
-      'CI/CD Coaching',
-      'Cloud Architecture',
-      'Technical Leadership',
-      'Innovation Management'
+      'Cloud-native Solutions',
+      'AWS Architecture',
+      'AI-driven Infrastructure',
+      'Team Coaching',
+      'ISO 27001',
+      'SOC 2',
+      'Penetration Testing',
+      'Digital Transformation',
+      'Regulated Industries'
     ]
   }
 ];
