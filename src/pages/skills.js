@@ -15,24 +15,32 @@ const highlight = {
 
 const coreSkills = [
   {
-    title: 'Team Leadership',
-    description: 'Agile/Scrum, Coaching & Mentoring, Cross-functional Collaboration'
+    title: 'Team Leadership & Collaboration',
+    description: 'Agile & Scrum facilitation (sprint planning, retrospectives, backlog refinement) | Coaching & mentoring engineers and data scientists | Driving cross-functional collaboration across product, engineering, and research teams'
   },
   {
-    title: 'Tools & Workflow',
-    description: 'Jira, Confluence, Git, CI/CD, Monitoring Dashboards'
+    title: 'Tools & Workflow Optimization',
+    description: 'Project & knowledge management: Jira, Confluence | Version control & collaboration: Git, GitHub/GitLab | CI/CD pipelines & monitoring dashboards for production reliability'
   },
   {
-    title: 'Cloud & Infrastructure',
-    description: 'AWS: SageMaker (end-to-end ML), Lambda (serverless), Textract (OCR/document processing), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI & LLMs) | Azure: AI Services, Cognitive Services, Machine Learning, Bot Service, Computer Vision, Language Understanding'
+    title: 'Cloud & Infrastructure Expertise',
+    description: 'AWS: SageMaker (end-to-end ML lifecycle), Lambda (serverless apps), Textract (OCR), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI/LLMs) | Azure: AI Services, Cognitive Services, Machine Learning, Bot Service, Computer Vision, Language Understanding'
   },
   {
-    title: 'AI/ML Ops & Automation',
-    description: 'Docker & Kubernetes (AI workload orchestration), MLflow & Kubeflow (model lifecycle), LangChain + Vector DBs (Pinecone, Weaviate, FAISS) for LLM-powered apps, RAG pipelines for AI agent memory | LLMs (OpenAI GPT, Anthropic Claude, Google Gemini), NLP (spaCy, Hugging Face Transformers, NLTK), AI Agents (LangChain, custom orchestration), Workflow Automation (Python, FastAPI, Node.js), Intelligent Monitoring Systems (CloudWatch, Grafana)'
+    title: 'AI/ML Ops & Intelligent Automation',
+    description: 'Container orchestration: Docker & Kubernetes (AI workload scaling) | ML lifecycle management: MLflow, Kubeflow | LLM ecosystems: OpenAI GPT, Anthropic Claude, Google Gemini | NLP stack: spaCy, Hugging Face Transformers, NLTK | AI agents & orchestration frameworks (LangChain, custom solutions) | Workflow automation: Python, FastAPI, NestJS | Intelligent observability: CloudWatch, Grafana'
+  },
+  {
+    title: 'Vector Databases & RAG (Retrieval-Augmented Generation)',
+    description: 'Architecture & deployment of vector databases for semantic search and AI memory | Expertise with Pinecone, Weaviate, and FAISS (indexing, retrieval optimization) | Seamless integration with LangChain and AI agents for RAG pipelines | Embedding model optimization (OpenAI, Hugging Face, custom-trained) for recall/precision trade-offs | Real-world applications: knowledge base search, document intelligence, AI chatbots with memory, intelligent monitoring'
+  },
+  {
+    title: 'Coding Patterns & Software Architecture',
+    description: 'Object-Oriented Design (SOLID principles, DRY, clean code practices) | Design patterns: Factory, Singleton, Observer, Strategy, Adapter, Builder | Event-driven and microservices architecture | Asynchronous & reactive programming (Python asyncio, NestJS async providers) | API design best practices (REST, GraphQL, gRPC) | Modular, testable, and maintainable codebases (unit testing, TDD, CI/CD integration)'
   },
   {
     title: 'Security & Compliance',
-    description: 'ISO 27001, SOC 2, Secure System Design, Risk Management, Coordinating and Managing Pentests'
+    description: 'Security frameworks: ISO 27001, SOC 2 | OWASP (application security best practices & secure coding standards) | Secure system design & risk management | Coordinating and managing penetration tests (pentests)'
   }
 ];
 
