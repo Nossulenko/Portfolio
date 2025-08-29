@@ -13,12 +13,7 @@ const styles = () => ({
   link: {
     border: 'none',
     outline: 'none',
-    userSelect: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    transition: 'all 0.3s ease'
+    userSelect: 'none'
   },
   title: {
     position: 'absolute',
@@ -35,13 +30,10 @@ const styles = () => ({
   },
   'img': {
     filter: 'drop-shadow(0 0 80px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 160px rgba(218, 165, 32, 0.2)) drop-shadow(0 0 240px rgba(218, 165, 32, 0.1))',
-    transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-    animation: 'logoFloat 6s ease-in-out infinite',
-    transform: 'translateZ(0)',
+    transition: 'filter 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+    animation: 'heartbeat 3s ease-in-out infinite',
     '&:hover': {
-      filter: 'drop-shadow(0 0 100px rgba(218, 165, 32, 0.5)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.2))',
-      transform: 'translateZ(0) scale(1.05)',
-      animation: 'logoPulse 0.6s ease-in-out'
+      filter: 'drop-shadow(0 0 100px rgba(218, 165, 32, 0.4)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.25)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.15))'
     }
   },
   path: {
@@ -56,51 +48,32 @@ const styles = () => ({
         stroke: theme.color.secondary.main
       },
       '& img': {
-        filter: 'drop-shadow(0 0 100px rgba(218, 165, 32, 0.5)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.2))',
-        transform: 'translateZ(0) scale(1.05)'
+        filter: 'drop-shadow(0 0 100px rgba(218, 165, 32, 0.4)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.25)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.15))'
       }
     }
   }
 });
 
-// Add global styles for the enhanced animations
+// Add global styles for the animation
 const globalStyles = `
-  @keyframes logoFloat {
-    0%, 100% {
-      transform: translateZ(0) translateY(0px);
-    }
-    50% {
-      transform: translateZ(0) translateY(-8px);
-    }
-  }
-
-  @keyframes logoPulse {
+  @keyframes heartbeat {
     0% {
-      transform: translateZ(0) scale(1.05);
-    }
-    50% {
-      transform: translateZ(0) scale(1.1);
-    }
-    100% {
-      transform: translateZ(0) scale(1.05);
-    }
-  }
-
-  @keyframes logoGlow {
-    0%, 100% {
       filter: drop-shadow(0 0 80px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 160px rgba(218, 165, 32, 0.2)) drop-shadow(0 0 240px rgba(218, 165, 32, 0.1));
     }
-    50% {
-      filter: drop-shadow(0 0 100px rgba(218, 165, 32, 0.4)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.25)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.15));
+    14% {
+      filter: drop-shadow(0 0 100px rgba(218, 165, 32, 0.5)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.2));
     }
-  }
-
-  @keyframes logoShine {
-    0% {
-      background-position: -200% center;
+    28% {
+      filter: drop-shadow(0 0 80px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 160px rgba(218, 165, 32, 0.2)) drop-shadow(0 0 240px rgba(218, 165, 32, 0.1));
+    }
+    42% {
+      filter: drop-shadow(0 0 100px rgba(218, 165, 32, 0.5)) drop-shadow(0 0 200px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 300px rgba(218, 165, 32, 0.2));
+    }
+    70% {
+      filter: drop-shadow(0 0 80px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 160px rgba(218, 165, 32, 0.2)) drop-shadow(0 0 240px rgba(218, 165, 32, 0.1));
     }
     100% {
-      background-position: 200% center;
+      filter: drop-shadow(0 0 80px rgba(218, 165, 32, 0.3)) drop-shadow(0 0 160px rgba(218, 165, 32, 0.2)) drop-shadow(0 0 240px rgba(218, 165, 32, 0.1));
     }
   }
 `;
