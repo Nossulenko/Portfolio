@@ -24,15 +24,11 @@ const coreSkills = [
   },
   {
     title: 'Cloud & Infrastructure',
-    description: 'AWS: SageMaker (end-to-end ML), Lambda (serverless), Textract (OCR/document processing), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI & LLMs)'
+    description: 'AWS: SageMaker (end-to-end ML), Lambda (serverless), Textract (OCR/document processing), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI & LLMs) | Azure: AI Services, Cognitive Services, Machine Learning, Bot Service, Computer Vision, Language Understanding'
   },
   {
-    title: 'AI/ML Ops',
-    description: 'Docker & Kubernetes (AI workload orchestration), MLflow & Kubeflow (model lifecycle), LangChain + Vector DBs (Pinecone, Weaviate, FAISS) for LLM-powered apps, RAG pipelines for AI agent memory'
-  },
-  {
-    title: 'AI & Automation',
-    description: 'LLMs (OpenAI GPT, Anthropic Claude, Google Gemini), NLP (spaCy, Hugging Face Transformers, NLTK), AI Agents (LangChain, custom orchestration), Workflow Automation (Python, FastAPI, Node.js), Intelligent Monitoring Systems (CloudWatch, Grafana)'
+    title: 'AI/ML Ops & Automation',
+    description: 'Docker & Kubernetes (AI workload orchestration), MLflow & Kubeflow (model lifecycle), LangChain + Vector DBs (Pinecone, Weaviate, FAISS) for LLM-powered apps, RAG pipelines for AI agent memory | LLMs (OpenAI GPT, Anthropic Claude, Google Gemini), NLP (spaCy, Hugging Face Transformers, NLTK), AI Agents (LangChain, custom orchestration), Workflow Automation (Python, FastAPI, Node.js), Intelligent Monitoring Systems (CloudWatch, Grafana)'
   },
   {
     title: 'Security & Compliance',
