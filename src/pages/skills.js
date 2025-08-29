@@ -15,32 +15,28 @@ const highlight = {
 
 const coreSkills = [
   {
-    title: 'Product Leadership & Strategy',
-    description: 'Digital Product Management, Roadmap Definition, KPI Setting, Go-to-Market Planning'
+    title: 'Team Leadership',
+    description: 'Agile/Scrum, Coaching & Mentoring, Cross-functional Collaboration'
   },
   {
-    title: 'Fractional & Interim CTO Expertise',
-    description: 'Technical Strategy, Governance, Architecture Oversight, Executive Reporting'
+    title: 'Tools & Workflow',
+    description: 'Jira, Confluence, Git, CI/CD, Monitoring Dashboards'
   },
   {
-    title: 'AI & Automation Integration',
-    description: 'LLMs, Workflow Automation, Custom AI Agents, AI-Assisted SDLC'
+    title: 'Cloud & Infrastructure',
+    description: 'AWS: SageMaker (end-to-end ML), Lambda (serverless), Textract (OCR/document processing), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI & LLMs)'
   },
   {
-    title: 'Agile Transformation & Team Leadership',
-    description: 'Agile/Scrum Leadership, Cross-Functional Team Management, Remote/Offshore Teams'
+    title: 'AI/ML Ops',
+    description: 'Docker & Kubernetes (AI workload orchestration), MLflow & Kubeflow (model lifecycle), LangChain + Vector DBs (Pinecone, Weaviate, FAISS) for LLM-powered apps, RAG pipelines for AI agent memory'
   },
   {
-    title: 'Operational Excellence',
-    description: 'FinOps, Cost Optimization, Cloud Infrastructure (AWS Lambda, S3, CloudWatch, Textract)'
+    title: 'AI & Automation',
+    description: 'LLMs (OpenAI GPT, Anthropic Claude, Google Gemini), NLP (spaCy, Hugging Face Transformers, NLTK), AI Agents (LangChain, custom orchestration), Workflow Automation (Python, FastAPI, Node.js), Intelligent Monitoring Systems (CloudWatch, Grafana)'
   },
   {
-    title: 'Quality & Delivery Management',
-    description: 'QA/QC Management, Release Management, Requirements Traceability'
-  },
-  {
-    title: 'FullStack Execution & Product Development',
-    description: 'React, Angular, Next.js, Node.js, and modern web stacks — skilled in taking products from low-fidelity prototypes to validated MVPs, translating business requirements into scalable, production-ready solutions.'
+    title: 'Security & Compliance',
+    description: 'ISO 27001, SOC 2, Secure System Design, Risk Management, Coordinating and Managing Pentests'
   }
 ];
 
