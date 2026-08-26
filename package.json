@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "license": "GNUv3",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "lint": "eslint ./src",
     "start": "vite",
