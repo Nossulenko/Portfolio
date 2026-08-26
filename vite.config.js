@@ -25,7 +25,8 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           arwes: ['@arwes/react', 'arwes'],
-          audio: ['howler']
+          audio: ['howler'],
+          three: ['three', '@react-three/fiber', '@react-three/drei']
         }
       }
     },
@@ -40,7 +41,7 @@ export default defineConfig({
   },
   server: {
     headers: {
-      'Cache-Control': 'public, max-age=31536000'
+      'Cache-Control': 'no-cache'
     }
   }
 });

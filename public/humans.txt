@@ -4,3 +4,6 @@
   Nikolai Nossulenko
   kaizenprojects.be
 
+
+/* TEXTURES */
+Planet textures: Solar System Scope (solarsystemscope.com/textures) - CC BY 4.0

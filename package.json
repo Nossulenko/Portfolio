@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint ./src",
     "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "build:dev": "cross-env NODE_ENV=development vite build",
     "preview": "vite preview",
@@ -19,6 +20,8 @@
     "@babel/types": "^7.22.11",
     "@emotion/react": "^11.11.1",
     "@helcor/window-sizes": "^1.0.0-beta.8",
+    "@react-three/drei": "^9.99.7",
+    "@react-three/fiber": "^8.15.19",
     "animejs": "^3.0.1",
     "arwes": "^1.0.0-alpha.23",
     "augmented-ui": "^2.0.0",
@@ -43,7 +46,8 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-jss": "^10.10.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "three": "^0.160.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.15",

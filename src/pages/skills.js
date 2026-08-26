@@ -15,32 +15,40 @@ const highlight = {
 
 const coreSkills = [
   {
-    title: 'Team Leadership & Collaboration',
-    description: 'Agile & Scrum facilitation (sprint planning, retrospectives, backlog refinement) | Coaching & mentoring engineers and data scientists | Driving cross-functional collaboration across product, engineering, and research teams'
+    title: 'Agentic Systems',
+    description: 'Multi-agent orchestration, tool use, guardrails, and evaluation harnesses | Daily drivers: the Claude and Codex model families, with open-weight GLM and Kimi for cost-efficient workloads | Self-hosted deployments with DeepSeek and Ollama'
   },
   {
-    title: 'Tools & Workflow Optimization',
-    description: 'Project & knowledge management: Jira, Confluence | Version control & collaboration: Git, GitHub/GitLab | CI/CD pipelines & monitoring dashboards for production reliability'
+    title: 'Context, Prompt & Graph Engineering',
+    description: 'Context-window architecture: memory design, retrieval injection, tool-result shaping | Structured prompting and prompt caching for cost and latency reduction | Agent graphs and control-loop design for reliable multi-step behavior'
   },
   {
-    title: 'Cloud & Infrastructure Expertise',
-    description: 'AWS: SageMaker (end-to-end ML lifecycle), Lambda (serverless apps), Textract (OCR), Comprehend (NLP), Rekognition (vision), Polly (speech), Bedrock (generative AI/LLMs) | Azure: AI Services, Cognitive Services, Machine Learning, Bot Service, Computer Vision, Language Understanding'
+    title: 'Retrieval Architectures & RAG',
+    description: 'Embedding pipelines, hybrid search, and vector stores: Pinecone, Weaviate, FAISS, ChromaDB | Tuned for relevance, latency, and cost | RAG solutions and large-document processing engines delivered end-to-end for enterprise clients'
   },
   {
-    title: 'AI/ML Ops & Intelligent Automation',
-    description: 'Container orchestration: Docker & Kubernetes (AI workload scaling) | ML lifecycle management: MLflow, Kubeflow | LLM ecosystems: OpenAI GPT, Anthropic Claude, Google Gemini | NLP stack: spaCy, Hugging Face Transformers, NLTK | AI agents & orchestration frameworks (LangChain, custom solutions) | Workflow automation: Python, FastAPI, NestJS | Intelligent observability: CloudWatch, Grafana'
+    title: 'AI Platforms (Multi-Cloud)',
+    description: 'Azure: Azure OpenAI, AI Foundry, Azure ML, and the full AI Services suite (Language, Vision, Speech, Document Intelligence) | Google Cloud: Vertex AI with Gemini, Agent Builder, Document AI, Vision & Speech APIs | AWS: Bedrock, SageMaker, Textract'
   },
   {
-    title: 'Vector Databases & RAG (Retrieval-Augmented Generation)',
-    description: 'Architecture & deployment of vector databases for semantic search and AI memory | Expertise with Pinecone, Weaviate, and FAISS (indexing, retrieval optimization) | Seamless integration with LangChain and AI agents for RAG pipelines | Embedding model optimization (OpenAI, Hugging Face, custom-trained) for recall/precision trade-offs | Real-world applications: knowledge base search, document intelligence, AI chatbots with memory, intelligent monitoring'
+    title: 'Model Training & Fine-Tuning',
+    description: 'Small models trained from scratch | Fine-tuning, adaptation, and evaluation of LLMs, SLMs, and vision-language models (VLMs) for domain-specific tasks | Across open-weight and hosted models'
   },
   {
-    title: 'Coding Patterns & Software Architecture',
-    description: 'Object-Oriented Design (SOLID principles, DRY, clean code practices) | Design patterns: Factory, Singleton, Observer, Strategy, Adapter, Builder | Event-driven and microservices architecture | Asynchronous & reactive programming (Python asyncio, NestJS async providers) | API design best practices (REST, GraphQL, gRPC) | Modular, testable, and maintainable codebases (unit testing, TDD, CI/CD integration)'
+    title: 'NLP & LLM Tooling',
+    description: 'spaCy, NLTK, Hugging Face Transformers, LangChain | PyTorch, TensorFlow, pandas | OpenAI API integrations since GPT-3 (2021), Anthropic API'
   },
   {
-    title: 'Security & Compliance',
-    description: 'Security frameworks: ISO 27001, SOC 2 | OWASP (application security best practices & secure coding standards) | Secure system design & risk management | Coordinating and managing penetration tests (pentests)'
+    title: 'AI-Assisted SDLC',
+    description: 'Specialty: spec-driven development, with specifications as the source of truth for agent implementation | Multi-model agentic development with Claude Code, Gemini CLI, opencode, Cursor, and VS Code | Evaluation-driven development and AI-powered CI/CD'
+  },
+  {
+    title: 'Product Engineering',
+    description: 'Structured specs from raw input: interview transcripts, workshop notes, backlogs, technical documentation, legacy code, Figma designs, styling libraries, and brandbooks | Stakeholder alignment: discovery workshops, requirements negotiation, shared roadmaps across business and engineering | Rapid validation: prototype and PRD validated with stakeholders before committing engineering capacity | UX foundations: interfaces designed by established UI/UX laws (cognitive load, Hick, Fitts, Jakob) | Knowledge capture: markdown-first knowledge bases readable by human and agent'
+  },
+  {
+    title: 'Tech Stack',
+    description: 'Front-end: React, React Native, Next.js, Flutter, Angular, TypeScript | Back-end: Node.js, Python, .NET, FastAPI, PostgreSQL, MongoDB, Firebase | Cloud & DevOps: AWS, Azure, Google Cloud, Docker, Kubernetes, Terraform, Git, CI/CD, Vercel | Product & Design: Figma, Jira, Confluence — prototyping, validation, roadmapping'
   }
 ];
 
