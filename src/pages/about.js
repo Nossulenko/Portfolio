@@ -149,13 +149,6 @@ const employmentHistory = [
 const About = () => {
   const [showFullProfile, setShowFullProfile] = React.useState(false);
   const [showDownloadForm, setShowDownloadForm] = React.useState(false);
-  const [showChatPopup, setShowChatPopup] = React.useState(false);
-  const [chatMessages, setChatMessages] = React.useState([
-    { id: 1, sender: 'ai', text: "Hi! I'm Nikolai's AI clone. How can I help you today?", timestamp: new Date() }
-  ]);
-  const [newMessage, setNewMessage] = React.useState('');
-  const [isTyping, setIsTyping] = React.useState(false);
-
   const [formData, setFormData] = React.useState({
     firstName: '',
     lastName: '',
@@ -219,67 +212,6 @@ const About = () => {
     }));
   };
 
-  const handleSendMessage = async () => {
-    if (!newMessage.trim() || isTyping) return;
-
-    const userMessage = {
-      id: Date.now(),
-      sender: 'user',
-      text: newMessage.trim(),
-      timestamp: new Date()
-    };
-
-    setChatMessages(prev => [...prev, userMessage]);
-    setNewMessage('');
-    setIsTyping(true);
-
-    try {
-      // Call your AI API endpoint
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: newMessage.trim(),
-          conversationHistory: chatMessages.map(msg => ({
-            role: msg.sender === 'user' ? 'user' : 'assistant',
-            content: msg.text
-          }))
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to get AI response');
-      }
-
-      const data = await response.json();
-
-      const aiMessage = {
-        id: Date.now() + 1,
-        sender: 'ai',
-        text: data.response,
-        timestamp: new Date()
-      };
-
-      setChatMessages(prev => [...prev, aiMessage]);
-    } catch (error) {
-      console.error('Error getting AI response:', error);
-
-      // Fallback response
-      const fallbackMessage = {
-        id: Date.now() + 1,
-        sender: 'ai',
-        text: "I apologize, but I'm having trouble connecting to my AI system right now. Please try again in a moment.",
-        timestamp: new Date()
-      };
-
-      setChatMessages(prev => [...prev, fallbackMessage]);
-    } finally {
-      setIsTyping(false);
-    }
-  };
-
   return (
     <Main>
       <div className='about-container'>
@@ -339,9 +271,6 @@ const About = () => {
             <div style={{ marginBottom: 4 }}><span style={valueStyle}>Elektronica-ICT · 2015 — 2018</span></div>
             <div><span style={{ ...valueStyle, opacity: 0.8 }}>Software Development & Cyber Security</span></div>
           </SidebarCard>
-          <SidebarCard title='PUBLICATIONS'>
-            <div><span style={valueStyle}>Featured in Gazet van Antwerpen — cybersecurity research (real-estate scammer unmasked)</span></div>
-          </SidebarCard>
           <SidebarCard title='DOWNLOAD RESUME'>
             <button
               onClick={() => setShowDownloadForm(true)}
@@ -368,36 +297,6 @@ const About = () => {
               }}
             >
               Download PDF Resume
-            </button>
-          </SidebarCard>
-          <SidebarCard title='CHAT WITH NIKOLAI'>
-            <button
-              onClick={() => {
-                setShowChatPopup(true);
-              }}
-              style={{
-                background: '#DAA520',
-                color: '#181A20',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '12px 20px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                width: '100%',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#B8860B';
-                e.target.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#DAA520';
-                e.target.style.transform = 'translateY(0)';
-              }}
-            >
-              Chat with Nikolai
             </button>
           </SidebarCard>
         </div>
@@ -494,152 +393,6 @@ const About = () => {
         </div>
       )}
 
-      {/* Chat Popup Modal */}
-      {showChatPopup && (
-        <div className='modal-overlay'>
-          <div className='modal-content' style={{ maxWidth: '600px', height: '500px', display: 'flex', flexDirection: 'column' }}>
-            <h2 style={{ color: '#DAA520', marginBottom: '20px', textAlign: 'center' }}>
-              Chat with Nikolai's AI Clone
-            </h2>
-
-            {/* Chat Messages */}
-            <div style={{
-              flex: 1,
-              overflowY: 'auto',
-              marginBottom: '20px',
-              padding: '10px',
-              background: 'rgba(24, 26, 32, 0.3)',
-              borderRadius: '8px',
-              border: '1px solid rgba(218, 165, 32, 0.2)'
-            }}>
-              {chatMessages.map((message) => (
-                <div
-                  key={message.id}
-                  style={{
-                    marginBottom: '15px',
-                    display: 'flex',
-                    justifyContent: message.sender === 'user' ? 'flex-end' : 'flex-start'
-                  }}
-                >
-                  <div style={{
-                    maxWidth: '70%',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: message.sender === 'user' ? '#DAA520' : 'rgba(218, 165, 32, 0.1)',
-                    color: message.sender === 'user' ? '#181A20' : '#DAA520',
-                    border: message.sender === 'user' ? 'none' : '1px solid rgba(218, 165, 32, 0.3)',
-                    fontSize: '14px',
-                    lineHeight: '1.4'
-                  }}>
-                    {message.text}
-                    <div style={{
-                      fontSize: '11px',
-                      opacity: 0.7,
-                      marginTop: '4px'
-                    }}>
-                      {message.timestamp.toLocaleTimeString()}
-                    </div>
-                  </div>
-                </div>
-              ))}
-              {isTyping && (
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'flex-start',
-                  marginBottom: '15px'
-                }}>
-                  <div style={{
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: 'rgba(218, 165, 32, 0.1)',
-                    color: '#DAA520',
-                    border: '1px solid rgba(218, 165, 32, 0.3)',
-                    fontSize: '14px'
-                  }}>
-                    <span style={{ animation: 'typing 1.5s infinite' }}>AI is typing...</span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Message Input */}
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <input
-                type='text'
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter' && newMessage.trim()) {
-                    handleSendMessage();
-                  }
-                }}
-                placeholder='Type your message...'
-                style={{
-                  flex: 1,
-                  padding: '12px 16px',
-                  border: '1px solid rgba(218, 165, 32, 0.3)',
-                  borderRadius: '8px',
-                  background: 'rgba(24, 26, 32, 0.3)',
-                  color: '#e0e0e0',
-                  fontSize: '14px'
-                }}
-              />
-              <button
-                onClick={handleSendMessage}
-                disabled={!newMessage.trim() || isTyping}
-                style={{
-                  padding: '12px 20px',
-                  background: newMessage.trim() && !isTyping ? '#DAA520' : 'rgba(218, 165, 32, 0.3)',
-                  color: newMessage.trim() && !isTyping ? '#181A20' : 'rgba(218, 165, 32, 0.5)',
-                  border: 'none',
-                  borderRadius: '8px',
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  cursor: newMessage.trim() && !isTyping ? 'pointer' : 'not-allowed',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                Send
-              </button>
-            </div>
-
-            {/* Close Button */}
-            <button
-              onClick={() => {
-                setShowChatPopup(false);
-                setChatMessages([
-                  { id: 1, sender: 'ai', text: "Hi! I'm Nikolai's AI clone. How can I help you today?", timestamp: new Date() }
-                ]);
-                setNewMessage('');
-                setIsTyping(false);
-              }}
-              style={{
-                background: '#181A20',
-                color: '#DAA520',
-                border: '1px solid #DAA520',
-                borderRadius: '8px',
-                padding: '12px 20px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                width: '100%',
-                transition: 'all 0.2s ease',
-                marginTop: '15px'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = '#DAA520';
-                e.target.style.color = '#181A20';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = '#181A20';
-                e.target.style.color = '#DAA520';
-              }}
-            >
-              Close Chat
-            </button>
-          </div>
-        </div>
-      )}
     </Main>
   );
 };
