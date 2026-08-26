@@ -66,10 +66,27 @@ Corner.propTypes = {
   position: PropTypes.string.isRequired
 };
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = React.useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
+
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const onChange = event => setIsMobile(event.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  return isMobile;
+};
+
 // Fixed, non-interactive HUD framing shared by every page: scanlines,
-// vignette, corner brackets, section tag and UTC clock.
+// vignette, corner brackets, section tag and UTC clock. The bottom strip
+// needs horizontal room, so it only renders on wider viewports.
 const HudChrome = ({ section }) => {
   const location = useLocation();
+  const isMobile = useIsMobile();
   const match = SECTIONS.find(([path]) => location.pathname.includes(path));
   const label = section || (match ? match[1] : 'HOME');
 
@@ -97,28 +114,32 @@ const HudChrome = ({ section }) => {
       <Corner position='bl' />
       <Corner position='br' />
 
-      {/* Bottom gradient line */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 34,
-          height: 1,
-          background: `linear-gradient(90deg, transparent, ${HUD.cyan}22 20%, ${HUD.cyan}66 50%, ${HUD.cyan}22 80%, transparent)`,
-          boxShadow: `0 0 8px ${HUD.cyan}33`
-        }}
-      />
+      {!isMobile && (
+        <>
+          {/* Bottom gradient line */}
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 34,
+              height: 1,
+              background: `linear-gradient(90deg, transparent, ${HUD.cyan}22 20%, ${HUD.cyan}66 50%, ${HUD.cyan}22 80%, transparent)`,
+              boxShadow: `0 0 8px ${HUD.cyan}33`
+            }}
+          />
 
-      {/* Bottom-left section tag */}
-      <div style={{ position: 'absolute', left: 22, bottom: 10, ...hudText(11, HUD.cyan, { letterSpacing: 4, fontWeight: 700 }) }}>
-        ◈ NOSSULENKO <span style={{ color: HUD.textDim }}>//</span> {label}
-      </div>
+          {/* Bottom-left section tag */}
+          <div style={{ position: 'absolute', left: 22, bottom: 10, ...hudText(11, HUD.cyan, { letterSpacing: 4, fontWeight: 700 }) }}>
+            ◈ NOSSULENKO <span style={{ color: HUD.textDim }}>//</span> {label}
+          </div>
 
-      {/* Bottom-right clock */}
-      <div style={{ position: 'absolute', right: 22, bottom: 10, ...hudText(11, HUD.text) }}>
-        <Clock />
-      </div>
+          {/* Bottom-right clock */}
+          <div style={{ position: 'absolute', right: 22, bottom: 10, ...hudText(11, HUD.text) }}>
+            <Clock />
+          </div>
+        </>
+      )}
     </div>
   );
 };
