@@ -28,10 +28,26 @@ app.use(morgan('common'));
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from dist directory
+// Serve static files from dist directory.
+// Vercel normalizes file mtimes in the bundle, so mtime-based ETags never
+// change across deploys — HTML must not be cached or browsers keep stale
+// pages pointing at hashed assets that no longer exist.
 const distPath = join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, {
+    etag: false,
+    lastModified: false,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html') || filePath.endsWith('resume.pdf')) {
+        res.setHeader('Cache-Control', 'no-store');
+      } else if (filePath.includes(`${join(distPath, 'assets')}`)) {
+        // Vite content-hashes asset filenames, safe to cache forever.
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=86400');
+      }
+    }
+  }));
 } else {
   console.warn('dist directory not found, static files may not be served correctly');
 }
@@ -102,11 +118,18 @@ app.post('/api/download-resume', async (req, res) => {
   }
 });
 
+// Missing hashed assets must 404, not fall through to index.html — a stale
+// browser would otherwise load HTML as a module script and white-screen.
+app.get('/assets/*', (req, res) => {
+  res.status(404).send('Not found');
+});
+
 // Handle client-side routing - serve index.html for all non-API routes
 app.get('*', (req, res) => {
   const indexPath = join(distPath, 'index.html');
   if (fs.existsSync(indexPath)) {
-    res.sendFile(indexPath);
+    res.setHeader('Cache-Control', 'no-store');
+    res.sendFile(indexPath, { etag: false, lastModified: false, cacheControl: false });
   } else {
     res.status(404).send('Page not found');
   }
