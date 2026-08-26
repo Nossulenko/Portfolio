@@ -752,7 +752,7 @@ const Starmap = ({ onFallback }) => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '10px 16px 82px',
+            padding: '10px 16px 96px',
             background: 'linear-gradient(180deg, rgba(2, 6, 16, 0.85), rgba(2, 6, 16, 0.4))'
           }}
         >

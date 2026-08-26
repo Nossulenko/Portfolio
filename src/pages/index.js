@@ -10,6 +10,7 @@ import { Legal } from '../components/Legal';
 import { Starmap } from '../components/Starmap';
 import { withRouter } from '../tools/withRouter/index.js';
 import { setupAudioUnlock } from '../tools/audioUnlock.js';
+import logo from '../images/logo_2.png';
 
 const styles = () => {
   return {
@@ -38,18 +39,18 @@ const styles = () => {
       pointerEvents: 'none',
       textAlign: 'center'
     },
-    brandTitle: {
-      margin: 0,
-      fontFamily: 'Orbitron, sans-serif',
-      fontSize: 44,
-      fontWeight: 700,
-      letterSpacing: 14,
-      color: '#F5C542',
-      textShadow: '0 0 18px rgba(218, 165, 32, 0.75), 0 0 60px rgba(218, 165, 32, 0.35)',
-      whiteSpace: 'nowrap'
+    brandHeading: {
+      margin: 0
+    },
+    brandLogo: {
+      display: 'block',
+      width: 440,
+      maxWidth: 'none',
+      height: 'auto',
+      filter: 'drop-shadow(0 0 18px rgba(218, 165, 32, 0.55)) drop-shadow(0 0 60px rgba(218, 165, 32, 0.3))'
     },
     brandSub: {
-      marginTop: 10,
+      marginTop: 12,
       fontFamily: 'Electrolize, sans-serif',
       fontSize: 13,
       letterSpacing: 7,
@@ -58,9 +59,8 @@ const styles = () => {
       whiteSpace: 'nowrap'
     },
     '@media (max-width: 900px)': {
-      brandTitle: {
-        fontSize: 26,
-        letterSpacing: 8
+      brandLogo: {
+        width: 260
       },
       brandSub: {
         fontSize: 10,
@@ -79,7 +79,7 @@ const styles = () => {
     },
     socialOverlay: {
       position: 'fixed',
-      bottom: 34,
+      bottom: 48,
       left: '50%',
       transform: 'translateX(-50%)',
       width: '100%',
@@ -95,7 +95,7 @@ const styles = () => {
     legalOverlay: {
       position: 'fixed',
       left: '50%',
-      bottom: 0,
+      bottom: 4,
       transform: 'translateX(-50%)',
       zIndex: 2
     },
@@ -195,7 +195,9 @@ class Component extends React.Component {
           <Starmap onFallback={() => this.setMode('2d')} />
           {this.renderModeToggle()}
           <div className={classes.brandOverlay}>
-            <h1 className={classes.brandTitle}>NOSSULENKO</h1>
+            <h1 className={classes.brandHeading}>
+              <img src={logo} alt='nossulenko' className={classes.brandLogo} />
+            </h1>
             <div className={classes.brandSub}>AI ENGINEER &amp; PRODUCT LEADER</div>
           </div>
           <Secuence ref={ref => (this.secuenceElement = ref)}>
