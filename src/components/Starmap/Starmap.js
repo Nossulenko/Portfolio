@@ -731,7 +731,7 @@ const Starmap = ({ onFallback }) => {
         <div
           style={{
             position: 'absolute',
-            bottom: 132,
+            bottom: 152,
             left: '50%',
             transform: 'translateX(-50%)',
             ...hudText(11, '#7E9FBE'),
