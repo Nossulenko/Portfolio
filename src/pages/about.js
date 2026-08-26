@@ -156,9 +156,9 @@ const About = () => {
     reason: ''
   });
 
-  const shortProfileText = "🚀 AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs.";
+  const shortProfileText = "AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs.";
 
-  const fullProfileText = "🚀 AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs. I combine that technical depth with product leadership: roadmap and KPI definition, Agile delivery with large cross-functional engineering teams, fractional-CTO engagements, and C-level reporting. My way of working is spec-driven development, with specifications as the source of truth driving agent implementation. I build AI systems that hold up in production — with real users, real data, and real compliance requirements.";
+  const fullProfileText = "AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs. I combine that technical depth with product leadership: roadmap and KPI definition, Agile delivery with large cross-functional engineering teams, fractional-CTO engagements, and C-level reporting. My way of working is spec-driven development, with specifications as the source of truth driving agent implementation. I build AI systems that hold up in production — with real users, real data, and real compliance requirements.";
 
   const handleDownload = async () => {
     // Check if all required fields are filled
@@ -268,7 +268,7 @@ const About = () => {
           </SidebarCard>
           <SidebarCard title='EDUCATION'>
             <div style={{ marginBottom: 4 }}><span style={valueStyle}>AP Hogeschool Antwerpen</span></div>
-            <div style={{ marginBottom: 4 }}><span style={valueStyle}>Elektronica-ICT · 2015 — 2018</span></div>
+            <div style={{ marginBottom: 4 }}><span style={valueStyle}>Elektronica-ICT</span></div>
             <div><span style={{ ...valueStyle, opacity: 0.8 }}>Software Development & Cyber Security</span></div>
           </SidebarCard>
           <SidebarCard title='DOWNLOAD RESUME'>
