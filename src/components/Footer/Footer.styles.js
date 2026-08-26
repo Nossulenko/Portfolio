@@ -18,7 +18,7 @@ const styles = () => ({
     padding: [20, 10, 10]
   },
   socialLinks: {
-    margin: [0, 'auto', 10],
+    margin: [0, 'auto', 22],
     maxWidth: 400
   },
   socialLinksItem: {
@@ -41,7 +41,7 @@ const styles = () => ({
       padding: [30, 20, 0]
     },
     socialLinks: {
-      marginBottom: 20
+      marginBottom: 38
     },
     socialLinksItem: {
       height: 24,
