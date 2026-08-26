@@ -1,6 +1,7 @@
 import { SCHEME_EXPAND } from './Menu.constants';
 import theme from '../../settings/theme.js';
 
+// Starmap HUD slash-tab styling (see Starmap.js slashTab)
 const styles = () => ({
   root: {
     display: 'flex',
@@ -9,27 +10,31 @@ const styles = () => ({
     alignItems: 'center',
     margin: [0, 'auto'],
     userSelect: 'none',
-    gap: '20px'
+    gap: '14px'
   },
   item: {
     display: 'block',
-    padding: [10, 15, 10],
+    padding: [9, 24],
     width: 'auto',
     lineHeight: 1,
-    fontSize: 14,
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: 3,
     textAlign: 'center',
     textTransform: 'uppercase',
-    textShadow: `0 0 5px ${theme.color.secondary.main}`,
-    fontFamily: theme.typography.primary,
-    color: theme.color.text.main,
+    fontFamily: theme.typography.secondary,
+    color: '#4A6A8A',
     whiteSpace: 'nowrap',
-    flex: '0 0 auto'
+    flex: '0 0 auto',
+    background: 'rgba(10, 20, 40, 0.55)',
+    borderBottom: '1px solid #1E3A5F',
+    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)',
+    transition: 'color 200ms ease, background 200ms ease, border-color 200ms ease, text-shadow 200ms ease'
   },
   divisor: {
     display: 'none',
     width: 0,
     color: theme.color.tertiary.main,
-    textShadow: `0 0 5px ${theme.color.tertiary.main}`,
     fontWeight: 'normal',
     transform: 'scale(1, 0)',
     transformOrigin: 'center center',
@@ -41,26 +46,31 @@ const styles = () => ({
     flex: '0 0 auto',
 
     '&.link-active': {
-      color: theme.color.tertiary.main,
-      textShadow: `0 0 5px ${theme.color.tertiary.main}`
+      color: '#FFC94D',
+      background: 'rgba(218, 165, 32, 0.12)',
+      borderBottom: '1px solid #DAA520',
+      textShadow: '0 0 8px rgba(218, 165, 32, 0.7)'
     },
     '&:hover, &:focus': {
-      color: theme.color.secondary.light,
-      textShadow: `0 0 5px ${theme.color.secondary.light}`
+      color: '#35EFEF',
+      background: 'rgba(53, 239, 239, 0.08)',
+      borderBottom: '1px solid #35EFEF',
+      textShadow: '0 0 8px rgba(53, 239, 239, 0.6)'
     }
   },
 
   '@media (min-width: 768px)': {
     root: {
       flexDirection: 'row',
-      justifyContent: 'space-around',
-      gap: '10px'
+      justifyContent: 'center',
+      gap: '0px'
     },
     item: {
-      display: 'block'
+      display: 'block',
+      marginRight: -4
     },
     divisor: {
-      display: 'block'
+      display: 'none'
     }
   },
   '@media (max-width: 767px)': {
@@ -70,7 +80,7 @@ const styles = () => ({
   },
   '@media (max-width: 360px)': {
     item: {
-      fontSize: '12px'
+      fontSize: '11px'
     }
   }
 });

@@ -1,48 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// HUD panel styled after the starmap object-info panel: clipped corners,
+// thin line border, gold accent edge.
 const SidebarCard = ({ title, children }) => (
   <div style={{
-    background: 'rgba(24, 26, 32, 0.15)',
-    backdropFilter: 'blur(20px) saturate(180%)',
-    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-    borderRadius: '16px',
-    padding: '20px',
+    background: 'rgba(2, 6, 16, 0.82)',
+    border: '1px solid #1E3A5F',
+    borderRight: '3px solid #DAA520',
+    clipPath: 'polygon(0 14px, 14px 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))',
+    padding: '20px 22px',
     marginBottom: '20px',
-    color: '#e0e0e0',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+    color: '#C6DFF5',
     minWidth: '260px',
     maxWidth: '320px',
     position: 'relative',
     overflow: 'hidden',
-    transition: 'all 0.3s ease'
+    transition: 'border-color 0.25s ease'
   }}>
-    {/* Glass overlay */}
-    <div style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: 'linear-gradient(135deg, rgba(218, 165, 32, 0.08) 0%, rgba(218, 165, 32, 0.03) 50%, rgba(255, 255, 255, 0.02) 100%)',
-      borderRadius: '16px',
-      pointerEvents: 'none',
-      zIndex: -1
-    }} />
-
     <h4
       style={{
-        color: '#DAA520',
-        marginBottom: '14px',
-        fontWeight: 600,
-        letterSpacing: 1,
-        transition: 'text-shadow 0.2s',
-        cursor: 'pointer',
+        color: '#FFC94D',
+        margin: '0 0 4px',
+        fontFamily: 'Electrolize, sans-serif',
+        fontWeight: 700,
+        fontSize: '0.85rem',
+        letterSpacing: 4,
+        textTransform: 'uppercase',
         position: 'relative',
         zIndex: 1
       }}
-    >{title}</h4>
+    >◈ {title}</h4>
+    <div
+      style={{
+        height: 1,
+        margin: '10px 0 14px',
+        background: 'linear-gradient(90deg, rgba(218, 165, 32, 0.65), transparent)'
+      }}
+    />
     <div style={{ position: 'relative', zIndex: 1 }}>
       {children}
     </div>

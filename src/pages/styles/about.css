@@ -10,7 +10,7 @@
 .about-main {
   flex: 1;
   max-width: calc(100% - 300px);
-  color: #fff;
+  color: #C6DFF5;
 }
 
 .about-sidebar {
@@ -19,22 +19,19 @@
   flex-direction: column;
 }
 
+/* ── HUD panel: clipped corners, thin line border, gold accent edge ── */
 .employment-card {
-  background: rgba(24, 26, 32, 0.15);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 16px;
+  background: rgba(2, 6, 16, 0.82);
+  border: 1px solid #1E3A5F;
+  border-left: 3px solid #DAA520;
+  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
   padding: 28px 28px 18px 28px;
   margin: 28px 0;
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #C6DFF5;
   max-width: 900px;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .employment-card::before {
@@ -43,109 +40,140 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(218, 165, 32, 0.08) 0%,
-    rgba(218, 165, 32, 0.03) 50%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  border-radius: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(218, 165, 32, 0.55), transparent 70%);
   pointer-events: none;
-  z-index: -1;
 }
 
 .employment-card:hover {
-  background: rgba(24, 26, 32, 0.25);
-  border-color: rgba(218, 165, 32, 0.3);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  background: rgba(4, 10, 24, 0.88);
+  border-color: rgba(218, 165, 32, 0.45);
+  border-left-color: #FFC94D;
 }
 
 .employment-title {
-  color: #DAA520;
+  color: #FFC94D;
+  font-family: 'Electrolize', sans-serif;
   font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 2px;
-  letter-spacing: 0.2;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.employment-title::before {
+  content: '◈';
+  color: #DAA520;
 }
 
 .employment-meta {
-  color: #e0e0e0;
+  color: #C6DFF5;
   font-weight: 500;
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-bottom: 2px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+.employment-meta a {
+  color: #35EFEF;
+}
+
 .employment-period {
-  color: #e0e0e0;
+  color: #7E9FBE;
+  font-family: 'Electrolize', sans-serif;
   font-weight: 400;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
   margin-left: 8px;
 }
 
 .employment-location {
-  color: #888;
+  color: #4A6A8A;
+  font-family: 'Electrolize', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin-bottom: 10px;
 }
 
 .employment-description {
   margin: 16px 0 0 0;
-  color: #e0e0e0;
-  font-size: 1.08rem;
-  line-height: 1.6;
-  font-weight: 500;
+  color: #C6DFF5;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
+/* ── Slash chip badges ── */
 .badge {
   display: inline-block;
-  background: #DAA520;
-  color: #181A20;
-  border-radius: 16px;
+  background: rgba(10, 20, 40, 0.65);
+  color: #FFC94D;
+  border: 1px solid #1E3A5F;
+  border-bottom: 1px solid #DAA520;
+  border-radius: 0;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
   padding: 4px 14px;
   margin: 8px 8px 0 0;
-  font-size: 0.98em;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 0.78em;
   font-weight: 700;
-  letter-spacing: 0.2;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   vertical-align: middle;
-  box-shadow: 0 1px 4px #0002;
-  border: 1px solid #DAA520;
-  transition: background 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.badge:hover {
+  color: #35EFEF;
+  border-bottom-color: #35EFEF;
+  background: rgba(53, 239, 239, 0.08);
 }
 
 .profile-text {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
+  line-height: 1.7;
   margin-bottom: 18px;
 }
 
 .employment-history-title {
-  font-size: 1.8rem;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
   .employment-history-title {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
+    letter-spacing: 4px;
   }
 }
 
-/* Modal Styles */
+/* ── HUD buttons: override inline-styled gold pills into angular tabs ── */
+.about-container button,
+.modal-content button {
+  border-radius: 0 !important;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  font-family: 'Electrolize', sans-serif !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+}
+
+/* ── Modal: HUD panel ── */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(24, 26, 32, 0.9);
+  background: rgba(1, 3, 10, 0.88);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,95 +183,71 @@
 }
 
 .modal-content {
-  background: rgba(24, 26, 32, 0.15);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 16px;
+  background: rgba(2, 6, 16, 0.96);
+  border: 1px solid #1E3A5F;
+  border-top: 1px solid #DAA520;
+  clip-path: polygon(0 16px, 16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
   padding: 30px;
   max-width: 500px;
   width: 100%;
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #C6DFF5;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  overflow: hidden;
   transition: all 0.3s ease;
 }
 
-.modal-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(218, 165, 32, 0.08) 0%,
-    rgba(218, 165, 32, 0.03) 50%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  border-radius: 16px;
-  pointer-events: none;
-  z-index: -1;
-}
-
 .modal-content h2 {
-  color: #DAA520;
+  color: #FFC94D;
+  font-family: 'Electrolize', sans-serif;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.2;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
 
 .modal-content label {
   display: block;
   margin-bottom: 8px;
-  color: #DAA520;
+  color: #7E9FBE;
+  font-family: 'Electrolize', sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.1;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .modal-content input,
 .modal-content textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: rgba(24, 26, 32, 0.3);
-  color: #e0e0e0;
+  border: 1px solid #1E3A5F;
+  border-radius: 0;
+  background: rgba(10, 20, 40, 0.55);
+  color: #C6DFF5;
   font-size: 14px;
   box-sizing: border-box;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 .modal-content input:focus,
 .modal-content textarea:focus {
   outline: none;
-  border-color: rgba(218, 165, 32, 0.5);
-  box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.1);
-  background: rgba(24, 26, 32, 0.4);
+  border-color: #35EFEF;
+  box-shadow: 0 0 8px rgba(53, 239, 239, 0.25);
+  background: rgba(10, 20, 40, 0.75);
 }
 
 .modal-content button {
   margin-top: 10px;
   transition: all 0.3s ease;
-  border-radius: 8px;
   font-weight: 600;
-  letter-spacing: 0.1;
 }
 
 .modal-content button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 12px rgba(218, 165, 32, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -264,13 +268,11 @@
   .employment-card {
     padding: 20px 16px 16px 16px;
     margin: 20px 0;
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
-    border-radius: 12px;
   }
 
   .employment-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    letter-spacing: 2px;
   }
 
   .employment-meta {
@@ -282,21 +284,20 @@
 
   .employment-period {
     margin-left: 0;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .employment-bullet {
     display: none;
   }
 
-  /* Make sidebar card titles smaller on mobile */
   .about-sidebar h4 {
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
   }
 
   .employment-location {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .employment-description {
@@ -305,7 +306,7 @@
   }
 
   .badge {
-    font-size: 0.9em;
+    font-size: 0.72em;
     padding: 3px 12px;
     margin: 6px 6px 0 0;
   }
@@ -314,11 +315,10 @@
     font-size: 1rem;
   }
 
-  /* Mobile Modal Styles */
   .modal-overlay {
     padding: 10px;
     align-items: flex-start;
-    padding-top: 80px; /* Account for navbar */
+    padding-top: 80px;
   }
 
   .modal-content {
@@ -330,7 +330,7 @@
   }
 
   .modal-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     margin-bottom: 15px;
   }
 
@@ -349,42 +349,17 @@
 @media (max-width: 480px) {
   .modal-overlay {
     padding: 5px;
-    padding-top: 100px; /* Extra space for very small screens */
+    padding-top: 100px;
   }
 
   .modal-content {
     padding: 15px;
-    border-radius: 8px;
     max-height: calc(100vh - 120px);
   }
 
   .modal-content h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 12px;
-  }
-}
-
-/* Audio Waveform Animation */
-@keyframes waveform {
-  0% {
-    height: 4px;
-    opacity: 0.3;
-  }
-  25% {
-    height: 20px;
-    opacity: 1;
-  }
-  50% {
-    height: 40px;
-    opacity: 0.8;
-  }
-  75% {
-    height: 15px;
-    opacity: 0.6;
-  }
-  100% {
-    height: 4px;
-    opacity: 0.3;
   }
 }
 

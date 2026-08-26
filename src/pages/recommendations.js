@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Main } from '../components/Main';
 
 const recommendations = [
@@ -28,7 +29,7 @@ const recommendations = [
     title: 'Senior Project Manager & Scrum Master, PRINCE2® & AGILE',
     date: 'July 9, 2024',
     relationship: 'Alexandre worked with Nikolai but they were at different companies',
-    text: "I highly recommend Nikolai for his exceptional skills and dedication. Working together at eSIM GO, he consistently delivered high-quality work and demonstrated a strong commitment to excellence. Nikolai is a proactive problem solver and a valuable team player, always willing to share knowledge and support colleagues. His expertise as a designer and developer has been instrumental to our success. Any team would be fortunate to have him!"
+    text: 'I highly recommend Nikolai for his exceptional skills and dedication. Working together at eSIM GO, he consistently delivered high-quality work and demonstrated a strong commitment to excellence. Nikolai is a proactive problem solver and a valuable team player, always willing to share knowledge and support colleagues. His expertise as a designer and developer has been instrumental to our success. Any team would be fortunate to have him!'
   },
   {
     name: 'Yevhen Volodko',
@@ -42,21 +43,21 @@ const recommendations = [
     title: 'Freelance consultant @ Inspire & More',
     date: 'June 25, 2024',
     relationship: 'Nordin worked with Nikolai on the same team',
-    text: "I had the pleasure of working with Nikolai at TPA, where his dedication, exceptional skills and impressive ability to solve complex problems efficiently consistently stood out. His positive attitude and collaborative spirit made him a valued member of the team."
+    text: 'I had the pleasure of working with Nikolai at TPA, where his dedication, exceptional skills and impressive ability to solve complex problems efficiently consistently stood out. His positive attitude and collaborative spirit made him a valued member of the team.'
   },
   {
     name: 'Darren Shaw',
     title: 'Making connectivity easy',
     date: 'June 19, 2024',
     relationship: 'Darren managed Nikolai directly',
-    text: "Nikolai is a true professional and was a pleasure to work with. He is a multi-disciplined product specialist who can lift ideas off paper and turn them into working world-class products. His UX experience is second to none."
+    text: 'Nikolai is a true professional and was a pleasure to work with. He is a multi-disciplined product specialist who can lift ideas off paper and turn them into working world-class products. His UX experience is second to none.'
   },
   {
     name: 'Robert Carter',
     title: 'Head of breeze at Esim-Go',
     date: 'June 18, 2024',
     relationship: 'Robert worked with Nikolai but they were at different companies',
-    text: "In my time working with Nikolai, he showed a strong grasp of ux principles and delivered wireframes of the highest standard. He worked tirelessly to ensure that tight deadlines were met, whilst providing expert insight into how solutions could be technically delivered. I would highly recommend Nikolais services to anyone looking to improved their digital services."
+    text: 'In my time working with Nikolai, he showed a strong grasp of ux principles and delivered wireframes of the highest standard. He worked tirelessly to ensure that tight deadlines were met, whilst providing expert insight into how solutions could be technically delivered. I would highly recommend Nikolais services to anyone looking to improved their digital services.'
   },
   {
     name: 'Olesia Kornilova',
@@ -84,19 +85,22 @@ const recommendations = [
     title: 'Senior Business Analyst – Grid Dynamics',
     date: 'September 17, 2021',
     relationship: 'Nikolai was Andrey\'s client',
-    text: "I had the pleasure to work with Nikolai. First of all, I want to admit his proactive attitude and growth mindset along the way that we were working on his projects. Secondly, his productivity is amazing - he is ready to work 24 h to get a result. The charismatic impact that Nikolay can have on others leaving a truly memorable impression on me."
+    text: 'I had the pleasure to work with Nikolai. First of all, I want to admit his proactive attitude and growth mindset along the way that we were working on his projects. Secondly, his productivity is amazing - he is ready to work 24 h to get a result. The charismatic impact that Nikolay can have on others leaving a truly memorable impression on me.'
   }
 ];
 
 const highlight = {
-  color: '#DAA520',
+  color: '#FFC94D',
+  fontFamily: 'Electrolize, sans-serif',
   fontWeight: 700,
-  letterSpacing: 2,
-  cursor: 'pointer',
-  transition: 'text-shadow 0.2s',
-  '&:hover': {
-    textShadow: '0 0 5px #DAA520'
-  }
+  letterSpacing: 6,
+  textTransform: 'uppercase',
+  textShadow: '0 0 12px rgba(218, 165, 32, 0.45)'
+};
+
+const hudMeta = {
+  fontFamily: 'Electrolize, sans-serif',
+  letterSpacing: 2
 };
 
 const RecommendationCard = ({ recommendation }) => {
@@ -107,78 +111,86 @@ const RecommendationCard = ({ recommendation }) => {
 
   return (
     <div style={{
-      marginBottom: 32,
-      padding: 24,
-      background: 'rgba(24, 26, 32, 0.15)',
-      backdropFilter: 'blur(20px) saturate(180%)',
-      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-      borderRadius: 16,
-      border: '1px solid rgba(255, 255, 255, 0.1)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+      marginBottom: 26,
+      padding: '22px 26px',
+      background: 'rgba(2, 6, 16, 0.82)',
+      border: '1px solid #1E3A5F',
+      borderLeft: '3px solid #9D6EFF',
+      clipPath: 'polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)',
       position: 'relative',
       overflow: 'hidden',
-      transition: 'all 0.3s ease'
+      transition: 'border-color 0.25s ease, background 0.25s ease'
     }}>
-      {/* Glass overlay */}
+      {/* Top accent line */}
       <div style={{
         position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0,
-        background: 'linear-gradient(135deg, rgba(218, 165, 32, 0.08) 0%, rgba(218, 165, 32, 0.03) 50%, rgba(255, 255, 255, 0.02) 100%)',
-        borderRadius: 16,
-        pointerEvents: 'none',
-        zIndex: -1
+        height: 1,
+        background: 'linear-gradient(90deg, rgba(157, 110, 255, 0.55), transparent 70%)',
+        pointerEvents: 'none'
       }} />
 
       <div style={{ position: 'relative', zIndex: 1 }}>
-      <div style={{ marginBottom: 16 }}>
-        <div style={{ fontWeight: 700, color: '#DAA520', fontSize: '1.1em', marginBottom: 4 }}>
-          {recommendation.name}
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ ...hudMeta, fontWeight: 700, color: '#FFC94D', fontSize: '0.95em', letterSpacing: 3, textTransform: 'uppercase', marginBottom: 6 }}>
+            ◇ {recommendation.name}
+          </div>
+          <div style={{ color: '#C6DFF5', fontSize: '0.95em', marginBottom: 6 }}>
+            {recommendation.title}
+          </div>
+          <div style={{ ...hudMeta, color: '#4A6A8A', fontSize: '0.78em', textTransform: 'uppercase' }}>
+            {recommendation.date} <span style={{ color: '#9D6EFF' }}>//</span> {recommendation.relationship}
+          </div>
         </div>
-        <div style={{ color: '#ccc', fontSize: '0.95em', marginBottom: 4 }}>
-          {recommendation.title}
+        <div style={{
+          lineHeight: 1.65,
+          fontSize: '1.02em',
+          color: '#C6DFF5',
+          whiteSpace: 'pre-line',
+          marginBottom: shouldTruncate ? 12 : 0
+        }}>
+          {displayText}
         </div>
-        <div style={{ color: '#888', fontSize: '0.9em' }}>
-          {recommendation.date} • {recommendation.relationship}
-        </div>
-      </div>
-      <div style={{
-        lineHeight: 1.6,
-        fontSize: '1.05em',
-        whiteSpace: 'pre-line',
-        marginBottom: shouldTruncate ? 12 : 0
-      }}>
-        {displayText}
-      </div>
-      {shouldTruncate && (
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: '#DAA520',
-            cursor: 'pointer',
-            fontSize: '0.95em',
-            fontWeight: 600,
-            textDecoration: 'underline',
-            padding: 0,
-            margin: 0
-          }}
-        >
-          {isExpanded ? 'Read less' : 'Read more'}
-        </button>
-      )}
+        {shouldTruncate && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            style={{
+              ...hudMeta,
+              background: 'none',
+              border: 'none',
+              color: '#35EFEF',
+              cursor: 'pointer',
+              fontSize: '0.82em',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              padding: 0,
+              margin: 0
+            }}
+          >
+            {isExpanded ? '▲ Close transmission' : '▼ Full transmission'}
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
+RecommendationCard.propTypes = {
+  recommendation: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    relationship: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired
+};
+
 const RecommendationsPage = () => (
   <Main>
-    <h2 style={highlight}>| RECOMMENDATIONS</h2>
-    <div style={{ maxWidth: 900, margin: '0 auto', color: '#e0e0e0' }}>
+    <h2 style={highlight}>| TESTIMONIALS — INCOMING TRANSMISSIONS</h2>
+    <div style={{ maxWidth: 900, margin: '0 auto', color: '#C6DFF5' }}>
       {recommendations.map((rec, idx) => (
         <RecommendationCard key={idx} recommendation={rec} />
       ))}

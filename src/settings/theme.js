@@ -12,30 +12,30 @@ const theme = {
       light: '#ffffff'
     },
     secondary: {
-      dark: '#003399',
-      main: '#3366FF',
-      light: '#6699FF'
+      dark: '#1B8F8F',
+      main: '#35EFEF',
+      light: '#7FF7F7'
     },
     tertiary: {
-      dark: '#003399',
-      main: '#3366FF',
-      light: '#6699FF'
+      dark: '#B8860B',
+      main: '#DAA520',
+      light: '#FFC94D'
     },
     heading: {
       main: '#eeeeee'
     },
     text: {
-      main: '#cccccc'
+      main: '#C6DFF5'
     },
     link: {
-      dark: '#003399',
-      main: '#3366FF',
-      light: '#6699FF'
+      dark: '#1B8F8F',
+      main: '#35EFEF',
+      light: '#7FF7F7'
     },
     background: {
       dark: '#000000',
-      main: '#000033',
-      light: '#003399'
+      main: '#01030A',
+      light: '#1E3A5F'
     }
   },
   animation: {

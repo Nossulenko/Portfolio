@@ -8,6 +8,7 @@ import { Menu } from '../components/Menu';
 import { SocialLinks } from '../components/SocialLinks';
 import { Legal } from '../components/Legal';
 import { Starmap } from '../components/Starmap';
+import { HudChrome } from '../components/HudChrome';
 import { withRouter } from '../tools/withRouter/index.js';
 import { setupAudioUnlock } from '../tools/audioUnlock.js';
 import logo from '../images/logo_2.png';
@@ -22,7 +23,17 @@ const styles = () => {
       display: 'flex',
       flexDirection: 'column',
       margin: [0, 'auto'],
-      padding: 20
+      padding: 20,
+      position: 'relative',
+      zIndex: 1
+    },
+    starfield: {
+      position: 'fixed',
+      inset: 0,
+      zIndex: 0,
+      pointerEvents: 'none',
+      backgroundImage: 'radial-gradient(1px 1px at 25px 35px, rgba(255,255,255,0.5), transparent 50%), radial-gradient(1px 1px at 120px 90px, rgba(198,223,245,0.35), transparent 50%), radial-gradient(1.5px 1.5px at 200px 40px, rgba(255,255,255,0.3), transparent 50%), radial-gradient(1px 1px at 80px 160px, rgba(53,239,239,0.25), transparent 50%), radial-gradient(1px 1px at 170px 150px, rgba(255,201,77,0.2), transparent 50%)',
+      backgroundSize: '240px 200px'
     },
     brand: {
       margin: [0, 'auto', 30],
@@ -213,6 +224,8 @@ class Component extends React.Component {
     return (
       <Secuence ref={ref => (this.secuenceElement = ref)}>
         <div className={classes.root}>
+          <div className={classes.starfield} />
+          <HudChrome section='STARMAP // 2D MODE' />
           {this.renderModeToggle()}
           <div className={classes.content}>
             <Brand

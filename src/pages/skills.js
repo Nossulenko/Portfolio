@@ -3,14 +3,12 @@ import { Main } from '../components/Main';
 import './styles/skills.css';
 
 const highlight = {
-  color: '#DAA520',
+  color: '#FFC94D',
+  fontFamily: 'Electrolize, sans-serif',
   fontWeight: 700,
-  letterSpacing: 2,
-  cursor: 'pointer',
-  transition: 'text-shadow 0.2s',
-  '&:hover': {
-    textShadow: '0 0 5px #DAA520'
-  }
+  letterSpacing: 6,
+  textTransform: 'uppercase',
+  textShadow: '0 0 12px rgba(218, 165, 32, 0.45)'
 };
 
 const coreSkills = [

@@ -5,6 +5,7 @@ import cx from 'classnames';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { AppContent } from '../AppContent';
+import { HudChrome } from '../HudChrome';
 import MouseGlow from '../MouseGlow';
 
 class Component extends React.Component {
@@ -49,6 +50,7 @@ class Component extends React.Component {
 
     return (
       <div className={cx(classes.root, className)} {...etc}>
+        <HudChrome />
         <MouseGlow color='rgba(218, 165, 32, 0.08)' size={400} />
         <Header
           className={classes.header}

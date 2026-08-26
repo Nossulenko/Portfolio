@@ -5,9 +5,12 @@ import { trackDownloadResume } from '../tools/analytics.js';
 import './styles/about.css';
 
 const highlight = {
-  color: '#DAA520',
+  color: '#FFC94D',
+  fontFamily: 'Electrolize, sans-serif',
   fontWeight: 700,
-  letterSpacing: 2,
+  letterSpacing: 6,
+  textTransform: 'uppercase',
+  textShadow: '0 0 12px rgba(218, 165, 32, 0.45)',
   cursor: 'pointer'
 };
 
