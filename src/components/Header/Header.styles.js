@@ -59,25 +59,18 @@ const styles = () => ({
       justifyContent: 'flex-start',
       alignItems: 'center',
       padding: [20, 20, 20],
-      gap: '40px'
+      gap: '80px'
     },
     brand: {
       margin: 0
     },
     menu: {
       margin: 0,
-      maxWidth: 300
+      width: 'auto',
+      maxWidth: 'none'
     },
     burgerIcon: {
       display: 'none'
-    }
-  },
-
-  '@media screen and (min-width: 1025px)': {
-    menu: {
-      margin: 0,
-      width: 350,
-      maxWidth: 'none'
     }
   }
 });
