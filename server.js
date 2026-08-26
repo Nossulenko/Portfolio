@@ -78,13 +78,13 @@ CURRENT POSITIONS & RECENT EXPERIENCE:
 - Advised major airlines and airports (Swiss Air, Lufthansa Group, Air Astana) on digital transformation: cloud adoption, compliance, and data-driven operations
 - Integrated custom AI features: LLM APIs, automation pipelines, and AI-assisted workflows for UX iteration and delivery sprints; Flutter and React Native delivery
 
-4. TECHNICAL LEAD at Qualium Systems, software engineering company (Jul 2018 — Feb 2023, Belgium/Ukraine, independent project engagement alongside full-time roles)
+4. TECHNICAL LEAD at Qualium Systems, software engineering company (Jul 2018 — Feb 2023, Belgium/Ukraine, on-site)
 - Led a large cross-functional engineering team (developers, designers, QA) across two large-scale cloud projects on web, mobile, and 3D platforms (React Native, Flutter, Node.js, .NET)
 - Built NLP pipelines (spaCy, NLTK) and shipped early GPT-3 / OpenAI API integrations into product features from 2021 - production LLM work well before the ChatGPT era
 - Defined scope, planning, and budget in Agile Scrum; introduced DevOps pipelines, monitoring, AI-assisted testing, and requirements traceability across distributed international teams
 
-5. FULL-STACK DEVELOPER at PAU, Alpha IT, and MCS, enterprise software (Oct 2019 — Jun 2023, Antwerp region, successive full-time roles)
-- Full-stack development of enterprise web and mobile applications: front-end, REST APIs, and cloud integration, alongside independent project work
+5. FULL-STACK DEVELOPER at PAU and Alpha IT, enterprise software (Oct 2019 — May 2021, Antwerp region)
+- Full-stack development of enterprise web and mobile applications: front-end, REST APIs, and cloud integration
 
 TECHNICAL EXPERTISE & SKILLS:
 
@@ -199,7 +199,6 @@ app.post('/api/download-resume', async (req, res) => {
       success: true,
       message: 'Resume download processed successfully'
     });
-
   } catch (error) {
     console.error('Error processing resume download:', error);
     res.status(500).json({
@@ -231,7 +230,7 @@ app.post('/api/chat', async (req, res) => {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${OPENAI_API_KEY}`,
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: 'gpt-4',
@@ -251,7 +250,6 @@ app.post('/api/chat', async (req, res) => {
     res.json({
       response: aiResponse
     });
-
   } catch (error) {
     console.error('Error in chat endpoint:', error);
     res.status(500).json({

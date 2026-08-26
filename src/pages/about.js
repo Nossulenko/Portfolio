@@ -102,7 +102,7 @@ const employmentHistory = [
     title: 'Technical Lead',
     company: <a href='https://www.qualium-systems.com/' target='_blank' rel='noopener noreferrer'>Qualium Systems</a>,
     period: 'Jul 2018 — Feb 2023',
-    location: 'Belgium / Ukraine — independent project engagement alongside full-time roles',
+    location: 'Belgium / Ukraine (on-site)',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
         <li>Led a large cross-functional engineering team (developers, designers, QA) across two large-scale cloud projects on web, mobile, and 3D platforms (React Native, Flutter, Node.js, .NET).</li>
@@ -126,12 +126,12 @@ const employmentHistory = [
   },
   {
     title: 'Full-Stack Developer',
-    company: <span>PAU · Alpha IT · MCS</span>,
-    period: 'Oct 2019 — Jun 2023',
-    location: 'Antwerp region — successive full-time roles in enterprise software',
+    company: <span>PAU · Alpha IT</span>,
+    period: 'Oct 2019 — May 2021',
+    location: 'Antwerp region — enterprise software',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Full-stack development of enterprise web and mobile applications: front-end, REST APIs, and cloud integration, alongside independent project work.</li>
+        <li>Full-stack development of enterprise web and mobile applications: front-end, REST APIs, and cloud integration.</li>
       </ul>
     ),
     badges: [
@@ -197,7 +197,7 @@ const About = () => {
       // Download the resume
       const link = document.createElement('a');
       link.href = '/resume.pdf';
-      link.download = 'Nikolai_Nossulenko_Resume.pdf';
+      link.download = 'Nikolai_Nossulenko_CV.pdf';
       link.click();
 
       // Close the form
