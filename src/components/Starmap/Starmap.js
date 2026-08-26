@@ -678,7 +678,6 @@ const Starmap = ({ onFallback }) => {
           background: HUD.panelBg,
           border: `1px solid ${HUD.line}`,
           borderRight: `3px solid ${hoveredDest ? hoveredDest.color : HUD.line}`,
-          clipPath: 'polygon(0 16px, 16px 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
           padding: '20px 22px',
           pointerEvents: 'none'
         }}

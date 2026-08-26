@@ -116,7 +116,6 @@ const RecommendationCard = ({ recommendation }) => {
       background: 'rgba(2, 6, 16, 0.82)',
       border: '1px solid #1E3A5F',
       borderLeft: '3px solid #9D6EFF',
-      clipPath: 'polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)',
       position: 'relative',
       overflow: 'hidden',
       transition: 'border-color 0.25s ease, background 0.25s ease'

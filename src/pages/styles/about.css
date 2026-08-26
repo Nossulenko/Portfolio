@@ -24,7 +24,6 @@
   background: rgba(2, 6, 16, 0.82);
   border: 1px solid #1E3A5F;
   border-left: 3px solid #DAA520;
-  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
   padding: 28px 28px 18px 28px;
   margin: 28px 0;
   color: #C6DFF5;
@@ -186,7 +185,6 @@
   background: rgba(2, 6, 16, 0.96);
   border: 1px solid #1E3A5F;
   border-top: 1px solid #DAA520;
-  clip-path: polygon(0 16px, 16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
   padding: 30px;
   max-width: 500px;
   width: 100%;

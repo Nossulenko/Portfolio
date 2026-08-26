@@ -8,7 +8,6 @@ const SidebarCard = ({ title, children }) => (
     background: 'rgba(2, 6, 16, 0.82)',
     border: '1px solid #1E3A5F',
     borderRight: '3px solid #DAA520',
-    clipPath: 'polygon(0 14px, 14px 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px))',
     padding: '20px 22px',
     marginBottom: '20px',
     color: '#C6DFF5',
