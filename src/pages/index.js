@@ -209,7 +209,7 @@ class Component extends React.Component {
             <h1 className={classes.brandHeading}>
               <img src={logo} alt='nossulenko' className={classes.brandLogo} />
             </h1>
-            <div className={classes.brandSub}>AI ENGINEER &amp; PRODUCT LEADER</div>
+            <div className={classes.brandSub}>APPLIED AI ENGINEERING &amp; PRODUCT LEAD</div>
           </div>
           <Secuence ref={ref => (this.secuenceElement = ref)}>
             <div className={classes.socialOverlay}>

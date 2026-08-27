@@ -30,6 +30,7 @@ const employmentHistory = [
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
         <li>Architect of the lab's multi-agent delivery pipeline: coding agents handle scaffolding, boilerplate, and test generation while senior engineers own architecture, data, and production. Products shipped in weeks, not months.</li>
+        <li>Anchored spec-driven development as the lab's delivery method, with specifications as the source of truth for human and agent implementation.</li>
         <li>Shipped agent-assisted legacy modernization: translated PL/SQL codebases into readable business-logic specifications, then rebuilt them production-ready on a modern Java + Angular stack.</li>
         <li>Shipped a product that converts complex Excel workbooks into modern React applications for the manufacturing industry.</li>
         <li>Delivered RAG solutions and large-document processing engines for enterprise clients, end-to-end: model selection and evaluation, retrieval architecture, guardrails, observability, and inference-cost control.</li>
@@ -39,6 +40,7 @@ const employmentHistory = [
     badges: [
       'Multi-Agent Systems',
       'Agentic Delivery',
+      'Spec-Driven Development',
       'RAG',
       'Legacy Modernization',
       'LLM Evaluation',
@@ -102,13 +104,13 @@ const employmentHistory = [
     ]
   },
   {
-    title: 'Technical Lead',
+    title: 'Partner | Technical Lead',
     company: <a href='https://www.qualium-systems.com/' target='_blank' rel='noopener noreferrer'>Qualium Systems</a>,
-    period: 'Jul 2018 — Feb 2023',
+    period: 'Jul 2018 — Jul 2023',
     location: 'Belgium / Ukraine (on-site)',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Led a large cross-functional engineering team (developers, designers, QA) across two large-scale cloud projects on web, mobile, and 3D platforms (React Native, Flutter, Node.js, .NET).</li>
+        <li>Led my own cross-functional engineering team (developers, designers, QA) as a partner across two large-scale cloud projects on web, mobile, and 3D platforms (React Native, Flutter, Node.js, .NET).</li>
         <li>Built NLP pipelines (spaCy, NLTK) and shipped early GPT-3 / OpenAI API integrations into product features from 2021 — production LLM work well before the ChatGPT era.</li>
         <li>Defined scope, planning, and budget in Agile Scrum; introduced DevOps pipelines, monitoring, AI-assisted testing, and requirements traceability across distributed international teams.</li>
       </ul>
@@ -128,20 +130,92 @@ const employmentHistory = [
     ]
   },
   {
-    title: 'Full-Stack Developer',
-    company: <span>PAU · Alpha IT</span>,
-    period: 'Oct 2019 — May 2021',
+    title: 'Full-Stack Laravel Developer',
+    company: <span>Alpha IT</span>,
+    period: 'Apr 2020 — May 2021',
     location: 'Antwerp region — enterprise software',
     description: (
       <ul style={{ margin: 0, paddingLeft: 24 }}>
-        <li>Full-stack development of enterprise web and mobile applications: front-end, REST APIs, and cloud integration.</li>
+        <li>Built enterprise web applications on Laravel: Eloquent ORM, migrations, queues and scheduled jobs, REST APIs with authentication and role-based access, and MySQL data modeling.</li>
       </ul>
     ),
     badges: [
-      'Enterprise Software',
+      'Laravel',
+      'Eloquent ORM',
+      'REST APIs',
+      'MySQL',
+      'Enterprise Software'
+    ]
+  },
+  {
+    title: 'Full-Stack Developer',
+    company: <span>PAU</span>,
+    period: 'Oct 2019 — Apr 2020',
+    location: 'Antwerp region — enterprise software',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Full-stack web development: component-based front-ends, REST API design, and relational data models, with version control and code reviews in an Agile team.</li>
+      </ul>
+    ),
+    badges: [
       'Full-Stack Development',
       'REST APIs',
-      'Cloud Integration'
+      'Relational Databases',
+      'Agile'
+    ]
+  },
+  {
+    title: 'Full-Stack Developer',
+    company: <span>Carl Van de Velde Business Institute</span>,
+    period: 'Sep 2017 — Sep 2019',
+    location: 'Schilde',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Developed a complete knowledge-base app for the institute with React Native.</li>
+        <li>Built a web application with Laravel: full-stack development with REST APIs.</li>
+      </ul>
+    ),
+    badges: [
+      'React Native',
+      'Laravel',
+      'REST APIs',
+      'Full-Stack Development'
+    ]
+  },
+  {
+    title: 'Full-Stack Developer (student job)',
+    company: <span>Digipolis Antwerpen</span>,
+    period: 'Jul 2016 — Jul 2017',
+    location: 'IT partner of the city of Antwerp',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Developed additional components for ACPaaS UI, the city of Antwerp's open-source Angular component library: reusable UI components for city applications, within a MEAN-stack environment (MongoDB, Express, Angular, Node.js) with Git in Agile Scrum and Kanban teams.</li>
+      </ul>
+    ),
+    badges: [
+      'Angular',
+      'MEAN Stack',
+      'Open Source',
+      'Component Library'
+    ]
+  },
+  {
+    title: 'Hardware Technician (student job)',
+    company: <span>Computer repair shop</span>,
+    period: '2009 — 2011',
+    location: 'Antwerp region',
+    description: (
+      <ul style={{ margin: 0, paddingLeft: 24 }}>
+        <li>Component-level PCB repair: SMD micro-soldering, reflow, and replacing faulty ICs, connectors, and power circuits on smartphone and laptop motherboards.</li>
+        <li>Assembled custom PC builds and performed GPU and consumer-CPU overclocking, with stress and thermal testing for stability.</li>
+        <li>Data recovery from failing hard drives: diagnosing logical and mechanical faults and sector-level cloning of failing disks.</li>
+      </ul>
+    ),
+    badges: [
+      'PCB Repair',
+      'SMD Micro-Soldering',
+      'Data Recovery',
+      'Custom PC Builds'
     ]
   }
 ];
@@ -156,9 +230,9 @@ const About = () => {
     reason: ''
   });
 
-  const shortProfileText = "AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs.";
+  const shortProfileText = "Applied AI Engineering & Product Lead · Co-Founder at Baboon Labs (De Cronos Groep). AI engineer and product leader, active in IT since 2009: grown through full-stack development into engineering and product leadership, with cloud architecture and product development as the common thread. Since 2020 my work has focused on applied AI — from early GPT-3 integrations and NLP pipelines to ML document intelligence in a regulated trust-services environment.";
 
-  const fullProfileText = "AI Engineer & Product Leader · Co-Founder at Baboon Labs (De Cronos Groep). Full-stack developer grown into AI engineer: over the past decade I've built digital products end-to-end — front-end, back-end, cloud infrastructure, and the product decisions in between. Since 2020 my work has steadily converged on applied AI: NLP pipelines and early GPT-3 integrations, LLM-powered product features in large-scale platforms, ML document intelligence in a regulated trust-services environment, and today agentic delivery systems at Baboon Labs. I combine that technical depth with product leadership: roadmap and KPI definition, Agile delivery with large cross-functional engineering teams, fractional-CTO engagements, and C-level reporting. My way of working is spec-driven development, with specifications as the source of truth driving agent implementation. I build AI systems that hold up in production — with real users, real data, and real compliance requirements.";
+  const fullProfileText = "Applied AI Engineering & Product Lead · Co-Founder at Baboon Labs (De Cronos Groep). AI engineer and product leader, active in IT since 2009: grown through full-stack development into engineering and product leadership, with cloud architecture and product development as the common thread. Since 2020 my work has focused on applied AI — from early GPT-3 integrations and NLP pipelines to ML document intelligence in a regulated trust-services environment. Today I'm co-founder of Baboon Labs (De Cronos Groep), where I architect the lab's multi-agent delivery pipeline and ship AI products end-to-end: from business problem to specification, architecture, implementation, and production. My way of working is spec-driven development, with specifications as the source of truth for human and agent. I build AI systems that hold up in production — real users, real data, real compliance requirements.";
 
   const handleDownload = async () => {
     // Check if all required fields are filled
