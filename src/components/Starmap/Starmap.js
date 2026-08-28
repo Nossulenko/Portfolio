@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { Stars, Html, OrbitControls } from '@react-three/drei';
 import { useNavigate } from 'react-router-dom';
 import { Howl } from 'howler';
@@ -10,6 +10,21 @@ import { DESTINATIONS, HUD } from './Starmap.constants';
 
 const hoverSound = new Howl({ src: ['/sounds/hover.mp3'], volume: 0.35 });
 const clickSound = new Howl({ src: ['/sounds/click.mp3'], volume: 0.5 });
+
+const useMediaQuery = query => {
+  const [matches, setMatches] = React.useState(
+    () => typeof window !== 'undefined' && window.matchMedia(query).matches
+  );
+
+  React.useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = event => setMatches(event.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, [query]);
+
+  return matches;
+};
 
 const makeGlowTexture = color => {
   const canvas = document.createElement('canvas');
@@ -55,8 +70,12 @@ const useSrgb = texture => {
 };
 
 // Real Milky Way panorama on an inverted sphere, drifting slowly.
-const Skybox = () => {
-  const texture = useSrgb(useLoader(THREE.TextureLoader, '/textures/milkyway_8k.jpg'));
+// Small screens get the 4k variant — the 8k one decodes to ~130MB of GPU
+// memory, enough to evict a mobile Safari tab.
+const Skybox = ({ compact }) => {
+  const texture = useSrgb(
+    useLoader(THREE.TextureLoader, compact ? '/textures/milkyway_4k.jpg' : '/textures/milkyway_8k.jpg')
+  );
   const meshRef = React.useRef();
 
   useFrame((state, delta) => {
@@ -71,6 +90,32 @@ const Skybox = () => {
       <meshBasicMaterial map={texture} side={THREE.BackSide} depthWrite={false} />
     </mesh>
   );
+};
+
+Skybox.propTypes = {
+  compact: PropTypes.bool
+};
+
+// Portrait viewports crop the orbital plane badly at the desktop FOV, so
+// widen the vertical FOV to preserve the horizontal field (capped to avoid
+// fisheye distortion).
+const ResponsiveCamera = () => {
+  const camera = useThree(state => state.camera);
+  const size = useThree(state => state.size);
+
+  React.useEffect(() => {
+    const aspect = size.width / size.height;
+    const baseFov = 45;
+    if (aspect >= 1) {
+      camera.fov = baseFov;
+    } else {
+      const hTan = Math.tan(THREE.MathUtils.degToRad(baseFov / 2));
+      camera.fov = Math.min(78, THREE.MathUtils.radToDeg(2 * Math.atan(hTan / aspect)));
+    }
+    camera.updateProjectionMatrix();
+  }, [camera, size]);
+
+  return null;
 };
 
 const Nebula = ({ position, color, scale }) => {
@@ -342,7 +387,7 @@ AsteroidBelt.propTypes = {
   count: PropTypes.number.isRequired
 };
 
-const Planet = ({ dest, hovered, dimmed, onHover, onSelect, positionsRef }) => {
+const Planet = ({ dest, hovered, dimmed, compact, onHover, onSelect, positionsRef }) => {
   const groupRef = React.useRef();
   const meshRef = React.useRef();
   const texture = useSrgb(useLoader(THREE.TextureLoader, dest.texture));
@@ -420,8 +465,8 @@ const Planet = ({ dest, hovered, dimmed, onHover, onSelect, positionsRef }) => {
           <span
             style={{
               color: hovered ? HUD.goldBright : '#C6DFF5',
-              fontSize: 17,
-              letterSpacing: 5,
+              fontSize: compact ? 13 : 17,
+              letterSpacing: compact ? 3 : 5,
               fontWeight: 700
             }}
           >
@@ -430,8 +475,8 @@ const Planet = ({ dest, hovered, dimmed, onHover, onSelect, positionsRef }) => {
           <span
             style={{
               color: hovered ? HUD.gold : '#7E9FBE',
-              fontSize: 11,
-              letterSpacing: 3,
+              fontSize: compact ? 9 : 11,
+              letterSpacing: compact ? 2 : 3,
               marginTop: 3
             }}
           >
@@ -447,6 +492,7 @@ Planet.propTypes = {
   dest: PropTypes.object.isRequired,
   hovered: PropTypes.bool,
   dimmed: PropTypes.bool,
+  compact: PropTypes.bool,
   onHover: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   positionsRef: PropTypes.object.isRequired
@@ -534,10 +580,16 @@ const slashTab = active => ({
 
 const Starmap = ({ onFallback }) => {
   const navigate = useNavigate();
+  const isNarrow = useMediaQuery('(max-width: 767px)');
+  const isTouch = useMediaQuery('(pointer: coarse)');
   const [hoveredId, setHoveredId] = React.useState(null);
   const [leavingId, setLeavingId] = React.useState(null);
   const [telemetry, setTelemetry] = React.useState({ az: 0, el: 0, dist: 0 });
   const positionsRef = React.useRef({});
+  // Touch has no hover, so selection is two-step: first tap arms a planet
+  // (shows the info panel), second tap engages. Tracked in a ref because the
+  // arming tap's pointerover fires before its click in the same gesture.
+  const armedRef = React.useRef(null);
   const webglOk = React.useMemo(() => {
     try {
       const canvas = document.createElement('canvas');
@@ -560,12 +612,27 @@ const Starmap = ({ onFallback }) => {
 
   const handleHover = id => {
     if (leavingId) return;
+    // Touch browsers fire pointerout as soon as the finger lifts; ignore it so
+    // the armed selection survives until a tap elsewhere dismisses it.
+    if (isTouch && !id) return;
     if (id && id !== hoveredId) hoverSound.play();
     setHoveredId(id);
   };
 
-  const handleSelect = dest => {
+  const clearSelection = () => {
+    armedRef.current = null;
+    setHoveredId(null);
+  };
+
+  const handleSelect = (dest, { direct = false } = {}) => {
     if (leavingId) return;
+    // Narrow screens skip the arming step: the info panel is hidden there,
+    // so a second tap would have nothing to confirm against.
+    if (isTouch && !isNarrow && !direct && armedRef.current !== dest.id) {
+      armedRef.current = dest.id;
+      setHoveredId(dest.id);
+      return;
+    }
     clickSound.play();
     if (dest.external) {
       window.open(dest.to, '_blank', 'noopener');
@@ -582,16 +649,18 @@ const Starmap = ({ onFallback }) => {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
       <Canvas
-        dpr={[1, 2]}
-        camera={{ position: [0, 13, 14], fov: 45 }}
+        dpr={isNarrow ? [1, 1.5] : [1, 2]}
+        camera={{ position: isNarrow ? [0, 18, 20] : [0, 13, 14], fov: 45 }}
         gl={{ antialias: true, alpha: false, stencil: false, powerPreference: 'high-performance' }}
         onCreated={({ gl }) => gl.setClearColor('#01030A')}
+        onPointerMissed={clearSelection}
       >
+        <ResponsiveCamera />
         <ambientLight intensity={0.35} />
         <React.Suspense fallback={null}>
-          <Skybox />
+          <Skybox compact={isNarrow} />
         </React.Suspense>
-        <Stars radius={90} depth={45} count={2500} factor={4} saturation={0} fade speed={0.5} />
+        <Stars radius={90} depth={45} count={isNarrow ? 1600 : 2500} factor={4} saturation={0} fade speed={0.5} />
         <Nebula position={[-38, 6, -42]} color='#22307A' scale={70} />
         <Nebula position={[34, -4, -48]} color='#5A2CA0' scale={62} />
         <React.Suspense fallback={null}>
@@ -602,6 +671,7 @@ const Starmap = ({ onFallback }) => {
               dest={dest}
               hovered={hoveredId === dest.id}
               dimmed={!!leavingId && leavingId !== dest.id}
+              compact={isNarrow}
               onHover={handleHover}
               onSelect={handleSelect}
               positionsRef={positionsRef}
@@ -616,14 +686,14 @@ const Starmap = ({ onFallback }) => {
             color={dest.color}
           />
         ))}
-        <AsteroidBelt radius={9.0} count={450} />
+        <AsteroidBelt radius={9.0} count={isNarrow ? 240 : 450} />
         <CameraRig leavingId={leavingId} positionsRef={positionsRef} />
         <Telemetry onSample={setTelemetry} />
         <OrbitControls
           enabled={!leavingId}
           enablePan={false}
           minDistance={8}
-          maxDistance={30}
+          maxDistance={isNarrow ? 38 : 30}
           minPolarAngle={0.45}
           maxPolarAngle={1.2}
           autoRotate
@@ -643,18 +713,24 @@ const Starmap = ({ onFallback }) => {
           pointerEvents: 'none'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'flex-start', padding: '10px 16px 0' }}>
-          <div style={slashTab(false)}>GLX</div>
-          <div style={slashTab(true)}>SYS</div>
-          <div style={slashTab(false)}>OBJ</div>
-          <div style={{ ...hudText(12, '#7E9FBE'), padding: '10px 0 0 20px' }}>
+        {isNarrow ? (
+          <div style={{ ...hudText(10, '#7E9FBE'), padding: '16px 0 0 14px' }}>
             // NOSSULENKO-PRIME
           </div>
-          <div style={{ flex: 1 }} />
-          <div style={{ ...hudText(12, '#7E9FBE'), padding: '10px 130px 0 0' }}>
-            <Clock />
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'flex-start', padding: '10px 16px 0' }}>
+            <div style={slashTab(false)}>GLX</div>
+            <div style={slashTab(true)}>SYS</div>
+            <div style={slashTab(false)}>OBJ</div>
+            <div style={{ ...hudText(12, '#7E9FBE'), padding: '10px 0 0 20px' }}>
+              // NOSSULENKO-PRIME
+            </div>
+            <div style={{ flex: 1 }} />
+            <div style={{ ...hudText(12, '#7E9FBE'), padding: '10px 130px 0 0' }}>
+              <Clock />
+            </div>
           </div>
-        </div>
+        )}
         <div
           style={{
             height: 1,
@@ -665,24 +741,26 @@ const Starmap = ({ onFallback }) => {
         />
       </div>
 
-      {/* ── HUD: object info panel ───────────────────────────── */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          right: hoveredDest ? 24 : -90,
-          transform: 'translateY(-50%)',
-          width: 310,
-          opacity: hoveredDest ? 1 : 0,
-          transition: 'right 250ms ease, opacity 250ms ease',
-          background: HUD.panelBg,
-          border: `1px solid ${HUD.line}`,
-          borderRight: `3px solid ${hoveredDest ? hoveredDest.color : HUD.line}`,
-          padding: '20px 22px',
-          pointerEvents: 'none'
-        }}
-      >
-        {hoveredDest && (
+      {/* ── HUD: object info panel (hidden on phones — covers the scene) ── */}
+      {!isNarrow && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            right: hoveredDest ? 24 : -90,
+            transform: 'translateY(-50%)',
+            width: 310,
+            opacity: hoveredDest ? 1 : 0,
+            transition: 'right 250ms ease, opacity 250ms ease',
+            background: HUD.panelBg,
+            border: `1px solid ${HUD.line}`,
+            borderRight: `3px solid ${hoveredDest ? hoveredDest.color : HUD.line}`,
+            padding: '20px 22px',
+            pointerEvents: 'none',
+            zIndex: 20
+          }}
+        >
+          {hoveredDest && (
           <>
             <div style={hudText(19, HUD.goldBright, { letterSpacing: 6, fontWeight: 700 })}>
               {hoveredDest.label}
@@ -704,41 +782,46 @@ const Starmap = ({ onFallback }) => {
               </div>
             ))}
             <div style={hudText(11, hoveredDest.color, { marginTop: 14, letterSpacing: 3 })}>
-              ◈ CLICK TO ENGAGE
+              {isTouch ? '◈ TAP AGAIN TO ENGAGE' : '◈ CLICK TO ENGAGE'}
             </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      )}
 
-      {/* ── HUD: camera telemetry ────────────────────────────── */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 24,
-          bottom: 78,
-          pointerEvents: 'none',
-          ...hudText(11, '#7E9FBE', { lineHeight: 2 })
-        }}
-      >
-        <div>CAM AZ <span style={{ color: '#C6DFF5' }}>{String(telemetry.az).padStart(3, '0')}°</span></div>
-        <div>CAM EL <span style={{ color: '#C6DFF5' }}>{telemetry.el}°</span></div>
-        <div>RANGE <span style={{ color: '#C6DFF5' }}>{telemetry.dist} AU</span></div>
-      </div>
+      {/* ── HUD: camera telemetry (desktop only — clutter on phones) ── */}
+      {!isNarrow && (
+        <div
+          style={{
+            position: 'absolute',
+            left: 24,
+            bottom: 78,
+            pointerEvents: 'none',
+            ...hudText(11, '#7E9FBE', { lineHeight: 2 })
+          }}
+        >
+          <div>CAM AZ <span style={{ color: '#C6DFF5' }}>{String(telemetry.az).padStart(3, '0')}°</span></div>
+          <div>CAM EL <span style={{ color: '#C6DFF5' }}>{telemetry.el}°</span></div>
+          <div>RANGE <span style={{ color: '#C6DFF5' }}>{telemetry.dist} AU</span></div>
+        </div>
+      )}
 
       {/* ── HUD: bottom toolbar ──────────────────────────────── */}
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, pointerEvents: 'none' }}>
         <div
           style={{
             position: 'absolute',
-            bottom: 152,
+            bottom: isNarrow ? 138 : 152,
             left: '50%',
             transform: 'translateX(-50%)',
-            ...hudText(11, '#7E9FBE'),
+            ...hudText(isNarrow ? 9 : 11, '#7E9FBE', isNarrow ? { letterSpacing: 2 } : {}),
             textAlign: 'center',
             whiteSpace: 'nowrap'
           }}
         >
-          DRAG TO ORBIT · SCROLL TO ZOOM · SELECT A DESTINATION
+          {isTouch
+            ? 'DRAG TO ORBIT · PINCH TO ZOOM · TAP A PLANET'
+            : 'DRAG TO ORBIT · SCROLL TO ZOOM · SELECT A DESTINATION'}
         </div>
         <div
           style={{
@@ -751,21 +834,31 @@ const Starmap = ({ onFallback }) => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '10px 16px 96px',
+            padding: isNarrow ? '8px 10px 88px' : '10px 16px 96px',
             background: 'linear-gradient(180deg, rgba(2, 6, 16, 0.85), rgba(2, 6, 16, 0.4))'
           }}
         >
-          <div style={hudText(12, HUD.cyan, { letterSpacing: 5, fontWeight: 700 })}>
-            ◈ NOSSULENKO <span style={{ color: '#4A6A8A' }}>//</span> STARMAP
-          </div>
-          <div style={{ flex: 1 }} />
-          <div style={{ display: 'flex', pointerEvents: 'auto' }}>
+          {!isNarrow && (
+            <>
+              <div style={hudText(12, HUD.cyan, { letterSpacing: 5, fontWeight: 700 })}>
+                ◈ NOSSULENKO <span style={{ color: '#4A6A8A' }}>//</span> STARMAP
+              </div>
+              <div style={{ flex: 1 }} />
+            </>
+          )}
+          <div
+            style={{
+              display: 'flex',
+              pointerEvents: 'auto',
+              ...(isNarrow && { flex: 1, flexWrap: 'wrap', justifyContent: 'center' })
+            }}
+          >
             {DESTINATIONS.map(dest => {
               const active = hoveredId === dest.id;
               return (
                 <div
                   key={'tab-' + dest.id}
-                  onClick={() => handleSelect(dest)}
+                  onClick={() => handleSelect(dest, { direct: true })}
                   onMouseEnter={() => handleHover(dest.id)}
                   onMouseLeave={() => handleHover(null)}
                   style={{
@@ -773,7 +866,8 @@ const Starmap = ({ onFallback }) => {
                     cursor: 'pointer',
                     borderTop: 'none',
                     borderBottom: `1px solid ${active ? HUD.gold : HUD.line}`,
-                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)'
+                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%)',
+                    ...(isNarrow && { fontSize: 10, letterSpacing: 1, padding: '8px 12px' })
                   }}
                 >
                   {dest.label}

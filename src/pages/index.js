@@ -146,13 +146,12 @@ class Component extends React.Component {
   constructor (props) {
     super(props);
 
-    const smallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
     const reducedMotion = typeof window !== 'undefined' &&
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     this.state = {
-      mode: smallScreen || reducedMotion ? '2d' : '3d'
+      mode: reducedMotion ? '2d' : '3d'
     };
   }
 
